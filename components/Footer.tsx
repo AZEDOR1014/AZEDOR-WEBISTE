@@ -24,6 +24,7 @@ export default function Footer() {
           <p className="mb-3 text-xs font-bold uppercase tracking-wider text-lime">Company</p>
           <Link href="/how-it-works" className="block py-1 text-sm text-mutedDark hover:text-white">How It Works</Link>
           <Link href="/our-work" className="block py-1 text-sm text-mutedDark hover:text-white">Our Work</Link>
+          <Link href="/blog" className="block py-1 text-sm text-mutedDark hover:text-white">Blog</Link>
           <Link href="/about" className="block py-1 text-sm text-mutedDark hover:text-white">About</Link>
           <Link href="/free-audit" className="block py-1 text-sm text-mutedDark hover:text-white">Free Audit</Link>
           <Link href="/contact" className="block py-1 text-sm text-mutedDark hover:text-white">Contact</Link>

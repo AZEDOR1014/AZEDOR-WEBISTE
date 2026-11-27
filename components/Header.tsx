@@ -47,6 +47,7 @@ export default function Header() {
           </div>
           <Link href="/our-work" className="hover:text-lime">Our Work</Link>
           <Link href="/how-it-works" className="hover:text-lime">How It Works</Link>
+          <Link href="/blog" className="hover:text-lime">Blog</Link>
           <Link href="/about" className="hover:text-lime">About</Link>
         </nav>
         <div className="flex items-center gap-2">
@@ -62,6 +63,7 @@ export default function Header() {
           {NAV_INDUSTRIES.flatMap((g) => g.items).map((i) => (<Link key={i.slug} href={`/industries/${i.slug}`} onClick={() => setOpen(false)} className="block py-2 text-sm">{i.name}</Link>))}
           <Link href="/our-work" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold">Our Work</Link>
           <Link href="/how-it-works" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold">How It Works</Link>
+          <Link href="/blog" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold">Blog</Link>
           <Link href="/about" onClick={() => setOpen(false)} className="block py-2 text-sm font-semibold">About</Link>
           <Link href="/free-audit" onClick={() => setOpen(false)} className="mt-3 block rounded-btn bg-lime px-4 py-3 text-center text-sm font-bold text-ink">Get Your Free Audit</Link>
         </div>

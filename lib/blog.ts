@@ -1,0 +1,294 @@
+export type BlogBlock =
+  | { type: "p"; text: string }
+  | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "ol"; items: string[] }
+  | { type: "callout"; title: string; text: string };
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  keyword: string;
+  description: string;
+  date: string;
+  dateLabel: string;
+  readTime: string;
+  tag: string;
+  summary: string;
+  answer: string;
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary: { label: string; href: string };
+  faqs: { q: string; a: string }[];
+  sections: BlogBlock[];
+};
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "missed-calls-cost-hvac-companies",
+    title: "Missed Calls Cost HVAC Companies More Than You Think",
+    keyword: "missed calls cost HVAC companies",
+    description: "Missed calls cost HVAC companies booked jobs. Learn what the published numbers say, and work out your own cost from your missed calls, booking rate, and average job value.",
+    date: "2026-11-27",
+    dateLabel: "November 27, 2026",
+    readTime: "6 min read",
+    tag: "HVAC",
+    summary: "HVAC businesses answer only a small share of inbound calls — and every unanswered call is a homeowner who may call the next company. Here is what the published numbers say, and how to work out your own cost.",
+    answer: "Missed calls cost HVAC companies booked jobs. Invoca's 2026 home services report found HVAC businesses answer only 34% of inbound calls. Every call you miss is a homeowner who may call the next company on Google — and that job is gone before you even knew about it.",
+    ctaPrimary: { label: "Get Your Free Audit", href: "/free-audit" },
+    ctaSecondary: { label: "See the Calling AI Agent", href: "/solutions/calling-ai-agent" },
+    faqs: [
+      { q: "How many calls do HVAC companies answer?", a: "Invoca's 2026 home services report found HVAC businesses answer only 34% of inbound calls, compared with 52% on average across home services. That means most HVAC calls go unanswered." },
+      { q: "What is an HVAC call booking rate?", a: "The booking rate is the share of calls that turn into a booked job. ServiceTitan's 2022 data put the HVAC call booking rate at 38%. So out of 100 calls, about 38 become booked jobs." },
+      { q: "How do I work out what missed calls cost my business?", a: "Count your missed calls in a week, multiply by your booking rate, then multiply by your average job value. The result is the value of the jobs those missed calls could have become." },
+      { q: "What is the fastest fix for missed calls?", a: "Answer every call, even after hours, and send a fast text-back with a booking link when a call is missed. A Calling AI Agent can answer in your business name, take the details, and book the job." },
+    ],
+    sections: [
+      { type: "p", text: "Your phone rings while your techs are on a job. It rings again while the office is busy. It rings at 9pm, when nobody is there. Each missed call feels small. One call is not a crisis. But missed calls add up — and in HVAC, they add up fast, because a homeowner with a broken AC does not wait. They call the next company." },
+      { type: "h2", text: "Why HVAC Companies Miss So Many Calls" },
+      { type: "p", text: "Missed calls are not a people problem. They are a timing problem. HVAC work happens where the customer is, not where the phone is." },
+      { type: "ul", items: [
+        "Your techs are on a job. They cannot stop a repair to answer the phone.",
+        "The office is busy. One person cannot take three calls at once.",
+        "Calls come after hours. AC systems break at night and on weekends, not just from 9 to 5.",
+        "Peak season hits hard. In a heatwave, the phones ring all day — and the team is already fully booked.",
+      ] },
+      { type: "p", text: "None of this means your team is doing a bad job. It means the phone system was built for a quiet day, and HVAC days are rarely quiet." },
+      { type: "h2", text: "What the Published Numbers Say About Missed Calls" },
+      { type: "p", text: "Two published figures show how big this problem is across the HVAC industry." },
+      { type: "p", text: "Invoca's 2026 home services report found that HVAC businesses answer only 34% of inbound calls. The average across all home services businesses is 52%. So HVAC answers fewer calls than home services as a whole — and more than half of all HVAC calls go unanswered." },
+      { type: "p", text: "ServiceTitan's 2022 data put the HVAC call booking rate at 38%. The booking rate is the share of calls that turn into a booked job. Out of 100 calls, about 38 become booked jobs. That matters, because it tells you what a missed call is worth: not every missed call would have booked, but more than one in three would have." },
+      { type: "h2", text: "How to Work Out What Missed Calls Cost Your Business" },
+      { type: "p", text: "Nobody can tell you your exact cost without your numbers. But you can work it out in three steps, using your own figures." },
+      { type: "ol", items: [
+        "Count your missed calls in a week. Check your phone system or call log for calls that rang and were never answered.",
+        "Multiply by your booking rate. If you do not know your own rate, the published HVAC figure of 38% is a starting point — replace it with your real rate when you know it.",
+        "Multiply by your average job value. That is the value of the jobs those missed calls could have become.",
+      ] },
+      { type: "callout", title: "A worked calculation — using made-up numbers to show the math", text: "Say a business misses 20 calls in a week. 20 missed calls × 38% booking rate = about 8 jobs that could have been booked. 8 jobs × a $300 average job value = $2,400 of job value in one week. These numbers are only there to show how the math works. They are not a real result. Put in your own missed calls, your own booking rate, and your own average job value, and the answer is yours." },
+      { type: "p", text: "Run the same math for a month and the number gets serious. That is the real cost of missed calls: not the phone bill, but the jobs you never got the chance to win." },
+      { type: "h2", text: "Missed Calls Cost More Than the Job Itself" },
+      { type: "p", text: "A missed call is not just one lost job. It can cost you more than that." },
+      { type: "ul", items: [
+        "The customer books with a competitor — and may stay with them for the next repair, the next tune-up, and the next new system.",
+        "Your ads keep running, but the leads they bring never reach you. You pay for the click and lose the call.",
+        "Your team hears nothing about the customer, so there is no follow-up, no estimate, and no second chance.",
+        "Emergency callers remember who answered. In HVAC, the company that picks up the phone at 9pm is the company that gets the job.",
+      ] },
+      { type: "h2", text: "What to Do About Missed Calls" },
+      { type: "p", text: "You do not need a bigger office team to fix this. You need a system that answers every time." },
+      { type: "ol", items: [
+        "Count your missed calls for one week. You cannot fix what you do not measure.",
+        "Add a fast missed-call text-back. When a call is missed, the caller gets a message with a booking link within minutes.",
+        "Cover after-hours calls. Evenings and weekends are when emergency calls come in.",
+        "Answer in your business name, take the details, and book the job. That is the whole job of answering the phone — and it can happen even while your techs are on another job.",
+        "Log every call in your CRM, so missed calls turn into follow-up, not into silence.",
+      ] },
+      { type: "p", text: "A Calling AI Agent — your AI Receptionist — does exactly this: it answers every call in your business name, day or night, takes the caller's details, checks if it is urgent, and books the appointment. Your team keeps doing the work. The phone stops being the leak." },
+      { type: "h2", text: "Start With Your Own Numbers" },
+      { type: "p", text: "Do not guess what missed calls cost you. Count them for one week, run the math above, and you will know. Then fix the answering first — before you spend more on ads, because ads only help if someone picks up the phone." },
+    ],
+  },
+];
+
+BLOG_POSTS.push(
+  {
+    slug: "ai-receptionist-for-hvac",
+    title: "AI Receptionist for HVAC: How It Books Appointments While You Are on a Job",
+    keyword: "AI receptionist for HVAC",
+    description: "An AI receptionist for HVAC answers every call in your business name, qualifies the caller, and books the appointment — while your techs are on a job. Here is how it works.",
+    date: "2026-11-27",
+    dateLabel: "November 27, 2026",
+    readTime: "6 min read",
+    tag: "HVAC",
+    summary: "Your techs are on a job. The phone rings. An AI receptionist answers in your business name, takes the details, and books the visit — so the call becomes a job, not a missed call.",
+    answer: "An AI receptionist for HVAC is a Calling AI Agent that answers your business phone in your business name, day or night. It takes the caller's details, asks what they need, checks if it is urgent, and books the appointment — while your techs are out on a job and nobody is near the phone.",
+    ctaPrimary: { label: "See the Calling AI Agent", href: "/solutions/calling-ai-agent" },
+    ctaSecondary: { label: "See the Conversation AI Agent", href: "/solutions/conversation-ai-agent" },
+    faqs: [
+      { q: "What is an AI receptionist for HVAC?", a: "It is a Calling AI Agent — your AI Receptionist — on your business phone line. It answers calls in your business name, talks to the caller, takes their details, qualifies the job, and books the appointment." },
+      { q: "Will callers know it is AI?", a: "Yes. It introduces itself as your business's Calling AI Agent. It never pretends to be a person." },
+      { q: "Can it handle emergency HVAC calls?", a: "Yes. It asks if the call is urgent and follows the rules you set — including handing over or routing urgent calls to your team." },
+      { q: "What happens if the caller wants a human?", a: "It hands the call over to your team, with the details it has already taken — so the caller does not have to start again." },
+    ],
+    sections: [
+      { type: "p", text: "It is 2pm. Your best tech is under a house fixing a furnace. Your office person is on the other line. The phone rings a third time — a homeowner whose AC just stopped in a heatwave. Nobody answers. By the time someone calls back, the homeowner has already booked with the next company on Google." },
+      { type: "p", text: "This is the normal day for an HVAC business. The work happens away from the phone, but the phone is where the next job comes from. An AI receptionist closes that gap." },
+      { type: "h2", text: "What Is an AI Receptionist for HVAC?" },
+      { type: "p", text: "An AI receptionist for HVAC is a Calling AI Agent — your AI Receptionist — on your business phone line. It answers calls the way a good receptionist would: in your business name, politely, with the right questions. The difference is that it is always there — at lunch, after hours, on weekends, and in the middle of a heatwave when every phone line is busy." },
+      { type: "p", text: "It does not replace your team. It answers the calls your team cannot reach, takes the details, and books the job — then hands everything to your team with a full log." },
+      { type: "h2", text: "What Happens When a Customer Calls" },
+      { type: "p", text: "Every call follows the same steps, so no caller is missed and no detail is lost." },
+      { type: "ol", items: [
+        "It answers in your business name. The caller hears your business, not a voicemail greeting.",
+        "It takes the caller's name, number, and what they need — repair, new system, tune-up, or estimate.",
+        "It asks if it is urgent. A home with no heat in winter or no AC in a heatwave is treated as urgent.",
+        "It qualifies the caller. It asks the questions you would ask: what system, what is wrong, where is the home, when are they free.",
+        "It books the appointment straight into your calendar, and sends a confirmation.",
+        "It logs the call in your CRM, with the details attached, so your team sees it before they call back.",
+      ] },
+      { type: "h2", text: "How It Qualifies the Caller" },
+      { type: "p", text: "Not every call is a job. Some callers are shopping for a price, some are outside your area, and some need a service you do not offer. An AI receptionist asks your questions first, so your team spends its time on real jobs." },
+      { type: "ul", items: [
+        "What is wrong with the system, and when did it start?",
+        "What kind of system is it — AC, furnace, heat pump?",
+        "Where is the home, and is it inside your service area?",
+        "When can someone be home for the visit?",
+        "Is this an emergency, or can it wait for a normal slot?",
+      ] },
+      { type: "p", text: "The answers go into your CRM with the call. When your dispatcher looks at the booking, they already know what the job is." },
+      { type: "h2", text: "Booking Appointments While You Are on a Job" },
+      { type: "p", text: "This is the part that matters most. HVAC techs earn money on the job, not by the phone. Every minute a tech spends answering calls is a minute away from the repair in front of them." },
+      { type: "p", text: "With an AI receptionist, the tech keeps working. The call is answered, the visit is booked, and the details land in the diary. Nobody has to stop a job to take a booking, and nobody has to call back at the end of a long day to chase a caller who has already moved on." },
+      { type: "h2", text: "After-Hours and Emergency Calls" },
+      { type: "p", text: "HVAC emergencies do not keep office hours. AC systems fail at 9pm. Furnaces fail on a cold Sunday morning. These are the calls that turn into the best jobs — and the calls most likely to be missed." },
+      { type: "p", text: "An AI receptionist answers after hours in your business name. It takes the details, checks if it is urgent, and follows the rules you set: book the first slot in the morning, or route the urgent call to the on-call tech. Either way, the caller gets an answer, not a voicemail." },
+      { type: "h2", text: "What It Cannot Do — and When a Human Takes Over" },
+      { type: "p", text: "An AI receptionist is not a technician and not a person. It cannot diagnose a system over the phone, and it should not try. When a caller asks something it cannot answer, or when the caller asks for a human, it hands over to your team — with the full details it has already taken, so the caller does not have to repeat themselves." },
+      { type: "p", text: "That handover is the point. The AI handles the answering, the questions, and the booking. Your team handles the judgment, the tricky calls, and the work itself." },
+      { type: "h2", text: "How to Set One Up" },
+      { type: "ol", items: [
+        "List the questions you ask on every call — the ones that tell you if it is a real job.",
+        "Set your rules: what counts as urgent, when to hand over, and which slots to book.",
+        "Connect it to your calendar and your CRM, so bookings and call logs land in one place.",
+        "Test it with real calls before it goes live, and listen to how it sounds in your business name.",
+        "Check the call logs each week. The logs show what callers ask for, and where the booking flow can improve.",
+      ] },
+      { type: "h2", text: "The Phone Stops Being the Leak" },
+      { type: "p", text: "Most HVAC businesses do not have a lead problem. They have an answering problem. The calls come in — while the team is on a job, after hours, or in peak season — and nobody picks up. An AI receptionist answers every one of them, books the visit, and lets your techs keep working. That is the whole job: every call answered, every job booked, no missed opportunity." },
+    ],
+  },
+);
+
+BLOG_POSTS.push(
+  {
+    slug: "why-salons-lose-clients-follow-up",
+    title: "Why Salons Lose Clients — and How Follow-Up Brings Them Back",
+    keyword: "why salons lose clients",
+    description: "Salons lose clients in the gap between visits — no reminder, no rebook prompt, no no-show follow-up. A simple follow-up system brings them back. Here is how it works.",
+    date: "2026-11-27",
+    dateLabel: "November 27, 2026",
+    readTime: "6 min read",
+    tag: "Salon",
+    summary: "Most salon clients do not leave because they are unhappy. They leave because nobody followed up. A reminder, a rebook prompt, and a message to quiet clients bring them back.",
+    answer: "Salons lose clients in the gap between visits. A client leaves happy, nobody reminds her to rebook, nobody follows up when she misses an appointment, and months pass. A simple follow-up system — a reminder, a rebook prompt at the right time, a no-show message, and a note to quiet clients — brings those clients back.",
+    ctaPrimary: { label: "See CRM & Sales Automation", href: "/solutions/crm-sales-automation" },
+    ctaSecondary: { label: "See the Conversation AI Agent", href: "/solutions/conversation-ai-agent" },
+    faqs: [
+      { q: "Why do salons lose clients?", a: "Most often, it is not unhappiness — it is silence. Nobody reminds the client to rebook, nobody follows up after a missed appointment, and the client drifts to another salon without ever complaining." },
+      { q: "When should a salon ask a client to rebook?", a: "At the right interval for the service — when the colour, cut, or treatment is due again. A prompt at that moment is helpful, not pushy." },
+      { q: "What should a salon do after a no-show?", a: "Send a short, kind message the same day, offer to rebook, and make it easy with a booking link. No guilt, no lecture — just an open door." },
+      { q: "How do you win back a client who has gone quiet?", a: "Send one friendly message after a few months away, with a reason to return — a slot that fits, a service they loved, or a simple check-in. One message is enough to start." },
+    ],
+    sections: [
+      { type: "p", text: "A new client comes in for a cut and colour. She loves it. She pays, she smiles, she says she will be back. Then nothing happens. Nobody reminds her. Nobody asks her to rebook. Three months pass. She books somewhere else — not because she was unhappy, but because the other salon sent her a message at the right time." },
+      { type: "p", text: "This is how most salons lose clients. Not in a dramatic moment. In the silence between visits." },
+      { type: "h2", text: "Why Salons Lose Clients" },
+      { type: "p", text: "A salon's work is personal. Clients trust one stylist, one chair, one routine. When they leave, it is rarely about one bad visit. It is about the gap that opens up after a good one." },
+      { type: "ul", items: [
+        "No reminder to rebook. The client leaves without a next appointment, and life gets in the way.",
+        "No message between visits. Three months is a long time to hear nothing from a business you liked.",
+        "No follow-up after a missed appointment. One no-show becomes a lost client, because nobody reached out.",
+        "No note to quiet clients. The clients who stop coming are the ones who needed one message the most.",
+        "Slow replies in DMs. A client asks for a price or a slot on Instagram, the reply comes the next day, and she has already booked elsewhere.",
+      ] },
+      { type: "h2", text: "The Gap Between Visits Is Where Clients Are Lost" },
+      { type: "p", text: "Think about a client's year. She visits every six to eight weeks. Between visits, she hears nothing from you. That is five or six quiet gaps a year — and in every gap, another salon is running ads, posting on Instagram, and offering her a slot." },
+      { type: "p", text: "You do not need to message her every week. You need to be there at the moments that matter: when her colour is due, when her appointment is coming up, when she missed one, and when she has gone quiet." },
+      { type: "h2", text: "How Follow-Up Brings Clients Back" },
+      { type: "h3", text: "1. A reminder before the appointment" },
+      { type: "p", text: "A short reminder before the visit cuts no-shows and shows the client you are organised. It should include the day, the time, and a way to confirm or reschedule. A client who can reschedule in one tap is a client who stays." },
+      { type: "h3", text: "2. A rebook prompt at the right time" },
+      { type: "p", text: "After a visit, the client should get a prompt to rebook at the right interval for her service — when the roots show, when the nails grow out, when the treatment is due. The best moment is right after the appointment, while she still remembers how good it felt. The second-best moment is a short message when the service is due again." },
+      { type: "h3", text: "3. A no-show message the same day" },
+      { type: "p", text: "When a client does not show up, send a kind message the same day. Ask if everything is all right, offer to rebook, and include a booking link. No guilt and no lecture. A no-show is usually a forgotten appointment, not a lost client — unless nobody follows up." },
+      { type: "h3", text: "4. A message to quiet clients" },
+      { type: "p", text: "Clients who have not visited in a few months get one friendly message. Keep it simple: you noticed they have not been in, you would love to see them, and here is a slot that fits. One message, once, is enough to start the conversation. If they do not reply, leave them alone for a while and try again later." },
+      { type: "h2", text: "A Simple Follow-Up Plan for Your Salon" },
+      { type: "ol", items: [
+        "Keep one record per client in your CRM — visits, services, and the date they are due back.",
+        "Send a reminder before every appointment, with a confirm or reschedule link.",
+        "Ask every client to rebook before they leave the chair, and send a prompt when the service is due again.",
+        "Message every no-show the same day, with a booking link.",
+        "Once a month, message the clients who have gone quiet — one friendly note each.",
+        "After every visit, ask for a review. Happy clients leave reviews, and reviews fill the chairs.",
+      ] },
+      { type: "p", text: "None of this needs a big team. It needs a system that remembers the dates and sends the messages on time, so your stylists can focus on the chair." },
+      { type: "h2", text: "What to Say in a Follow-Up Message" },
+      { type: "p", text: "Keep it short, warm, and useful. Use the client's name, name the service, and give one clear next step — a booking link. Do not write a long message. A client reads a short message; she skips a long one." },
+      { type: "ul", items: [
+        "Reminder: the day, the time, and how to confirm or move the appointment.",
+        "Rebook prompt: the service is due, and a slot is open this week.",
+        "No-show note: hope all is well, here is a link to rebook.",
+        "Quiet-client note: it has been a while, the chair is open, and you would love to see them.",
+      ] },
+      { type: "p", text: "The Conversation AI Agent can handle these messages and the replies — answering questions about services and prices, and booking the appointment — on Instagram, Facebook, WhatsApp, and your website chat. Your team sees every conversation in one place." },
+      { type: "h2", text: "Keeping Clients Costs Less Than Finding New Ones" },
+      { type: "p", text: "Every new client costs you ads, time, and effort. A client who already trusts you costs one message. The salons that stay full are not always the ones with the most ads. They are the ones whose clients hear from them at the right moments — and come back, visit after visit." },
+    ],
+  },
+);
+
+BLOG_POSTS.push(
+  {
+    slug: "crm-follow-up-turn-leads-into-booked-jobs",
+    title: "How CRM Follow-Up Turns More Leads Into Booked Jobs",
+    keyword: "CRM follow-up for service businesses",
+    description: "Leads arrive from ads, calls, forms, and referrals — then go cold because nobody follows up fast. One CRM record per lead, a fast first reply, and a simple follow-up sequence turn more leads into booked jobs.",
+    date: "2026-11-27",
+    dateLabel: "November 27, 2026",
+    readTime: "6 min read",
+    tag: "CRM",
+    summary: "Most leads do not say no. They just go quiet — because nobody replied fast, and nobody followed up. A CRM follow-up system fixes that, one lead at a time.",
+    answer: "CRM follow-up turns more leads into booked jobs by giving every lead one record, one fast first reply, and a simple follow-up sequence that keeps going until the lead books or says no. Most leads go cold because nobody follows up — not because they chose a competitor on purpose.",
+    ctaPrimary: { label: "See CRM & Sales Automation", href: "/solutions/crm-sales-automation" },
+    ctaSecondary: { label: "Get Your Free Audit", href: "/free-audit" },
+    faqs: [
+      { q: "What is CRM follow-up?", a: "It is the system that follows up every lead in your CRM — a fast first reply, then a short sequence of messages until the lead books, replies, or says no. Every step is logged, so nothing is forgotten." },
+      { q: "Why do leads go cold?", a: "Because nobody replies fast, and nobody follows up. A lead who hears nothing in the first day moves on to the next business. A lead who gets one reply and then silence assumes you are not interested." },
+      { q: "How many follow-up messages should I send?", a: "A short sequence is enough — a first reply, then two or three follow-ups over the next week or two, each with a clear next step. Stop the moment a human takes over or the lead says no." },
+      { q: "Should follow-up stop when a human takes over?", a: "Yes. The moment a member of your team is talking to the lead, the automatic messages must stop. The lead should never get an automatic message and a human message at the same time." },
+    ],
+    sections: [
+      { type: "p", text: "A lead clicks your ad and fills in the form. Another calls while your team is on a job. A third sends a message on Instagram at 10pm. A fourth is a referral from a happy customer. Four leads, four places — and by the end of the week, nobody remembers which ones were replied to and which ones were forgotten." },
+      { type: "p", text: "That is the normal state of a busy service business. Leads arrive from everywhere. Follow-up depends on memory. And memory loses." },
+      { type: "h2", text: "Where Leads Come From — and Where They Go Cold" },
+      { type: "p", text: "Leads arrive from ads, calls, website forms, social messages, and referrals. Each channel feels separate, but the lead is the same person, with the same need, at the same moment." },
+      { type: "p", text: "Leads go cold in the gap between arriving and being answered. The gap is usually small — a few hours, a day — but it is enough. The lead asked three businesses the same question. The one that replied first gets the job. The others get silence." },
+      { type: "h2", text: "One Record Per Lead" },
+      { type: "p", text: "The first fix is simple: every lead gets one record in your CRM, no matter where it came from. The form fill, the call, the Instagram message, the referral — all of them land in the same place, with the same details: name, number, what they need, where they came from, and when they arrived." },
+      { type: "p", text: "One record means one truth. Anyone on your team can open it and see the full story: what the lead asked, what was sent, what was said, and what happens next. No more asking around the office. No more leads hiding in someone's phone." },
+      { type: "h2", text: "A Fast First Reply" },
+      { type: "p", text: "The first reply is the most important message you will ever send a lead. It should be fast, it should use the lead's name, and it should give one clear next step — a booking link, a time to call, or one simple question." },
+      { type: "p", text: "A fast first reply does two things. It tells the lead you are paying attention, and it keeps the conversation in your hands instead of the competitor's. The Conversation AI Agent can send that first reply on your website, WhatsApp, SMS, email, Facebook, Instagram, and Threads — day or night — and hand over to your team when the lead is ready to talk." },
+      { type: "h2", text: "A Simple Follow-Up Sequence" },
+      { type: "p", text: "One reply is rarely enough. People are busy. They read a message, mean to answer, and forget. A follow-up sequence is a short series of messages that keeps the conversation alive without being pushy." },
+      { type: "ol", items: [
+        "First reply, fast — within minutes if you can. Answer the question and give one next step.",
+        "First follow-up, the next day — a short check-in. Did they get the message? Is there a time that works?",
+        "Second follow-up, a few days later — something useful. A slot that just opened, an answer to a question they asked, or a reminder of what you offered.",
+        "Last follow-up, a week or so later — a clear, friendly close. Here is the booking link, here is how to reach you, and the door stays open.",
+      ] },
+      { type: "p", text: "Each message should be short, use the lead's name, and offer one clear step. If the lead replies, the sequence stops and a human takes over. If the lead says no, the sequence stops and the record is marked. No lead should ever get a message after they have already answered." },
+      { type: "h2", text: "Stop When a Human Takes Over" },
+      { type: "p", text: "This is the rule that makes follow-up work instead of annoying people. The moment a member of your team is talking to the lead, the automatic messages must stop. The lead should never get an automatic message and a human message at the same time, and should never be asked the same question twice." },
+      { type: "p", text: "A good CRM does this on its own: when the lead's status changes to a live conversation, the sequence ends. Your team sees the full history — every message sent, every reply — so they pick up exactly where the system left off." },
+      { type: "h2", text: "Follow Up on Estimates, Too" },
+      { type: "p", text: "Leads are not the only thing that goes cold. Estimates go cold as well. You send a quote, the customer says they will think about it, and a week passes with no word." },
+      { type: "p", text: "The fix is the same: the estimate gets a follow-up sequence of its own. A short message the next day, another a few days later, each one helpful and each one with a clear next step — approve the estimate, ask a question, or pick a date. Many estimates are not lost to price. They are lost to silence." },
+      { type: "h2", text: "What Good Follow-Up Looks Like" },
+      { type: "ul", items: [
+        "Every lead in one CRM, with one record and a full history.",
+        "A fast first reply, on the channel the lead used.",
+        "A short sequence — three or four messages, not ten.",
+        "Every message short, personal, and with one clear next step.",
+        "Automatic messages stop the moment a human takes over.",
+        "Estimates get follow-up, not just new leads.",
+        "Your team can see, at a glance, what is booked, what is waiting, and what was lost — and why.",
+      ] },
+      { type: "h2", text: "More Booked Jobs, Without More Ads" },
+      { type: "p", text: "Most service businesses do not need more leads. They need to follow up the leads they already have. The ads are working. The calls are coming in. The forms are being filled. What is missing is the system between the lead arriving and the job being booked — one record, one fast reply, and a short sequence that does not give up after one message." },
+      { type: "p", text: "Build that, and the leads you already pay for start turning into booked jobs." },
+    ],
+  },
+);
