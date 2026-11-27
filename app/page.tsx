@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, PhoneMissed, Clock, Filter, MailWarning, ClipboardList, Users, Check, X, Minus } from "lucide-react";
+import { ArrowRight, PhoneMissed, Clock, Filter, MailWarning, ClipboardList, Users, Check, X, Minus, PhoneCall, CalendarCheck, Mail, Star } from "lucide-react";
 import { INDUSTRIES, SOLUTIONS, JOURNEY, GROUP_ACCENT, AI_CHANNELS } from "@/lib/data";
 import { SectionHead, CtaBanner } from "@/components/Shared";
 import DashboardPanel from "@/components/DashboardPanel";
@@ -52,6 +52,32 @@ export default function Home() {
               <Link href="/how-it-works" className="rounded-btn border border-lineDark px-6 py-3.5 font-bold text-white hover:border-lime">See How It Works</Link>
             </div>
             <p className="mt-4 text-sm text-mutedDark">Customized solutions. No obligation. Built around your business.</p>
+            {/* What the system does — fills the left column so it balances
+                with the tall dashboard panel on the right. Static content
+                only: no animation, no movement, hero stays still. */}
+            <div className="mt-8 border-t border-lineDark pt-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">What the system does for you</p>
+              <ul className="mt-4 space-y-3">
+                {[
+                  { icon: PhoneCall, text: "Answers every call and message — Conversation AI Agent and Calling AI Agent, 24/7." },
+                  { icon: CalendarCheck, text: "Books appointments straight into your calendar." },
+                  { icon: Mail, text: "Follows up automatically — estimates, reminders and rebooking." },
+                  { icon: Star, text: "Asks for reviews after every completed job and brings customers back." },
+                ].map((item) => (
+                  <li key={item.text} className="flex items-start gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lime/15 text-lime"><item.icon size={16} /></span>
+                    <span className="pt-1 text-sm leading-relaxed text-white">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-mutedDark">Answered on every channel</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {AI_CHANNELS.map((c) => (
+                  <span key={c.name} className="flex items-center gap-1.5 rounded-full border border-lineDark bg-deep px-3 py-1.5 text-xs font-semibold text-white"><c.icon size={13} className="text-lime" />{c.name}</span>
+                ))}
+              </div>
+              <Link href="/free-audit" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-lime hover:underline">Get Your Free Audit <ArrowRight size={15} /></Link>
+            </div>
           </div>
           <DashboardPanel />
         </div>
