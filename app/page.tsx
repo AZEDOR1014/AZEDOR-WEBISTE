@@ -45,7 +45,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-shell items-start gap-12 px-4 sm:px-6 lg:grid-cols-2">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">AI Marketing &amp; Business Automation</p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-6xl lg:text-[72px]">More Leads. More Customers. <span className="text-lime">Less Manual Work.</span></h1>
+            <h1 className="mt-4 text-4xl font-extrabold leading-[1.12] sm:text-6xl lg:text-[72px]">More Leads. More Customers. <span className="text-lime">Less Manual Work.</span></h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-mutedDark">Custom marketing, CRM and AI automation for service businesses. More customers. Less manual work.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/free-audit" className="rounded-btn bg-lime px-6 py-3.5 font-bold text-ink hover:bg-limeDark">Get Your Free Audit</Link>
@@ -271,7 +271,7 @@ export default function Home() {
       <section className="bg-ink py-20 text-white">
         <div className="mx-auto grid max-w-shell items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">Find Out Where Your Business Is Losing Opportunities.</h2>
+            <h2 className="text-3xl font-extrabold leading-snug sm:text-4xl">Find Out Where Your Business Is Losing Opportunities.</h2>
             <div className="mt-5 flex flex-wrap gap-2">
               {["Website & funnel", "Lead handling", "Follow-up", "CRM", "Automation", "Recommendations"].map((c) => (
                 <span key={c} className="rounded-full border border-lineDark bg-deep px-4 py-2 text-sm font-semibold text-white">{c}</span>
