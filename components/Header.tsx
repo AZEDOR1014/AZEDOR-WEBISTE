@@ -12,7 +12,7 @@ export default function Header() {
     <>
     <header className="sticky top-0 z-50 border-b border-lineDark bg-ink/95 text-white backdrop-blur">
       <div className="mx-auto flex h-16 max-w-shell items-center justify-between px-4 sm:px-6">
-        <Link href="/" aria-label="AZEDOR — home"><Image src="/images/azedor-logo-wide.png" alt="AZEDOR" width={1672} height={941} priority className="h-10 w-auto sm:h-12" /></Link>
+        <Link href="/" aria-label="AZEDOR — home"><Image src="/images/logo-azedor-transparent.png" alt="AZEDOR" width={1489} height={379} priority className="h-10 w-auto sm:h-12" /></Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold lg:flex" aria-label="Main">
           <div className="relative" onMouseEnter={() => setMenu("solutions")} onMouseLeave={() => setMenu(null)}>
             <button className="flex items-center gap-1 py-2 hover:text-lime" aria-expanded={menu === "solutions"}>Solutions <ChevronDown size={14} /></button>

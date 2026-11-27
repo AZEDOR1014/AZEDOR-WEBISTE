@@ -107,8 +107,11 @@ export default function Home() {
                   <Image src={ind.image} alt={`${ind.name} business`} fill className="object-cover transition-transform group-hover:scale-105" loading="lazy" />
                 </div>
                 <div className="p-5">
-                  <p className="text-xs font-bold uppercase tracking-wider" style={{ color: GROUP_ACCENT[ind.group].dark }}>{ind.group}</p>
-                  <h3 className="mt-1 text-xl font-bold">{ind.name}</h3>
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: GROUP_ACCENT[ind.group].soft, color: GROUP_ACCENT[ind.group].dark }}><ind.icon size={18} /></span>
+                    <p className="text-xs font-bold uppercase tracking-wider" style={{ color: GROUP_ACCENT[ind.group].dark }}>{ind.group}</p>
+                  </div>
+                  <h3 className="mt-2 text-xl font-bold">{ind.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted"><strong className="text-ink">Challenge:</strong> {ind.problems[0].title} — {ind.problems[0].example}</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted"><strong className="text-ink">Solution:</strong> {ind.solutions[0]}.</p>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-ink">Discover your industry solution <ArrowRight size={15} /></span>
@@ -136,7 +139,10 @@ export default function Home() {
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SOLUTIONS.map((s, i) => (
               <Link key={s.slug} href={`/solutions/${s.slug}`} className={`group rounded-card border border-line p-6 shadow-sm transition-transform hover:-translate-y-1 hover:border-ink hover:shadow-lg ${i === 0 ? "bg-ink text-white" : "bg-white"} ${i === 3 ? "lg:col-span-2" : ""}`}>
-                <p className={`text-xs font-bold uppercase tracking-wider ${i === 0 ? "text-lime" : "text-muted"}`}>0{i + 1}</p>
+                <div className="flex items-center justify-between">
+                  <span className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${i === 0 ? "bg-white/10 text-lime" : "bg-tintLime text-ink"}`}><s.icon size={22} /></span>
+                  <p className={`text-xs font-bold uppercase tracking-wider ${i === 0 ? "text-lime" : "text-muted"}`}>0{i + 1}</p>
+                </div>
                 <h3 className="mt-3 text-2xl font-bold">{s.name}</h3>
                 <p className={`mt-2 leading-relaxed ${i === 0 ? "text-mutedDark" : "text-muted"}`}>{s.sub}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold">Learn more <ArrowRight size={15} /></span>

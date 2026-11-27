@@ -19,7 +19,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
   return (<>
     <section className="bg-ink bg-grid-dark py-16 text-white lg:py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">Solution · AZEDOR Growth System</p>
+        <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-lime"><span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10"><s.icon size={18} /></span>Solution · AZEDOR Growth System</p>
         <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">{s.headline}</h1>
         <p className="mt-4 text-lg text-mutedDark">{s.sub}</p>
         <Link href="/free-audit" className="mt-7 inline-block rounded-btn bg-lime px-6 py-3.5 font-bold text-ink hover:bg-limeDark">Get Your Free Audit</Link>

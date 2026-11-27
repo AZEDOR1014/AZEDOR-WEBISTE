@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Check, X } from "lucide-react";
+import { ArrowRight, Check, X, Magnet, MousePointerClick, PhoneCall, ClipboardCheck, Workflow, HeartHandshake, type LucideIcon } from "lucide-react";
 
 /** Fade + slide in on scroll. Respects prefers-reduced-motion. */
 export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
@@ -51,7 +51,10 @@ export function Tilt({ children, className }: { children: ReactNode; className?:
   );
 }
 
-export type FunnelStep = { stage: string; purpose: string; solution: string; detail: string; color: string; text: string; leak: string };
+export type FunnelStep = { stage: string; purpose: string; solution: string; detail: string; color: string; text: string; leak: string; icon?: string | LucideIcon };
+
+/** String icon keys (from server components) map to components here, inside the client component — component functions cannot cross the server/client boundary as props. */
+const FUNNEL_ICONS: Record<string, LucideIcon> = { Magnet, MousePointerClick, PhoneCall, ClipboardCheck, Workflow, HeartHandshake };
 
 const FUNNEL_WIDTHS = [100, 88, 76, 64, 52, 40];
 
@@ -72,6 +75,7 @@ export function FunnelDiagram({ steps, dark = true }: { steps: FunnelStep[]; dar
           style={{ width: `${FUNNEL_WIDTHS[Math.min(i, FUNNEL_WIDTHS.length - 1)]}%`, backgroundColor: st.color, color: st.text }}
         >
           <p className="flex flex-wrap items-center justify-center gap-x-2 text-center text-sm font-extrabold sm:text-base">
+            {(() => { const I = typeof st.icon === "string" ? FUNNEL_ICONS[st.icon] : st.icon; return I ? <I size={18} strokeWidth={2.5} /> : null; })()}
             <span>{i + 1}. {st.stage}</span>
             <span className="font-semibold opacity-80">· {st.solution}</span>
           </p>

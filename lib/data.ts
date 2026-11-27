@@ -1,6 +1,8 @@
+import { Thermometer, Scissors, Sparkles, Stethoscope, House, Wrench, Car, Dumbbell, Compass, GraduationCap, SprayCan, Scale, Calculator, Briefcase, Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Magnet, MousePointerClick, ClipboardCheck, HeartHandshake, type LucideIcon } from "lucide-react";
+
 export type Industry = {
   slug: string; name: string; group: string; headline: string; sub: string;
-  image: string; keyword: string;
+  image: string; keyword: string; icon: LucideIcon;
   problems: { title: string; example: string; consequence: string }[];
   solutions: string[];
   pipeline: string[];
@@ -10,7 +12,7 @@ export type Industry = {
 
 export const INDUSTRIES: Industry[] = [
   {
-    slug: "hvac", name: "HVAC", group: "Home & Trades", headline: "Turn More Emergency Calls Into Booked HVAC Jobs.", sub: "For heating, cooling, AC repair, furnace and heat pump businesses in the USA. Every call answered, every estimate followed up, every maintenance customer remembered.",
+    slug: "hvac", icon: Thermometer, name: "HVAC", group: "Home & Trades", headline: "Turn More Emergency Calls Into Booked HVAC Jobs.", sub: "For heating, cooling, AC repair, furnace and heat pump businesses in the USA. Every call answered, every estimate followed up, every maintenance customer remembered.",
     image: "/images/industries/hvac.jpg", keyword: "HVAC marketing agency USA",
     problems: [
       { title: "Missed emergency calls", example: "A homeowner's AC fails at 9pm. Your phone rings, no one answers.", consequence: "They call the next company on Google. That job is gone." },
@@ -28,7 +30,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "salons-spas", name: "Salons & Spas", group: "Beauty & Wellness", headline: "Fill Empty Appointment Slots and Bring More Clients Back.", sub: "For hair, nail, lash, brow, med spa, day spa and massage businesses. Bookings that fill themselves, reminders that cut no-shows, and clients who come back.",
+    slug: "salons-spas", icon: Scissors, name: "Salons & Spas", group: "Beauty & Wellness", headline: "Fill Empty Appointment Slots and Bring More Clients Back.", sub: "For hair, nail, lash, brow, med spa, day spa and massage businesses. Bookings that fill themselves, reminders that cut no-shows, and clients who come back.",
     image: "/images/industries/salons-spas.jpg", keyword: "salon marketing agency",
     problems: [
       { title: "Appointment gaps", example: "Tuesday afternoon is empty, but your Instagram is full of likes.", consequence: "Likes do not pay rent. Empty chairs cost you every hour." },
@@ -46,7 +48,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "beauty-aesthetics", name: "Beauty & Aesthetics", group: "Beauty & Wellness", headline: "Fill Your Clinic's Calendar with High-Paying Clients.", sub: "For medical aesthetics, laser, skin, hair and scalp clinics. Premium clients, booked consultations, and follow-up that respects the decision they are making.",
+    slug: "beauty-aesthetics", icon: Sparkles, name: "Beauty & Aesthetics", group: "Beauty & Wellness", headline: "Fill Your Clinic's Calendar with High-Paying Clients.", sub: "For medical aesthetics, laser, skin, hair and scalp clinics. Premium clients, booked consultations, and follow-up that respects the decision they are making.",
     image: "/images/industries/beauty-aesthetics.jpg", keyword: "beauty clinic marketing agency",
     problems: [
       { title: "Consultation inquiries go cold", example: "Someone asks about a treatment. The reply comes two days later.", consequence: "They book a consultation with a clinic that answered first." },
@@ -64,7 +66,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "dental-healthcare", name: "Dental & Healthcare", group: "Health", headline: "Connect Patient Inquiries With Better Appointment Management.", sub: "For private dentists, orthodontists, physiotherapists and private clinics. Fewer missed calls, fewer no-shows, and less admin work for your front desk.",
+    slug: "dental-healthcare", icon: Stethoscope, name: "Dental & Healthcare", group: "Health", headline: "Connect Patient Inquiries With Better Appointment Management.", sub: "For private dentists, orthodontists, physiotherapists and private clinics. Fewer missed calls, fewer no-shows, and less admin work for your front desk.",
     image: "/images/industries/dental-healthcare.jpg", keyword: "dental marketing agency",
     problems: [
       { title: "Missed patient calls", example: "The front desk is with a patient. The phone rings and rings.", consequence: "A new patient books with the practice down the road." },
@@ -82,7 +84,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "real-estate", name: "Real Estate", group: "Property", headline: "Convert More Property Inquiries Into Qualified Opportunities.", sub: "For estate agents, lettings agencies and mortgage brokers. Qualified buyers and sellers, viewings booked, and follow-up that never lets a lead go cold.",
+    slug: "real-estate", icon: House, name: "Real Estate", group: "Property", headline: "Convert More Property Inquiries Into Qualified Opportunities.", sub: "For estate agents, lettings agencies and mortgage brokers. Qualified buyers and sellers, viewings booked, and follow-up that never lets a lead go cold.",
     image: "/images/industries/real-estate.jpg", keyword: "real estate marketing agency",
     problems: [
       { title: "Unqualified leads", example: "Fifty inquiries arrive. Forty were never buyers.", consequence: "Agents waste their week on people who cannot buy." },
@@ -100,7 +102,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "home-services", name: "Home Services & Contractors", group: "Home & Trades", headline: "Stop Chasing Leads. Start Closing Jobs.", sub: "For plumbing, heating, electrical, roofing, landscaping and building businesses. Estimates followed up, jobs scheduled, and repeat work that comes back to you.",
+    slug: "home-services", icon: Wrench, name: "Home Services & Contractors", group: "Home & Trades", headline: "Stop Chasing Leads. Start Closing Jobs.", sub: "For plumbing, heating, electrical, roofing, landscaping and building businesses. Estimates followed up, jobs scheduled, and repeat work that comes back to you.",
     image: "/images/industries/home-services.jpg", keyword: "home services marketing agency",
     problems: [
       { title: "Missed inquiries", example: "You are on a job. The phone rings. No one answers.", consequence: "The homeowner calls the next contractor." },
@@ -118,7 +120,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "automotive", name: "Automotive Services", group: "Vehicles", headline: "Keep Your Service Bays Fully Booked.", sub: "For independent garages, MOT centres, specialist repairers and detailers. Service bookings, maintenance reminders and customers who come back on time.",
+    slug: "automotive", icon: Car, name: "Automotive Services", group: "Vehicles", headline: "Keep Your Service Bays Fully Booked.", sub: "For independent garages, MOT centres, specialist repairers and detailers. Service bookings, maintenance reminders and customers who come back on time.",
     image: "/images/industries/automotive.jpg", keyword: "automotive marketing agency",
     problems: [
       { title: "Empty service bays", example: "Mid-week is quiet, but no one is chasing bookings.", consequence: "Technicians stand idle while the phone stays quiet." },
@@ -136,7 +138,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "gyms-fitness", name: "Gyms & Fitness", group: "Health & Fitness", headline: "Pack Your Classes. Automate Your Growth.", sub: "For independent gyms, boutique studios, CrossFit boxes and personal trainers. Trial bookings, member follow-up and reactivations that run on their own.",
+    slug: "gyms-fitness", icon: Dumbbell, name: "Gyms & Fitness", group: "Health & Fitness", headline: "Pack Your Classes. Automate Your Growth.", sub: "For independent gyms, boutique studios, CrossFit boxes and personal trainers. Trial bookings, member follow-up and reactivations that run on their own.",
     image: "/images/industries/gyms-fitness.jpg", keyword: "gym marketing agency",
     problems: [
       { title: "Unconverted trial inquiries", example: "Someone asks about a trial. No one follows up.", consequence: "They join the gym that answered first." },
@@ -154,7 +156,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "coaches-consultants", name: "Coaches & Consultants", group: "Professional", headline: "Fill Your Calendar with Qualified Prospects.", sub: "For business, life and executive coaches and financial advisors. Qualified discovery calls, fewer no-shows, and onboarding that happens on its own.",
+    slug: "coaches-consultants", icon: Compass, name: "Coaches & Consultants", group: "Professional", headline: "Fill Your Calendar with Qualified Prospects.", sub: "For business, life and executive coaches and financial advisors. Qualified discovery calls, fewer no-shows, and onboarding that happens on its own.",
     image: "/images/industries/coaches-consultants.jpg", keyword: "coach marketing agency",
     problems: [
       { title: "Unqualified discovery calls", example: "Your diary is full of calls with people who cannot afford you.", consequence: "Hours spent selling to the wrong people." },
@@ -172,7 +174,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "education-training", name: "Education & Training", group: "Learning", headline: "Fill Your Courses. Automate Enrolment.", sub: "For vocational training, e-learning, certification courses and masterclasses. Enrolment funnels, student follow-up and admin that does not eat your week.",
+    slug: "education-training", icon: GraduationCap, name: "Education & Training", group: "Learning", headline: "Fill Your Courses. Automate Enrolment.", sub: "For vocational training, e-learning, certification courses and masterclasses. Enrolment funnels, student follow-up and admin that does not eat your week.",
     image: "/images/industries/education-training.jpg", keyword: "education marketing agency",
     problems: [
       { title: "Low course enrolment", example: "People visit the course page and leave without enrolling.", consequence: "Seats stay empty while ad spend keeps running." },
@@ -190,7 +192,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "cleaning", name: "Cleaning Businesses", group: "Home & Trades", headline: "Book More Cleans. Keep More Clients.", sub: "For residential and commercial cleaning businesses. Quotes answered fast, recurring cleans booked, and clients who stay.",
+    slug: "cleaning", icon: SprayCan, name: "Cleaning Businesses", group: "Home & Trades", headline: "Book More Cleans. Keep More Clients.", sub: "For residential and commercial cleaning businesses. Quotes answered fast, recurring cleans booked, and clients who stay.",
     image: "/images/industries/cleaning.jpg", keyword: "cleaning business marketing agency",
     problems: [
       { title: "Slow quote replies", example: "A homeowner asks for a quote. You reply tomorrow.", consequence: "They booked the cleaner who replied in minutes." },
@@ -208,7 +210,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "legal", name: "Legal & Professional Services", group: "Professional", headline: "Turn Inquiries Into Consultations — Without the Admin.", sub: "For law firms and professional service firms. Qualified consultations, careful follow-up, and admin that respects confidentiality.",
+    slug: "legal", icon: Scale, name: "Legal & Professional Services", group: "Professional", headline: "Turn Inquiries Into Consultations — Without the Admin.", sub: "For law firms and professional service firms. Qualified consultations, careful follow-up, and admin that respects confidentiality.",
     image: "/images/industries/legal.jpg", keyword: "law firm marketing agency",
     problems: [
       { title: "Unqualified inquiries", example: "Your team fields calls that were never your area of law.", consequence: "Hours lost on the wrong matters." },
@@ -226,7 +228,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "accounting", name: "Accounting & Professional Services", group: "Professional", headline: "Win Better Clients. Automate the Follow-Up.", sub: "For accountants, bookkeepers and professional service firms. Qualified inquiries, onboarding that runs itself, and clients who stay year after year.",
+    slug: "accounting", icon: Calculator, name: "Accounting & Professional Services", group: "Professional", headline: "Win Better Clients. Automate the Follow-Up.", sub: "For accountants, bookkeepers and professional service firms. Qualified inquiries, onboarding that runs itself, and clients who stay year after year.",
     image: "/images/industries/accounting.jpg", keyword: "accounting firm marketing agency",
     problems: [
       { title: "Seasonal rush, quiet months", example: "Tax season is chaos. Summer is quiet.", consequence: "Revenue swings because no system keeps the pipeline warm." },
@@ -244,7 +246,7 @@ export const INDUSTRIES: Industry[] = [
     ],
   },
   {
-    slug: "other", name: "Other Service Businesses", group: "All Services", headline: "If You Serve Customers, This System Fits Your Business.", sub: "For any appointment-based or service business not listed above. The system is built around how your business actually works — not a generic template.",
+    slug: "other", icon: Briefcase, name: "Other Service Businesses", group: "All Services", headline: "If You Serve Customers, This System Fits Your Business.", sub: "For any appointment-based or service business not listed above. The system is built around how your business actually works — not a generic template.",
     image: "/images/industries/other.jpg", keyword: "service business marketing agency",
     problems: [
       { title: "Leads arrive, then disappear", example: "Inquiries come from ads, social and referrals — and land in different places.", consequence: "No one knows who was replied to and who was forgotten." },
@@ -264,7 +266,7 @@ export const INDUSTRIES: Industry[] = [
 ];
 
 export type Solution = {
-  slug: string; name: string; headline: string; sub: string;
+  slug: string; name: string; headline: string; sub: string; icon: LucideIcon;
   problem: string; what: string; how: string[];
   industries: string[]; uses: string[]; integrations: string[];
   faqs: { q: string; a: string }[];
@@ -272,7 +274,7 @@ export type Solution = {
 
 export const SOLUTIONS: Solution[] = [
   {
-    slug: "paid-advertising", name: "Paid Advertising", headline: "Ads That Bring Enquiries, Not Just Clicks.", sub: "Meta Ads and Google Ads, aimed at people in your city who need you now — connected to a landing page and follow-up, so the click becomes a customer.",
+    slug: "paid-advertising", icon: Megaphone, name: "Paid Advertising", headline: "Ads That Bring Enquiries, Not Just Clicks.", sub: "Meta Ads and Google Ads, aimed at people in your city who need you now — connected to a landing page and follow-up, so the click becomes a customer.",
     problem: "You pay for clicks. No one replies fast. The lead goes to the next business.",
     what: "Service-specific campaigns on Meta and Google, with local targeting, a dedicated landing page, and lead tracking from click to booking.",
     how: ["We find the audience that needs your service now", "We build the campaign and the landing page together", "Every lead lands in your CRM with its source tagged", "Follow-up starts in minutes, not days"],
@@ -286,7 +288,7 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "websites-funnels", name: "Websites & Sales Funnels", headline: "A Fast Website That Turns Clicks into Bookings.", sub: "Business websites, landing pages and lead capture funnels — mobile-first, fast, and built to book, not just to look good.",
+    slug: "websites-funnels", icon: Globe, name: "Websites & Sales Funnels", headline: "A Fast Website That Turns Clicks into Bookings.", sub: "Business websites, landing pages and lead capture funnels — mobile-first, fast, and built to book, not just to look good.",
     problem: "Slow website, no clear booking button, visitor leaves in seconds.",
     what: "A fast website with a clear headline, one booking form, and pages built for Google and for people who are ready to book.",
     how: ["We map the journey from ad click to booking", "We build the pages around that journey", "Forms connect to your CRM automatically", "We test on mobile first, then desktop"],
@@ -300,7 +302,7 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "ai-receptionists-agents", name: "AI Receptionists & Agents", headline: "An AI Agent That Answers in Under 2 Minutes. 24/7.", sub: "An AI voice receptionist and chat agent that answers FAQs, qualifies leads and books appointments — and hands over to your team whenever it should.",
+    slug: "ai-receptionists-agents", icon: PhoneCall, name: "AI Receptionists & Agents", headline: "An AI Agent That Answers in Under 2 Minutes. 24/7.", sub: "An AI voice receptionist and chat agent that answers FAQs, qualifies leads and books appointments — and hands over to your team whenever it should.",
     problem: "A lead messages at 9pm. No one is there. The lead books with someone else.",
     what: "An AI agent on your website, WhatsApp and Facebook that answers, qualifies and books — in your business name, with a full log of every conversation.",
     how: ["We train it on your services, prices and FAQs", "It answers, qualifies and books the appointment", "It hands over to a human when the question needs one", "Every chat and call is logged in your CRM"],
@@ -314,7 +316,7 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "crm-sales-automation", name: "CRM & Sales Automation", headline: "Every Lead in One Place. Nothing Lost.", sub: "A CRM built around how your business actually sells — pipelines, contact records, assignment, tasks and reporting, without manual entry.",
+    slug: "crm-sales-automation", icon: KanbanSquare, name: "CRM & Sales Automation", headline: "Every Lead in One Place. Nothing Lost.", sub: "A CRM built around how your business actually sells — pipelines, contact records, assignment, tasks and reporting, without manual entry.",
     problem: "Leads live in your phone, email, Instagram and paper. No one knows who replied.",
     what: "One pipeline for your whole sales process. Every lead, every reply, every booking — in one place, moving itself.",
     how: ["We map your real sales process", "We build the pipeline around it", "Leads are assigned and followed up automatically", "You see what is booked, what is lost, and why"],
@@ -328,7 +330,7 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "business-process-automation", name: "Business Process Automation", headline: "Follow-Up That Happens on Its Own.", sub: "Automated onboarding, task routing, email and SMS workflows, integrations and data sync — the repetitive admin work, done without a person touching it.",
+    slug: "business-process-automation", icon: Workflow, name: "Business Process Automation", headline: "Follow-Up That Happens on Its Own.", sub: "Automated onboarding, task routing, email and SMS workflows, integrations and data sync — the repetitive admin work, done without a person touching it.",
     problem: "You meant to follow up. The day ran away. The lead went cold.",
     what: "Workflows that move work forward on their own: onboarding, reminders, no-show rescue, rebooking, reactivation and internal task routing.",
     how: ["We find the repetitive tasks in your business", "We automate them one at a time, with human review", "We connect the software you already pay for", "We test with you before anything goes live"],
@@ -342,7 +344,7 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "reputation-management", name: "Reputation Management", headline: "More 5-Star Reviews, Without Chasing Them.", sub: "Genuine review requests at the right moment, review monitoring and response help — never fake reviews, never review gating.",
+    slug: "reputation-management", icon: Star, name: "Reputation Management", headline: "More 5-Star Reviews, Without Chasing Them.", sub: "Genuine review requests at the right moment, review monitoring and response help — never fake reviews, never review gating.",
     problem: "Happy client, no review. A new client checks Google and picks the business with 200 reviews.",
     what: "After the job, we ask for a review at the right time, with one easy link. We monitor reviews and help you respond.",
     how: ["We ask after a completed job, not before", "The request goes to every customer, not only happy ones", "Reviews are monitored in one place", "You get help replying, good or bad"],
@@ -357,16 +359,16 @@ export const SOLUTIONS: Solution[] = [
   },
 ];
 
-export type JourneyStep = { stage: string; purpose: string; solution: string; detail: string; color: string; text: string; leak: string };
+export type JourneyStep = { stage: string; purpose: string; solution: string; detail: string; color: string; text: string; leak: string; icon: string };
 
 /** One colour per stage — the funnel and journey read as a coloured flow. */
 export const JOURNEY: JourneyStep[] = [
-  { stage: "Attract", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service.", color: "#F59E0B", text: "#101211", leak: "Without it: nobody finds you." },
-  { stage: "Capture", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion.", color: "#0EA5E9", text: "#101211", leak: "Without it: the click leaves." },
-  { stage: "Engage", purpose: "Answer fast, qualify, build trust", solution: "AI Receptionists & Agents", detail: "An AI agent answers in minutes, 24/7, and hands over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
-  { stage: "Convert", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline.", color: "#C3F75D", text: "#101211", leak: "Without it: quotes sent, never followed up." },
-  { stage: "Deliver", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background.", color: "#8B7CF6", text: "#FFFFFF", leak: "Without it: no reminder, no repeat job." },
-  { stage: "Retain", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time.", color: "#FB7185", text: "#101211", leak: "Without it: customers drift away, no reviews." },
+  { stage: "Attract", icon: "Magnet", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service.", color: "#F59E0B", text: "#101211", leak: "Without it: nobody finds you." },
+  { stage: "Capture", icon: "MousePointerClick", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion.", color: "#0EA5E9", text: "#101211", leak: "Without it: the click leaves." },
+  { stage: "Engage", icon: "PhoneCall", purpose: "Answer fast, qualify, build trust", solution: "AI Receptionists & Agents", detail: "An AI agent answers in minutes, 24/7, and hands over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
+  { stage: "Convert", icon: "ClipboardCheck", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline.", color: "#C3F75D", text: "#101211", leak: "Without it: quotes sent, never followed up." },
+  { stage: "Deliver", icon: "Workflow", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background.", color: "#8B7CF6", text: "#FFFFFF", leak: "Without it: no reminder, no repeat job." },
+  { stage: "Retain", icon: "HeartHandshake", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time.", color: "#FB7185", text: "#101211", leak: "Without it: customers drift away, no reviews." },
 ];
 
 /** One accent colour per industry group — used on cards, heroes and diagrams. */

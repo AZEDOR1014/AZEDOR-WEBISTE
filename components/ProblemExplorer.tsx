@@ -2,15 +2,16 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { TrendingDown, PhoneMissed, Clock, Filter, ClipboardList, CalendarX, Users, type LucideIcon } from "lucide-react";
 
-const PROBLEMS: Record<string, { cause: string; fix: string; services: string; result: string }> = {
-  "Not enough leads": { cause: "Your ads, website and Google listing are not working as one system.", fix: "Targeted Meta and Google Ads connected to a fast landing page and instant follow-up.", services: "Paid Advertising, Websites & Sales Funnels", result: "More inquiries from people who already need your service." },
-  "Missing calls": { cause: "Calls arrive when your team is busy, after hours, or on a job.", fix: "An AI receptionist answers every call in your business name and books the appointment.", services: "AI Receptionists & Agents", result: "No call goes unanswered, day or night." },
-  "Slow follow-up": { cause: "Follow-up depends on memory and free time — and there is never enough of either.", fix: "Automated follow-up starts in minutes and continues until the lead replies or books.", services: "CRM & Sales Automation, Business Process Automation", result: "Leads hear back while they are still interested." },
-  "Poor lead conversion": { cause: "Leads are not qualified before they reach your team.", fix: "AI qualification asks the right questions first, so your team talks to the right people.", services: "AI Receptionists & Agents, CRM & Sales Automation", result: "Fewer wasted calls, more booked jobs." },
-  "Too much manual work": { cause: "The same admin tasks are done by hand, every day, by people who should be serving customers.", fix: "Workflows automate onboarding, reminders, routing and data entry.", services: "Business Process Automation", result: "Hours back every week, with fewer mistakes." },
-  "Appointment no-shows": { cause: "Bookings are made and then forgotten — no reminder, no confirmation, no easy reschedule.", fix: "Reminders, confirmations and a one-click reschedule link before the appointment.", services: "CRM & Sales Automation, Business Process Automation", result: "Fewer empty slots and a fuller diary." },
-  "Low repeat business": { cause: "Happy customers leave and are never invited back.", fix: "Rebooking and reactivation campaigns at the right interval for your service.", services: "Reputation Management, Business Process Automation", result: "Past customers return — without paying to find them again." },
+const PROBLEMS: Record<string, { cause: string; fix: string; services: string; result: string; icon: LucideIcon }> = {
+  "Not enough leads": { icon: TrendingDown, cause: "Your ads, website and Google listing are not working as one system.", fix: "Targeted Meta and Google Ads connected to a fast landing page and instant follow-up.", services: "Paid Advertising, Websites & Sales Funnels", result: "More inquiries from people who already need your service." },
+  "Missing calls": { icon: PhoneMissed, cause: "Calls arrive when your team is busy, after hours, or on a job.", fix: "An AI receptionist answers every call in your business name and books the appointment.", services: "AI Receptionists & Agents", result: "No call goes unanswered, day or night." },
+  "Slow follow-up": { icon: Clock, cause: "Follow-up depends on memory and free time — and there is never enough of either.", fix: "Automated follow-up starts in minutes and continues until the lead replies or books.", services: "CRM & Sales Automation, Business Process Automation", result: "Leads hear back while they are still interested." },
+  "Poor lead conversion": { icon: Filter, cause: "Leads are not qualified before they reach your team.", fix: "AI qualification asks the right questions first, so your team talks to the right people.", services: "AI Receptionists & Agents, CRM & Sales Automation", result: "Fewer wasted calls, more booked jobs." },
+  "Too much manual work": { icon: ClipboardList, cause: "The same admin tasks are done by hand, every day, by people who should be serving customers.", fix: "Workflows automate onboarding, reminders, routing and data entry.", services: "Business Process Automation", result: "Hours back every week, with fewer mistakes." },
+  "Appointment no-shows": { icon: CalendarX, cause: "Bookings are made and then forgotten — no reminder, no confirmation, no easy reschedule.", fix: "Reminders, confirmations and a one-click reschedule link before the appointment.", services: "CRM & Sales Automation, Business Process Automation", result: "Fewer empty slots and a fuller diary." },
+  "Low repeat business": { icon: Users, cause: "Happy customers leave and are never invited back.", fix: "Rebooking and reactivation campaigns at the right interval for your service.", services: "Reputation Management, Business Process Automation", result: "Past customers return — without paying to find them again." },
 };
 
 export default function ProblemExplorer() {
@@ -21,7 +22,7 @@ export default function ProblemExplorer() {
     <div>
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Business problems">
         {keys.map((k) => (
-          <button key={k} role="tab" aria-selected={sel === k} onClick={() => setSel(k)} className={`rounded-full border px-4 py-2 text-sm font-semibold ${sel === k ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"}`}>{k}</button>
+          <button key={k} role="tab" aria-selected={sel === k} onClick={() => setSel(k)} className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold ${sel === k ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"}`}>{(() => { const I = PROBLEMS[k].icon; return <I size={15} />; })()}{k}</button>
         ))}
       </div>
       <AnimatePresence mode="wait"><motion.div key={sel} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="mt-6 grid gap-6 rounded-card border border-line bg-white p-6 md:grid-cols-2">

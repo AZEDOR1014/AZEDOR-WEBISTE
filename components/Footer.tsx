@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-ink text-white">
       <div className="mx-auto grid max-w-shell gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <Image src="/images/azedor-logo-wide.png" alt="AZEDOR" width={1672} height={941} loading="lazy" className="h-12 w-auto" />
+          <Image src="/images/logo-azedor-transparent.png" alt="AZEDOR" width={1489} height={379} loading="lazy" className="h-12 w-auto" />
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-mutedDark">Your Marketing, Sales and Automation. Connected. AZEDOR builds customized marketing, CRM and AI automation systems for service-based businesses in the USA.</p>
           <p className="mt-4 text-sm text-mutedDark">Email: <a className="text-lime hover:underline" href="mailto:azedor.marketing@gmail.com">azedor.marketing@gmail.com</a><br />WhatsApp: +92-316-1291014</p>
         </div>

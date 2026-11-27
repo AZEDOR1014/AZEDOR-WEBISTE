@@ -22,7 +22,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
     <section className="bg-ink bg-grid-dark py-16 text-white lg:py-20">
       <div className="mx-auto grid max-w-shell items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: GROUP_ACCENT[ind.group].main }}>{ind.group} · AZEDOR</p>
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]" style={{ color: GROUP_ACCENT[ind.group].main }}><span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10"><ind.icon size={18} /></span>{ind.group} · AZEDOR</p>
           <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">{ind.headline}</h1>
           <div className="mt-5 h-1.5 w-20 rounded-full" style={{ backgroundColor: GROUP_ACCENT[ind.group].main }} />
           <p className="mt-4 text-lg text-mutedDark">{ind.sub}</p>
