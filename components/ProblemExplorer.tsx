@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
 const PROBLEMS: Record<string, { cause: string; fix: string; services: string; result: string }> = {
@@ -23,7 +24,7 @@ export default function ProblemExplorer() {
           <button key={k} role="tab" aria-selected={sel === k} onClick={() => setSel(k)} className={`rounded-full border px-4 py-2 text-sm font-semibold ${sel === k ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"}`}>{k}</button>
         ))}
       </div>
-      <div className="mt-6 grid gap-6 rounded-card border border-line bg-white p-6 md:grid-cols-2">
+      <AnimatePresence mode="wait"><motion.div key={sel} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="mt-6 grid gap-6 rounded-card border border-line bg-white p-6 md:grid-cols-2">
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-muted">What typically causes it</p>
           <p className="mt-2 leading-relaxed">{p.cause}</p>
@@ -37,7 +38,7 @@ export default function ProblemExplorer() {
           <p className="mt-2 leading-relaxed">{p.result}</p>
           <Link href="/free-audit" className="mt-5 inline-block rounded-btn bg-lime px-5 py-3 text-sm font-bold text-ink hover:bg-limeDark">Find Your Revenue Leaks →</Link>
         </div>
-      </div>
+      </motion.div></AnimatePresence>
     </div>
   );
 }

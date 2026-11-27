@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { PhoneCall, MessageSquareText, KanbanSquare, CalendarCheck, Mail, Star } from "lucide-react";
 
 export function SectionHead({ label, title, sub, dark = false }: { label?: string; title: string; sub?: string; dark?: boolean }) {
   return (
@@ -24,31 +23,3 @@ export function CtaBanner({ title = "Find Out Where Your Business Is Losing Oppo
   );
 }
 
-export function DashboardDemo() {
-  const rows = [
-    { icon: PhoneCall, label: "AI receptionist", detail: "Answered 3 calls · booked 2 appointments", time: "2 min ago" },
-    { icon: MessageSquareText, label: "New inquiry — Meta Ads", detail: "AC repair · qualified · in pipeline", time: "9 min ago" },
-    { icon: KanbanSquare, label: "CRM pipeline", detail: "New Lead → Qualified → Visit Scheduled", time: "Live" },
-    { icon: CalendarCheck, label: "Appointments today", detail: "4 confirmed · 1 rescheduled", time: "Today" },
-    { icon: Mail, label: "Automated follow-up", detail: "Estimate reminder sent · opened", time: "1 h ago" },
-    { icon: Star, label: "Review requests", detail: "2 requests sent after completed jobs", time: "Today" },
-  ];
-  return (
-    <div className="rounded-card border border-lineDark bg-deep p-5 shadow-2xl">
-      <div className="flex items-center justify-between border-b border-lineDark pb-4">
-        <p className="font-bold text-white">AZEDOR Growth System</p>
-        <span className="rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">Live demo</span>
-      </div>
-      <div className="mt-4 space-y-3">
-        {rows.map((r) => (
-          <div key={r.label} className="flex items-start gap-3 rounded-xl border border-lineDark bg-ink/60 p-3">
-            <r.icon className="mt-0.5 shrink-0 text-lime" size={18} />
-            <div className="min-w-0 flex-1"><p className="text-sm font-semibold text-white">{r.label}</p><p className="truncate text-xs text-mutedDark">{r.detail}</p></div>
-            <span className="shrink-0 text-[11px] text-mutedDark">{r.time}</span>
-          </div>
-        ))}
-      </div>
-      <p className="mt-4 text-[11px] leading-relaxed text-mutedDark">Demonstration data shown for illustration. This is a mockup of the AZEDOR system, not a real client's results.</p>
-    </div>
-  );
-}

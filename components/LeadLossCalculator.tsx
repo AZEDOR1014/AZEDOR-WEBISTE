@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { AnimatedNumber } from "./Animate";
 import Link from "next/link";
 
 export default function LeadLossCalculator() {
@@ -25,11 +26,11 @@ export default function LeadLossCalculator() {
       <div className="rounded-card bg-ink p-6 text-white">
         <p className="text-xs font-bold uppercase tracking-wider text-lime">Your estimated leak</p>
         <p className="mt-4 text-sm text-mutedDark">Missed monthly opportunities</p>
-        <p className="text-4xl font-extrabold">{missedOpp}</p>
+        <p className="text-4xl font-extrabold text-brandAmber"><AnimatedNumber value={missedOpp} format={(n) => String(n)} /></p>
         <p className="mt-4 text-sm text-mutedDark">Potential missed revenue / month</p>
-        <p className="text-4xl font-extrabold text-lime">{fmt(monthly)}</p>
+        <p className="text-4xl font-extrabold text-brandRose"><AnimatedNumber value={monthly} format={fmt} /></p>
         <p className="mt-4 text-sm text-mutedDark">Potential missed revenue / year</p>
-        <p className="text-2xl font-extrabold">{fmt(annual)}</p>
+        <p className="text-2xl font-extrabold text-brandRose"><AnimatedNumber value={annual} format={fmt} /></p>
         <Link href="/free-audit" className="mt-6 inline-block rounded-btn bg-lime px-5 py-3 text-sm font-bold text-ink hover:bg-limeDark">Get Your Free Audit →</Link>
       </div>
     </div>

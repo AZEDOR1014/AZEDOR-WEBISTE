@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_INDUSTRIES, SOLUTIONS } from "@/lib/data";
 
 export default function Footer() {
@@ -6,7 +7,7 @@ export default function Footer() {
     <footer className="bg-ink text-white">
       <div className="mx-auto grid max-w-shell gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <p className="text-2xl font-extrabold">AZEDOR<span className="text-lime">.</span></p>
+          <Image src="/images/azedor-logo-wide.png" alt="AZEDOR" width={1672} height={941} loading="lazy" className="h-12 w-auto" />
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-mutedDark">Your Marketing, Sales and Automation. Connected. AZEDOR builds customized marketing, CRM and AI automation systems for service-based businesses in the USA.</p>
           <p className="mt-4 text-sm text-mutedDark">Email: <a className="text-lime hover:underline" href="mailto:azedor.marketing@gmail.com">azedor.marketing@gmail.com</a><br />WhatsApp: +92-316-1291014</p>
         </div>
@@ -30,7 +31,7 @@ export default function Footer() {
           <Link href="/terms" className="block py-1 text-sm text-mutedDark hover:text-white">Terms of Service</Link>
         </div>
       </div>
-      <div className="border-t border-lineDark py-5 text-center text-xs text-mutedDark">© {new Date().getFullYear()} AZEDOR. All rights reserved.</div>
+      <div className="border-t border-lineDark pb-20 pt-5 text-center text-xs text-mutedDark lg:pb-5">© {new Date().getFullYear()} AZEDOR. All rights reserved.</div>
     </footer>
   );
 }

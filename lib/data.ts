@@ -8,12 +8,10 @@ export type Industry = {
   faqs: { q: string; a: string }[];
 };
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
-
 export const INDUSTRIES: Industry[] = [
   {
     slug: "hvac", name: "HVAC", group: "Home & Trades", headline: "Turn More Emergency Calls Into Booked HVAC Jobs.", sub: "For heating, cooling, AC repair, furnace and heat pump businesses in the USA. Every call answered, every estimate followed up, every maintenance customer remembered.",
-    image: img("photo-1621905251189-08b45d6a269e"), keyword: "HVAC marketing agency USA",
+    image: "/images/industries/hvac.jpg", keyword: "HVAC marketing agency USA",
     problems: [
       { title: "Missed emergency calls", example: "A homeowner's AC fails at 9pm. Your phone rings, no one answers.", consequence: "They call the next company on Google. That job is gone." },
       { title: "Unanswered quotations", example: "You send an estimate for a new system. No one follows up for a week.", consequence: "The customer forgets you and signs with a competitor." },
@@ -31,7 +29,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "salons-spas", name: "Salons & Spas", group: "Beauty & Wellness", headline: "Fill Empty Appointment Slots and Bring More Clients Back.", sub: "For hair, nail, lash, brow, med spa, day spa and massage businesses. Bookings that fill themselves, reminders that cut no-shows, and clients who come back.",
-    image: img("photo-1560066984-138dadb4c035"), keyword: "salon marketing agency",
+    image: "/images/industries/salons-spas.jpg", keyword: "salon marketing agency",
     problems: [
       { title: "Appointment gaps", example: "Tuesday afternoon is empty, but your Instagram is full of likes.", consequence: "Likes do not pay rent. Empty chairs cost you every hour." },
       { title: "Delayed Instagram replies", example: "A client asks for a price in DMs. You reply the next day.", consequence: "She has already booked somewhere else." },
@@ -49,7 +47,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "beauty-aesthetics", name: "Beauty & Aesthetics", group: "Beauty & Wellness", headline: "Fill Your Clinic's Calendar with High-Paying Clients.", sub: "For medical aesthetics, laser, skin, hair and scalp clinics. Premium clients, booked consultations, and follow-up that respects the decision they are making.",
-    image: img("photo-1487412947147-5cebf100ffc2"), keyword: "beauty clinic marketing agency",
+    image: "/images/industries/beauty-aesthetics.jpg", keyword: "beauty clinic marketing agency",
     problems: [
       { title: "Consultation inquiries go cold", example: "Someone asks about a treatment. The reply comes two days later.", consequence: "They book a consultation with a clinic that answered first." },
       { title: "Price shoppers, no qualification", example: "Your team spends hours answering people who were never a fit.", consequence: "Your diary fills with the wrong consultations." },
@@ -67,7 +65,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "dental-healthcare", name: "Dental & Healthcare", group: "Health", headline: "Connect Patient Inquiries With Better Appointment Management.", sub: "For private dentists, orthodontists, physiotherapists and private clinics. Fewer missed calls, fewer no-shows, and less admin work for your front desk.",
-    image: img("photo-1588776814546-1ffcf47267a5"), keyword: "dental marketing agency",
+    image: "/images/industries/dental-healthcare.jpg", keyword: "dental marketing agency",
     problems: [
       { title: "Missed patient calls", example: "The front desk is with a patient. The phone rings and rings.", consequence: "A new patient books with the practice down the road." },
       { title: "Appointment no-shows", example: "A patient forgets. The chair sits empty for an hour.", consequence: "Lost revenue that no reminder system would have saved — if one existed." },
@@ -85,7 +83,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "real-estate", name: "Real Estate", group: "Property", headline: "Convert More Property Inquiries Into Qualified Opportunities.", sub: "For estate agents, lettings agencies and mortgage brokers. Qualified buyers and sellers, viewings booked, and follow-up that never lets a lead go cold.",
-    image: img("photo-1560518883-ce09059eeffa"), keyword: "real estate marketing agency",
+    image: "/images/industries/real-estate.jpg", keyword: "real estate marketing agency",
     problems: [
       { title: "Unqualified leads", example: "Fifty inquiries arrive. Forty were never buyers.", consequence: "Agents waste their week on people who cannot buy." },
       { title: "Delayed agent response", example: "A buyer asks about a listing at 8pm. The reply comes Monday.", consequence: "They have already viewed with another agent." },
@@ -103,7 +101,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "home-services", name: "Home Services & Contractors", group: "Home & Trades", headline: "Stop Chasing Leads. Start Closing Jobs.", sub: "For plumbing, heating, electrical, roofing, landscaping and building businesses. Estimates followed up, jobs scheduled, and repeat work that comes back to you.",
-    image: img("photo-1600585154340-be6161a56a0c"), keyword: "home services marketing agency",
+    image: "/images/industries/home-services.jpg", keyword: "home services marketing agency",
     problems: [
       { title: "Missed inquiries", example: "You are on a job. The phone rings. No one answers.", consequence: "The homeowner calls the next contractor." },
       { title: "Forgotten quotations", example: "You quote a job and never hear back — because you never followed up.", consequence: "Work you already won on price is lost to silence." },
@@ -121,7 +119,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "automotive", name: "Automotive Services", group: "Vehicles", headline: "Keep Your Service Bays Fully Booked.", sub: "For independent garages, MOT centres, specialist repairers and detailers. Service bookings, maintenance reminders and customers who come back on time.",
-    image: img("photo-1487754180451-c456f719a1fc"), keyword: "automotive marketing agency",
+    image: "/images/industries/automotive.jpg", keyword: "automotive marketing agency",
     problems: [
       { title: "Empty service bays", example: "Mid-week is quiet, but no one is chasing bookings.", consequence: "Technicians stand idle while the phone stays quiet." },
       { title: "Missed maintenance reminders", example: "A customer's service is due. No one tells them.", consequence: "They go to a chain that did remind them." },
@@ -139,7 +137,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "gyms-fitness", name: "Gyms & Fitness", group: "Health & Fitness", headline: "Pack Your Classes. Automate Your Growth.", sub: "For independent gyms, boutique studios, CrossFit boxes and personal trainers. Trial bookings, member follow-up and reactivations that run on their own.",
-    image: img("photo-1534438327276-14e5300c3a48"), keyword: "gym marketing agency",
+    image: "/images/industries/gyms-fitness.jpg", keyword: "gym marketing agency",
     problems: [
       { title: "Unconverted trial inquiries", example: "Someone asks about a trial. No one follows up.", consequence: "They join the gym that answered first." },
       { title: "Membership cancellations", example: "A member stops coming. No one notices until they cancel.", consequence: "Churn you could have prevented with one message." },
@@ -157,7 +155,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "coaches-consultants", name: "Coaches & Consultants", group: "Professional", headline: "Fill Your Calendar with Qualified Prospects.", sub: "For business, life and executive coaches and financial advisors. Qualified discovery calls, fewer no-shows, and onboarding that happens on its own.",
-    image: img("photo-1552664730-d307ca884978"), keyword: "coach marketing agency",
+    image: "/images/industries/coaches-consultants.jpg", keyword: "coach marketing agency",
     problems: [
       { title: "Unqualified discovery calls", example: "Your diary is full of calls with people who cannot afford you.", consequence: "Hours spent selling to the wrong people." },
       { title: "High no-show rates", example: "A prospect books, then does not show.", consequence: "An hour you cannot get back." },
@@ -175,7 +173,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "education-training", name: "Education & Training", group: "Learning", headline: "Fill Your Courses. Automate Enrolment.", sub: "For vocational training, e-learning, certification courses and masterclasses. Enrolment funnels, student follow-up and admin that does not eat your week.",
-    image: img("photo-1503676260728-1c00da094a0b"), keyword: "education marketing agency",
+    image: "/images/industries/education-training.jpg", keyword: "education marketing agency",
     problems: [
       { title: "Low course enrolment", example: "People visit the course page and leave without enrolling.", consequence: "Seats stay empty while ad spend keeps running." },
       { title: "Manual admissions", example: "Every application is handled by email and spreadsheets.", consequence: "Slow replies, lost applicants, stressed staff." },
@@ -193,7 +191,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "cleaning", name: "Cleaning Businesses", group: "Home & Trades", headline: "Book More Cleans. Keep More Clients.", sub: "For residential and commercial cleaning businesses. Quotes answered fast, recurring cleans booked, and clients who stay.",
-    image: img("photo-1581578731548-c64695cc6952"), keyword: "cleaning business marketing agency",
+    image: "/images/industries/cleaning.jpg", keyword: "cleaning business marketing agency",
     problems: [
       { title: "Slow quote replies", example: "A homeowner asks for a quote. You reply tomorrow.", consequence: "They booked the cleaner who replied in minutes." },
       { title: "One-off jobs, no repeats", example: "A deep clean ends. No recurring booking is offered.", consequence: "You keep finding new customers instead of keeping old ones." },
@@ -211,7 +209,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "legal", name: "Legal & Professional Services", group: "Professional", headline: "Turn Inquiries Into Consultations — Without the Admin.", sub: "For law firms and professional service firms. Qualified consultations, careful follow-up, and admin that respects confidentiality.",
-    image: img("photo-1505664194779-8beaceb93744"), keyword: "law firm marketing agency",
+    image: "/images/industries/legal.jpg", keyword: "law firm marketing agency",
     problems: [
       { title: "Unqualified inquiries", example: "Your team fields calls that were never your area of law.", consequence: "Hours lost on the wrong matters." },
       { title: "Slow consultation booking", example: "A potential client waits days for a callback.", consequence: "They instruct the firm that called back first." },
@@ -229,7 +227,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "accounting", name: "Accounting & Professional Services", group: "Professional", headline: "Win Better Clients. Automate the Follow-Up.", sub: "For accountants, bookkeepers and professional service firms. Qualified inquiries, onboarding that runs itself, and clients who stay year after year.",
-    image: img("photo-1554224155-6726b3ff858f"), keyword: "accounting firm marketing agency",
+    image: "/images/industries/accounting.jpg", keyword: "accounting firm marketing agency",
     problems: [
       { title: "Seasonal rush, quiet months", example: "Tax season is chaos. Summer is quiet.", consequence: "Revenue swings because no system keeps the pipeline warm." },
       { title: "Manual onboarding", example: "Every new client means the same forms, emails and chasing.", consequence: "Hours of admin for every new engagement." },
@@ -247,7 +245,7 @@ export const INDUSTRIES: Industry[] = [
   },
   {
     slug: "other", name: "Other Service Businesses", group: "All Services", headline: "If You Serve Customers, This System Fits Your Business.", sub: "For any appointment-based or service business not listed above. The system is built around how your business actually works — not a generic template.",
-    image: img("photo-1454165804606-c3d57bc86b40"), keyword: "service business marketing agency",
+    image: "/images/industries/other.jpg", keyword: "service business marketing agency",
     problems: [
       { title: "Leads arrive, then disappear", example: "Inquiries come from ads, social and referrals — and land in different places.", consequence: "No one knows who was replied to and who was forgotten." },
       { title: "Booking takes too long", example: "A customer has to call, wait, and call again to book.", consequence: "They book with the business that made it easy." },
@@ -359,14 +357,30 @@ export const SOLUTIONS: Solution[] = [
   },
 ];
 
-export const JOURNEY = [
-  { stage: "Attract", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service." },
-  { stage: "Capture", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion." },
-  { stage: "Engage", purpose: "Answer fast, qualify, build trust", solution: "AI Receptionists & Agents", detail: "An AI agent answers in minutes, 24/7, and hands over when needed." },
-  { stage: "Convert", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline." },
-  { stage: "Deliver", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background." },
-  { stage: "Retain", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time." },
+export type JourneyStep = { stage: string; purpose: string; solution: string; detail: string; color: string; text: string; leak: string };
+
+/** One colour per stage — the funnel and journey read as a coloured flow. */
+export const JOURNEY: JourneyStep[] = [
+  { stage: "Attract", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service.", color: "#F59E0B", text: "#101211", leak: "Without it: nobody finds you." },
+  { stage: "Capture", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion.", color: "#0EA5E9", text: "#101211", leak: "Without it: the click leaves." },
+  { stage: "Engage", purpose: "Answer fast, qualify, build trust", solution: "AI Receptionists & Agents", detail: "An AI agent answers in minutes, 24/7, and hands over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
+  { stage: "Convert", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline.", color: "#C3F75D", text: "#101211", leak: "Without it: quotes sent, never followed up." },
+  { stage: "Deliver", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background.", color: "#8B7CF6", text: "#FFFFFF", leak: "Without it: no reminder, no repeat job." },
+  { stage: "Retain", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time.", color: "#FB7185", text: "#101211", leak: "Without it: customers drift away, no reviews." },
 ];
+
+/** One accent colour per industry group — used on cards, heroes and diagrams. */
+export const GROUP_ACCENT: Record<string, { main: string; soft: string; dark: string }> = {
+  "Home & Trades": { main: "#F59E0B", soft: "#FFF8E6", dark: "#B45309" },
+  "Beauty & Wellness": { main: "#FB7185", soft: "#FFF0F3", dark: "#BE123C" },
+  "Health": { main: "#14B8A6", soft: "#E6F7F4", dark: "#0F766E" },
+  "Property": { main: "#8B7CF6", soft: "#EFEDFD", dark: "#5B21B6" },
+  "Vehicles": { main: "#0EA5E9", soft: "#E8F4FD", dark: "#0369A1" },
+  "Health & Fitness": { main: "#10B981", soft: "#E7F8F1", dark: "#047857" },
+  "Professional": { main: "#7C6FF0", soft: "#EFEDFD", dark: "#4C1D95" },
+  "Learning": { main: "#0EA5E9", soft: "#E8F4FD", dark: "#0369A1" },
+  "All Services": { main: "#C3F75D", soft: "#F4FBEA", dark: "#3F6212" },
+};
 
 export const NAV_INDUSTRIES = [
   { group: "Home & Trades", items: [{ slug: "hvac", name: "HVAC" }, { slug: "home-services", name: "Home Services & Contractors" }, { slug: "cleaning", name: "Cleaning Businesses" }] },

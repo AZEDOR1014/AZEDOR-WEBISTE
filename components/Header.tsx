@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { NAV_INDUSTRIES, SOLUTIONS } from "@/lib/data";
@@ -8,9 +9,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<string | null>(null);
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-lineDark bg-ink/95 text-white backdrop-blur">
       <div className="mx-auto flex h-16 max-w-shell items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="text-xl font-extrabold tracking-tight">AZEDOR<span className="text-lime">.</span></Link>
+        <Link href="/" aria-label="AZEDOR — home"><Image src="/images/azedor-logo-wide.png" alt="AZEDOR" width={1672} height={941} priority className="h-10 w-auto sm:h-12" /></Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold lg:flex" aria-label="Main">
           <div className="relative" onMouseEnter={() => setMenu("solutions")} onMouseLeave={() => setMenu(null)}>
             <button className="flex items-center gap-1 py-2 hover:text-lime" aria-expanded={menu === "solutions"}>Solutions <ChevronDown size={14} /></button>
@@ -65,5 +67,9 @@ export default function Header() {
         </div>
       )}
     </header>
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-lineDark bg-ink/95 px-4 py-3 backdrop-blur lg:hidden">
+      <Link href="/free-audit" className="block rounded-btn bg-lime px-6 py-3 text-center font-bold text-ink shadow-[0_0_0_3px_rgba(195,247,93,0.25)]">Get Your Free Audit →</Link>
+    </div>
+    </>
   );
 }
