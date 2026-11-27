@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHead, CtaBanner } from "@/components/Shared";
 
-export const metadata: Metadata = { title: "Our Work — Demonstrations | AZEDOR", description: "Demonstration projects: websites, CRM systems, AI voice and chat agents, automation workflows and industry systems. Clearly labelled demonstrations." };
+export const metadata: Metadata = { title: "Our Work — Examples | AZEDOR", description: "Example projects: websites, CRM systems, AI voice and chat agents, automation workflows and industry systems. Clearly labelled examples." };
 
 const PROJECTS = [
-  { title: "HVAC lead-to-job system (demonstration)", industry: "HVAC", category: "CRM systems", challenge: "Emergency calls missed after hours; estimates never followed up.", system: "AI voice receptionist, missed-call text-back, estimate follow-up, maintenance reminders and review requests — all in one CRM pipeline.", tech: "Next.js, n8n, CRM, AI voice agent" },
-  { title: "Salon booking & rebooking system (demonstration)", industry: "Salons & Spas", category: "Websites and landing pages", challenge: "Instagram inquiries unanswered, empty chairs, clients who never return.", system: "Booking page, Instagram inquiry handling, reminders, waitlist and 30/60/90-day rebooking campaigns.", tech: "Next.js, booking system, CRM, AI chat agent" },
-  { title: "Real estate lead qualification (demonstration)", industry: "Real Estate", category: "AI voice and chat agents", challenge: "Unqualified inquiries waste agent time; viewings are missed.", system: "AI qualification, agent assignment, viewing booking and reminders, long-term nurturing.", tech: "AI chat agent, CRM, calendar" },
-  { title: "Dental appointment system (demonstration)", industry: "Dental & Healthcare", category: "Automation workflows", challenge: "Missed patient calls and appointment no-shows; admin overload.", system: "Inquiry assistance, appointment reminders, scheduling support with human handover, patient reactivation.", tech: "CRM, AI agent, calendar, reminders" },
-  { title: "Gym trial-to-member system (demonstration)", industry: "Gyms & Fitness", category: "Industry-specific systems", challenge: "Trial inquiries go cold; members drift away unnoticed.", system: "Trial booking, onboarding, class reminders, at-risk member engagement and reactivation.", tech: "Next.js, CRM, automation workflows" },
-  { title: "Coaching discovery-call funnel (demonstration)", industry: "Coaches & Consultants", category: "Automation workflows", challenge: "Unqualified discovery calls and high no-show rates.", system: "Qualification funnel, appointment reminders, prospect nurturing and automated onboarding.", tech: "Funnel, CRM, calendar, automation" },
+  { title: "HVAC lead-to-job system (example)", industry: "HVAC", category: "CRM systems", challenge: "Emergency calls missed after hours; estimates never followed up.", system: "AI voice receptionist, missed-call text-back, estimate follow-up, maintenance reminders and review requests — all in one CRM pipeline.", tech: "Next.js, n8n, CRM, AI voice agent" },
+  { title: "Salon booking & rebooking system (example)", industry: "Salons & Spas", category: "Websites and landing pages", challenge: "Instagram inquiries unanswered, empty chairs, clients who never return.", system: "Booking page, Instagram inquiry handling, reminders, waitlist and 30/60/90-day rebooking campaigns.", tech: "Next.js, booking system, CRM, AI chat agent" },
+  { title: "Real estate lead qualification (example)", industry: "Real Estate", category: "AI voice and chat agents", challenge: "Unqualified inquiries waste agent time; viewings are missed.", system: "AI qualification, agent assignment, viewing booking and reminders, long-term nurturing.", tech: "AI chat agent, CRM, calendar" },
+  { title: "Dental appointment system (example)", industry: "Dental & Healthcare", category: "Automation workflows", challenge: "Missed patient calls and appointment no-shows; admin overload.", system: "Inquiry assistance, appointment reminders, scheduling support with human handover, patient reactivation.", tech: "CRM, AI agent, calendar, reminders" },
+  { title: "Gym trial-to-member system (example)", industry: "Gyms & Fitness", category: "Industry-specific systems", challenge: "Trial inquiries go cold; members drift away unnoticed.", system: "Trial booking, onboarding, class reminders, at-risk member engagement and reactivation.", tech: "Next.js, CRM, automation workflows" },
+  { title: "Coaching discovery-call funnel (example)", industry: "Coaches & Consultants", category: "Automation workflows", challenge: "Unqualified discovery calls and high no-show rates.", system: "Qualification funnel, appointment reminders, prospect nurturing and automated onboarding.", tech: "Funnel, CRM, calendar, automation" },
 ];
 
 export default function OurWork() {
@@ -19,8 +19,8 @@ export default function OurWork() {
       <section className="bg-ink bg-grid-dark py-16 text-white lg:py-20">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">Our Work</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">Demonstrations of What AZEDOR Builds.</h1>
-          <p className="mt-4 max-w-2xl text-lg text-mutedDark">These are demonstration projects, clearly labelled. They show how the system works. They are not presented as paying client engagements, and no outcomes are claimed for real clients.</p>
+          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">Examples of What AZEDOR Builds.</h1>
+          <p className="mt-4 max-w-2xl text-lg text-mutedDark">These are example projects, clearly labelled. They show how the system works. They are not presented as paying client engagements, and no outcomes are claimed for real clients.</p>
         </div>
       </section>
       <section className="py-20">
@@ -32,7 +32,7 @@ export default function OurWork() {
               <p className="mt-3 text-sm leading-relaxed text-muted"><strong className="text-ink">Challenge:</strong> {p.challenge}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted"><strong className="text-ink">System:</strong> {p.system}</p>
               <p className="mt-3 border-t border-line pt-3 text-xs text-muted"><strong>Technical implementation:</strong> {p.tech}</p>
-              <p className="mt-2 text-[11px] text-muted">Demonstration project — illustrative example, not a client result.</p>
+              <p className="mt-2 text-[11px] text-muted">Example project — an illustration, not a client result.</p>
             </article>
           ))}
         </div>

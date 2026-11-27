@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SOLUTIONS, JOURNEY } from "@/lib/data";
-import { SectionHead, CtaBanner } from "@/components/Shared";
-import SolutionDemo from "@/components/SolutionDemo";
+import { SectionHead, CtaBanner, AiChannels } from "@/components/Shared";
+import SolutionLive from "@/components/SolutionLive";
 import Faq from "@/components/Faq";
 import AuditForm from "@/components/AuditForm";
 
@@ -27,9 +27,25 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
       </div>
     </section>
     <section className="bg-paper py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
-      <SectionHead label="Live demo" title="See It Working — Live." sub="A working demonstration, running in real time. Demonstration data only — not a real client's results." />
-      <div className="mx-auto max-w-3xl"><SolutionDemo slug={s.slug} /></div>
+      <SectionHead label="Live" title="See It Working — Live." sub="Watch it work, in real time. An example of how the system works — not a real client's results." />
+      <div className="mx-auto max-w-3xl"><SolutionLive slug={s.slug} /></div>
     </div></section>
+    {s.slug === "conversation-ai-agent" && (
+      <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+        <SectionHead label="Every channel" title="One AI Agent. Every Channel." sub="Your customers message wherever they are. The AI agent answers on all of them — in your business name, with one log in your CRM." />
+        <AiChannels />
+      </div></section>
+    )}
+    {s.slug === "calling-ai-agent" && (
+      <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+        <SectionHead label="On every call" title="What Happens On Every Call." sub="The same steps, every time — so no caller is missed and no detail is lost." />
+        <ol className="grid gap-4 sm:grid-cols-2">
+          {["Answers in your business name, day or night.", "Takes the caller's name, number and what they need.", "Asks if it is urgent, and follows the rules you set.", "Qualifies the caller and books the appointment.", "Logs the call in your CRM, with the details attached.", "Hands over to your team whenever the caller asks — or the question needs a human."].map((t, i) => (
+            <li key={t} className="rounded-card border border-line bg-white px-5 py-4"><span className="font-extrabold text-lime">0{i + 1} · </span>{t}</li>
+          ))}
+        </ol>
+      </div></section>
+    )}
     <section className="py-20"><div className="mx-auto grid max-w-shell gap-10 px-4 sm:px-6 lg:grid-cols-2">
       <div><SectionHead label="The problem" title="The Problem" /><p className="text-lg leading-relaxed text-muted">{s.problem}</p>
         <h3 className="mt-8 text-2xl font-bold">What it does</h3><p className="mt-2 leading-relaxed text-muted">{s.what}</p></div>

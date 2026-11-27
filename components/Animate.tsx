@@ -58,29 +58,38 @@ const FUNNEL_ICONS: Record<string, LucideIcon> = { Magnet, MousePointerClick, Ph
 
 const FUNNEL_WIDTHS = [100, 88, 76, 64, 52, 40];
 
-/** Visual funnel: wide top, narrow bottom, one colour per stage, leak shown at each stage.
-    Used only where the lead-to-customer flow needs explaining — homepage Growth System,
-    How It Works page, and industry pages. Animated on scroll, stage by stage. */
+/** Real funnel: trapezoid bands, wide at the top and narrower at the bottom,
+    with slanted edges, so the whole shape reads as a funnel. Headline and
+    content are separate: headline on its own line, a divider, then the
+    content below in smaller, lighter text. Used only where the
+    lead-to-customer flow needs explaining — homepage Growth System,
+    How It Works page, and industry pages. */
 export function FunnelDiagram({ steps, dark = true }: { steps: FunnelStep[]; dark?: boolean }) {
   return (
     <div className="mx-auto max-w-3xl">
       {steps.map((st, i) => (
         <motion.div
           key={st.stage}
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: i * 0.15 }}
-          className="mx-auto mb-2 min-w-[240px] rounded-b-2xl rounded-t-lg px-4 py-3 shadow-md sm:min-w-0"
-          style={{ width: `${FUNNEL_WIDTHS[Math.min(i, FUNNEL_WIDTHS.length - 1)]}%`, backgroundColor: st.color, color: st.text }}
+          className="mx-auto mb-[3px] flex min-h-[104px] min-w-[240px] flex-col justify-center px-6 py-3 sm:min-w-0"
+          style={{
+            width: `${FUNNEL_WIDTHS[Math.min(i, FUNNEL_WIDTHS.length - 1)]}%`,
+            backgroundColor: st.color,
+            color: st.text,
+            clipPath: "polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%)",
+          }}
         >
-          <p className="flex flex-wrap items-center justify-center gap-x-2 text-center text-sm font-extrabold sm:text-base">
-            {(() => { const I = typeof st.icon === "string" ? FUNNEL_ICONS[st.icon] : st.icon; return I ? <I size={18} strokeWidth={2.5} /> : null; })()}
+          <p className="flex items-center gap-2 text-base font-extrabold sm:text-lg">
+            {(() => { const I = typeof st.icon === "string" ? FUNNEL_ICONS[st.icon] : st.icon; return I ? <I size={20} strokeWidth={2.5} /> : null; })()}
             <span>{i + 1}. {st.stage}</span>
             <span className="font-semibold opacity-80">· {st.solution}</span>
           </p>
-          <p className="mt-0.5 text-center text-xs leading-relaxed opacity-90 sm:text-sm">{st.purpose}</p>
-          <p className="mt-0.5 text-center text-[11px] font-semibold opacity-75 sm:text-xs">Leak: {st.leak.replace("Without it: ", "")}</p>
+          <hr className="my-2 border-t" style={{ borderColor: st.text, opacity: 0.3 }} />
+          <p className="text-xs leading-relaxed opacity-90 sm:text-sm">{st.purpose}</p>
+          <p className="mt-1 text-[11px] font-semibold opacity-75 sm:text-xs">Leak: {st.leak.replace("Without it: ", "")}</p>
         </motion.div>
       ))}
       <p className={`mt-4 text-center text-sm ${dark ? "text-mutedDark" : "text-muted"}`}>

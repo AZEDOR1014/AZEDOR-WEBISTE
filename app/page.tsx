@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, PhoneMissed, Clock, Filter, MailWarning, ClipboardList, Users, Check, X, Minus } from "lucide-react";
-import { INDUSTRIES, SOLUTIONS, JOURNEY, GROUP_ACCENT } from "@/lib/data";
+import { INDUSTRIES, SOLUTIONS, JOURNEY, GROUP_ACCENT, AI_CHANNELS } from "@/lib/data";
 import { SectionHead, CtaBanner } from "@/components/Shared";
-import DashboardDemo from "@/components/DashboardDemo";
-import SystemDemos from "@/components/SystemDemos";
+import DashboardPanel from "@/components/DashboardPanel";
+import SystemExamples from "@/components/SystemExamples";
 import { Reveal, Tilt, FunnelDiagram, ProcessSteps } from "@/components/Animate";
 import ProblemExplorer from "@/components/ProblemExplorer";
 import LeadLossCalculator from "@/components/LeadLossCalculator";
@@ -53,7 +53,7 @@ export default function Home() {
             </div>
             <p className="mt-4 text-sm text-mutedDark">Customized solutions. No obligation. Built around your business.</p>
           </div>
-          <DashboardDemo />
+          <DashboardPanel />
         </div>
         <div className="mx-auto mt-12 max-w-shell px-4 sm:px-6">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -132,7 +132,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Six solutions */}
+      {/* 6. Seven solutions */}
       <section className="py-24">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
           <SectionHead label="Solutions" title="Everything You Need to Connect Marketing, Sales and Operations." />
@@ -145,6 +145,8 @@ export default function Home() {
                 </div>
                 <h3 className="mt-3 text-2xl font-bold">{s.name}</h3>
                 <p className={`mt-2 leading-relaxed ${i === 0 ? "text-mutedDark" : "text-muted"}`}>{s.sub}</p>
+                {s.slug === "conversation-ai-agent" && (<div className="mt-3 flex flex-wrap gap-1.5">{AI_CHANNELS.map((c) => (<span key={c.name} className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${i === 0 ? "border-white/20 bg-white/10 text-white" : "border-line bg-paper"}`}>{c.name}</span>))}</div>)}
+                {s.slug === "calling-ai-agent" && (<p className={`mt-3 text-sm font-semibold ${i === 0 ? "text-mutedDark" : "text-ink"}`}>Phone calls — answered in your business name, 24/7.</p>)}
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold">Learn more <ArrowRight size={15} /></span>
               </Link>
             ))}
@@ -155,8 +157,8 @@ export default function Home() {
       {/* 7. System in action */}
       <section className="bg-deep py-24 text-white">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
-          <SectionHead dark label="See the system in action" title="Real Demonstrations. Clearly Labelled." sub="How the system works — examples, not client results." />
-          <SystemDemos />
+          <SectionHead dark label="See the system in action" title="Real Examples. Clearly Labelled." sub="How the system works — examples, not client results." />
+          <SystemExamples />
         </div>
       </section>
 

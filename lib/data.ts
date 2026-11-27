@@ -1,4 +1,4 @@
-import { Thermometer, Scissors, Sparkles, Stethoscope, House, Wrench, Car, Dumbbell, Compass, GraduationCap, SprayCan, Scale, Calculator, Briefcase, Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Magnet, MousePointerClick, ClipboardCheck, HeartHandshake, type LucideIcon } from "lucide-react";
+import { Thermometer, Scissors, Sparkles, Stethoscope, House, Wrench, Car, Dumbbell, Compass, GraduationCap, SprayCan, Scale, Calculator, Briefcase, Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Magnet, MousePointerClick, ClipboardCheck, HeartHandshake, MessageSquare, MessageCircle, Mail, ThumbsUp, Camera, AtSign, type LucideIcon } from "lucide-react";
 
 export type Industry = {
   slug: string; name: string; group: string; headline: string; sub: string;
@@ -302,17 +302,31 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "ai-receptionists-agents", icon: PhoneCall, name: "AI Receptionists & Agents", headline: "An AI Agent That Answers in Under 2 Minutes. 24/7.", sub: "An AI voice receptionist and chat agent that answers FAQs, qualifies leads and books appointments — and hands over to your team whenever it should.",
+    slug: "conversation-ai-agent", icon: MessageCircle, name: "Conversation AI Agent", headline: "An AI Agent That Answers Every Message. 24/7.", sub: "A chat agent that answers messages, qualifies leads and books appointments — on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads — and hands over to your team whenever it should.",
     problem: "A lead messages at 9pm. No one is there. The lead books with someone else.",
-    what: "An AI agent on your website, WhatsApp and Facebook that answers, qualifies and books — in your business name, with a full log of every conversation.",
-    how: ["We train it on your services, prices and FAQs", "It answers, qualifies and books the appointment", "It hands over to a human when the question needs one", "Every chat and call is logged in your CRM"],
+    what: "One AI agent on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads that answers, qualifies and books — in your business name, with a full log of every conversation.",
+    how: ["We train it on your services, prices and FAQs", "It answers, qualifies and books the appointment", "It hands over to a human when the question needs one", "Every chat and message is logged in your CRM"],
     industries: ["HVAC", "Dental & Healthcare", "Salons & Spas", "Real Estate", "Home Services", "Legal"],
-    uses: ["Answering an emergency HVAC call at night", "Booking a salon appointment from Instagram DMs", "Qualifying a property buyer before an agent calls"],
-    integrations: ["Website chat", "WhatsApp", "Facebook", "Phone", "CRM", "Calendar"],
+    uses: ["Booking a salon appointment from Instagram DMs", "Qualifying a property buyer over WhatsApp", "Answering service questions on your website chat"],
+    integrations: ["Website chat", "WhatsApp", "SMS", "Email", "Facebook", "Instagram", "Threads", "CRM", "Calendar"],
     faqs: [
       { q: "Will customers know it is AI?", a: "Yes. It introduces itself as your business's AI assistant. It never pretends to be a person." },
       { q: "Can it hand over to my team?", a: "Yes. At any point it can hand the conversation to a human, with the full history attached." },
       { q: "Do you guarantee response times?", a: "No. We do not guarantee performance that has not been tested. We measure it after launch and show you the real numbers." },
+    ],
+  },
+  {
+    slug: "calling-ai-agent", icon: PhoneCall, name: "Calling AI Agent", headline: "An AI Voice Receptionist That Answers Every Call. 24/7.", sub: "A voice agent that answers phone calls in your business name, talks to the caller, asks the right questions, qualifies them and books the appointment — day or night, and hands over to your team whenever it should.",
+    problem: "The phone rings while your team is busy, after hours, or on a job. No one answers. The caller tries the next business.",
+    what: "An AI voice receptionist on your business phone line that answers every call, takes the details, checks if it is urgent, qualifies the caller and books the appointment — with a full log of every call.",
+    how: ["We train it on your services, prices and FAQs", "It answers in your business name and takes the caller's details", "It asks if it is urgent and qualifies the caller", "It books the appointment and logs the call in your CRM"],
+    industries: ["HVAC", "Dental & Healthcare", "Salons & Spas", "Real Estate", "Home Services", "Legal"],
+    uses: ["Answering an emergency HVAC call at night", "Taking a booking call while the team is on a job", "Qualifying a new patient before the front desk calls back"],
+    integrations: ["Phone", "Calendar", "CRM", "SMS reminders"],
+    faqs: [
+      { q: "Will callers know it is AI?", a: "Yes. It introduces itself as your business's AI assistant. It never pretends to be a person." },
+      { q: "What if it is a real emergency?", a: "It asks if the call is urgent and follows the rules you set — including handing over or routing urgent calls to your team." },
+      { q: "Can it hand over to my team?", a: "Yes. At any point it can hand the call to a human, with the details it has already taken." },
     ],
   },
   {
@@ -365,10 +379,22 @@ export type JourneyStep = { stage: string; purpose: string; solution: string; de
 export const JOURNEY: JourneyStep[] = [
   { stage: "Attract", icon: "Magnet", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service.", color: "#F59E0B", text: "#101211", leak: "Without it: nobody finds you." },
   { stage: "Capture", icon: "MousePointerClick", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion.", color: "#0EA5E9", text: "#101211", leak: "Without it: the click leaves." },
-  { stage: "Engage", icon: "PhoneCall", purpose: "Answer fast, qualify, build trust", solution: "AI Receptionists & Agents", detail: "An AI agent answers in minutes, 24/7, and hands over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
+  { stage: "Engage", icon: "PhoneCall", purpose: "Answer fast, qualify, build trust", solution: "Conversation & Calling AI Agents", detail: "AI agents answer calls and messages on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads, 24/7, and hand over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
   { stage: "Convert", icon: "ClipboardCheck", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline.", color: "#C3F75D", text: "#101211", leak: "Without it: quotes sent, never followed up." },
   { stage: "Deliver", icon: "Workflow", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background.", color: "#8B7CF6", text: "#FFFFFF", leak: "Without it: no reminder, no repeat job." },
   { stage: "Retain", icon: "HeartHandshake", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time.", color: "#FB7185", text: "#101211", leak: "Without it: customers drift away, no reviews." },
+];
+
+/** Every channel the AZEDOR AI agent answers on — one agent, one log, every message. */
+export type AiChannel = { name: string; icon: LucideIcon; line: string };
+export const AI_CHANNELS: AiChannel[] = [
+  { name: "Website chat", icon: Globe, line: "Answers visitors on your website, qualifies them and books the appointment." },
+  { name: "WhatsApp", icon: MessageCircle, line: "Replies to WhatsApp messages, answers questions and books the appointment." },
+  { name: "SMS", icon: MessageSquare, line: "Replies to text messages, follows up and sends the booking link." },
+  { name: "Email", icon: Mail, line: "Answers emails, qualifies the enquiry and books the appointment." },
+  { name: "Facebook", icon: ThumbsUp, line: "Replies to Facebook messages, qualifies the enquiry and books the appointment." },
+  { name: "Instagram", icon: Camera, line: "Replies to Instagram DMs, answers questions and books the appointment." },
+  { name: "Threads", icon: AtSign, line: "Replies on Threads, answers questions and sends the booking link." },
 ];
 
 /** One accent colour per industry group — used on cards, heroes and diagrams. */
