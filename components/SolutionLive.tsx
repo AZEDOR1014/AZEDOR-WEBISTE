@@ -204,8 +204,11 @@ function CallingLive() {
   const voicesRef = useRef<{ sarah: SpeechSynthesisVoice | null; ai: SpeechSynthesisVoice | null }>({ sarah: null, ai: null });
   const lineRef = useRef(0);
   const cancelledRef = useRef(false);
+  const pausedRef = useRef(false);
+  const watchdogRef = useRef<number | null>(null);
   const mutedRef = useRef(false);
   const volumeRef = useRef(1);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const done = shown >= CALL_LINES.length;
 
   // Load voices (browsers, including iOS Safari, fill the list after a delay).
@@ -219,13 +222,27 @@ function CallingLive() {
 
   // Stop speaking when the user leaves the page / panel unmounts.
   useEffect(() => {
-    return () => { if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel(); };
+    return () => {
+      cancelledRef.current = true;
+      if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    };
   }, []);
+
+  // Auto-scroll the transcript to the newest line whenever a line appears.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  }, [shown]);
+
+  const clearWatchdog = () => {
+    if (watchdogRef.current !== null) { window.clearTimeout(watchdogRef.current); watchdogRef.current = null; }
+  };
 
   // Speak one line, then move to the next when it finishes.
   const speakLine = (idx: number) => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     if (idx >= CALL_LINES.length) { setPlaying(false); setPaused(false); return; }
+    clearWatchdog();
     lineRef.current = idx;
     setShown(idx + 1);
     const line = CALL_LINES[idx];
@@ -237,29 +254,56 @@ function CallingLive() {
     utter.pitch = line.who === "ai" ? 0.9 : 1.2;
     utter.volume = mutedRef.current ? 0 : volumeRef.current;
     utter.onend = () => {
-      if (cancelledRef.current) return;
+      if (cancelledRef.current || lineRef.current !== idx) return;
+      clearWatchdog();
       speakLine(idx + 1);
     };
     utter.onerror = () => {
-      if (cancelledRef.current) return;
+      if (cancelledRef.current || lineRef.current !== idx) return;
+      clearWatchdog();
       // If a line fails to speak, keep the call moving after a short pause.
-      window.setTimeout(() => { if (!cancelledRef.current) speakLine(idx + 1); }, 800);
+      window.setTimeout(() => { if (!cancelledRef.current && lineRef.current === idx) speakLine(idx + 1); }, 800);
     };
     window.speechSynthesis.speak(utter);
+    // Watchdog: on some phones speech can stall or onend never fires, which
+    // used to leave the remaining chat hidden. If this line has not finished
+    // after 12 seconds (and the call is not paused), move on anyway.
+    watchdogRef.current = window.setTimeout(() => {
+      if (!cancelledRef.current && !pausedRef.current && lineRef.current === idx) {
+        window.speechSynthesis.cancel();
+        speakLine(idx + 1);
+      }
+    }, 12000);
   };
 
   const start = () => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+    const hasSpeech = typeof window !== "undefined" && "speechSynthesis" in window;
+    if (!hasSpeech) {
+      // No voice on this device: still show the whole call, line by line on a timer.
       setVoiceSupported(false);
-      setVoiceError("Voice is not available on this device.");
+      setVoiceError("Voice is not available on this device — showing the call as text.");
+      setShown(0);
+      setSeconds(0);
+      setPaused(false);
+      setPlaying(true);
+      cancelledRef.current = false;
+      let i = 0;
+      const t = window.setInterval(() => {
+        if (cancelledRef.current || i >= CALL_LINES.length) { window.clearInterval(t); if (i >= CALL_LINES.length) { setPlaying(false); setPaused(false); } return; }
+        i += 1;
+        lineRef.current = i - 1;
+        setShown(i);
+      }, 3500);
       return;
     }
     window.speechSynthesis.cancel();
+    clearWatchdog();
     cancelledRef.current = false;
     setVoiceError("");
     setShown(0);
     setSeconds(0);
     setPaused(false);
+    pausedRef.current = false;
     setPlaying(true);
     // Voices may still be loading on first tap (iOS); give them a moment.
     window.setTimeout(() => { if (!cancelledRef.current) speakLine(0); }, 150);
@@ -270,10 +314,12 @@ function CallingLive() {
     if (paused) {
       window.speechSynthesis.resume();
       setPaused(false);
+      pausedRef.current = false;
       setPlaying(true);
     } else {
       window.speechSynthesis.pause();
       setPaused(true);
+      pausedRef.current = true;
       setPlaying(false);
     }
   };
@@ -299,9 +345,11 @@ function CallingLive() {
 
   const stopCall = () => {
     cancelledRef.current = true;
+    clearWatchdog();
     if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
     setPlaying(false);
     setPaused(false);
+    pausedRef.current = false;
   };
 
   useEffect(() => {
@@ -313,7 +361,7 @@ function CallingLive() {
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
   return (
-    <LiveShell title="Calling AI Agent — live phone call">
+    <LiveShell title="Calling AI Agent — live phone call" height="h-[560px] sm:h-[540px]">
       <div className="flex h-[56px] items-center justify-between gap-2">
         <div className="flex flex-1 items-center gap-2">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white"><User size={18} /></span>
@@ -325,12 +373,11 @@ function CallingLive() {
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lime/15 text-lime"><PhoneCall size={18} /></span>
         </div>
       </div>
-      <div className="mt-2 flex h-[148px] flex-col justify-start gap-2 overflow-hidden">
-        {CALL_LINES.map((m, i) => (
+      <div ref={scrollRef} className="mt-2 flex h-[300px] flex-col justify-start gap-2 overflow-y-auto pr-1">
+        {CALL_LINES.filter((_, i) => i < shown).map((m) => (
           <p
             key={m.text}
-            style={{ opacity: i < shown ? 1 : 0, transition: "opacity 0.5s ease" }}
-            className={`max-w-[92%] rounded-xl px-3 py-1.5 text-xs leading-relaxed ${m.who === "ai" ? "bg-lime/15 text-lime" : "ml-auto bg-white/10 text-white"}`}
+            className={`max-w-[92%] shrink-0 rounded-xl px-3 py-1.5 text-xs leading-relaxed ${m.who === "ai" ? "bg-lime/15 text-lime" : "ml-auto bg-white/10 text-white"}`}
           >
             <strong>{m.who === "ai" ? "AI Receptionist: " : "Sarah: "}</strong>{m.text}
           </p>
@@ -355,7 +402,7 @@ function CallingLive() {
             <button onClick={stopCall} className="flex h-10 items-center rounded-lg border border-lineDark bg-ink/60 px-3 text-sm font-bold text-white">Stop</button>
           </span>
         ) : (
-          <button onClick={start} disabled={!voiceSupported} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink disabled:opacity-60"><Play size={15} /> Hear a live call</button>
+          <button onClick={start} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink"><Play size={15} /> Hear a live call</button>
         )}
       </div>
       {!voiceSupported && <p className="mt-1 text-center text-[11px] font-bold text-amber-400">Voice is not available on this device.</p>}
