@@ -81,16 +81,6 @@ export default function Home() {
           </div>
           <DashboardPanel />
         </div>
-        <div className="mx-auto mt-12 max-w-shell px-4 sm:px-6">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {[{ slug: "hvac", name: "HVAC" }, { slug: "salons-spas", name: "Salons & Spas" }, { slug: "dental-healthcare", name: "Dental & Healthcare" }, { slug: "real-estate", name: "Real Estate" }].map((p) => (
-              <Link key={p.slug} href={`/industries/${p.slug}`} className="group relative block h-24 overflow-hidden rounded-card sm:h-28">
-                <Image src={INDUSTRIES.find((x) => x.slug === p.slug)!.image} alt={`${p.name} business`} fill className="object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
-                <span className="absolute inset-x-0 bottom-0 bg-ink/70 px-3 py-1.5 text-xs font-bold text-white">{p.name} →</span>
-              </Link>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* 2. Problems bento */}
