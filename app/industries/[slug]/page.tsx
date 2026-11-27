@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { INDUSTRIES, JOURNEY, GROUP_ACCENT } from "@/lib/data";
+import { INDUSTRIES, JOURNEY, SOLUTIONS, INDUSTRY_SOLUTIONS, GROUP_ACCENT } from "@/lib/data";
 import { SectionHead, CtaBanner } from "@/components/Shared";
 import { FunnelDiagram, BeforeAfter, Reveal } from "@/components/Animate";
 import Faq from "@/components/Faq";
@@ -51,6 +51,24 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         ][i];
         return { ...j, purpose: indWords.purpose, leak: indWords.leak };
       })} />
+    </div></section>
+    <section style={{ backgroundColor: GROUP_ACCENT[ind.group].soft }} className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+      <SectionHead label="Solutions" title={`Solutions for ${ind.name}`} sub={`Every solution, shaped for how a ${ind.name.toLowerCase()} business actually works — from the first ad click to the review after the job.`} />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {SOLUTIONS.map((s) => (
+          <Link key={s.slug} href={`/solutions/${s.slug}`} className="group rounded-card border border-line bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-tintLime text-ink"><s.icon size={22} /></span>
+            <h3 className="mt-3 text-xl font-bold">{s.slug === "calling-ai-agent" ? "Calling AI Agent — AI Receptionist" : s.name}</h3>
+            <p className="mt-2 leading-relaxed text-muted">{INDUSTRY_SOLUTIONS[ind.slug]?.[s.slug] ?? s.sub}</p>
+            <span className="mt-4 inline-block text-sm font-bold text-ink group-hover:underline">Learn more →</span>
+          </Link>
+        ))}
+        <Link href="/free-audit" className="group rounded-card bg-ink p-6 text-white shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg">
+          <h3 className="text-xl font-bold">Not sure where to start?</h3>
+          <p className="mt-2 leading-relaxed text-mutedDark">Get a Free Lead-Leak &amp; Automation Audit. We check your ads, reply speed, booking and follow-up — and show you the leaks in writing.</p>
+          <span className="mt-4 inline-block text-sm font-bold text-lime group-hover:underline">Get Your Free Audit →</span>
+        </Link>
+      </div>
     </div></section>
     <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
       <SectionHead label="Customized solutions" title={`What AZEDOR Builds for ${ind.name}`} />
