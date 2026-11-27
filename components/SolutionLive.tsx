@@ -147,7 +147,7 @@ function ConversationLive() {
     <LiveShell title="Conversation AI Agent — live chat">
       <p className="flex h-[24px] items-center gap-2 text-xs font-bold text-white">
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-lime/15 text-lime"><ChannelIcon size={13} /></span>
-        Channel: {chat.channel} <span className="font-normal text-mutedDark">· the same AI agent answers here too</span>
+        Channel: {chat.channel} <span className="font-normal text-mutedDark">· the same Conversation AI Agent answers here too</span>
       </p>
       <div className="mt-2 flex h-[200px] flex-col justify-between gap-2">
         {chat.messages.map((m, i) => (
@@ -170,7 +170,7 @@ function ConversationLive() {
 /* --- 3b. Calling AI Agent: live two-person phone call panel --- */
 const CALL_LINES = [
   { who: "caller", text: "Hi — my AC just stopped working." },
-  { who: "ai", text: "I'm sorry to hear that. This is AZEDOR's AI assistant, for your local HVAC business. Is anyone at home now?" },
+  { who: "ai", text: "I'm sorry to hear that. This is AZEDOR's AI Receptionist, for your local HVAC business. Is anyone at home now?" },
   { who: "caller", text: "Yes, we're home. It's urgent — it's so hot in here." },
   { who: "ai", text: "Understood — I will treat this as urgent. What is the best number for the technician to call?" },
   { who: "caller", text: "It's the number I'm calling from." },
@@ -179,7 +179,7 @@ const CALL_LINES = [
 const CALL_STATUSES = ["Ringing", "Answered", "Answered", "Booking", "Booking", "Booked"];
 
 /** Pick the best available English voices: a female voice for Sarah, a
-    clear neutral voice for the AI Agent. Falls back to the default voice. */
+    clear neutral voice for the Calling AI Agent. Falls back to the default voice. */
 function pickVoices() {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return { sarah: null as SpeechSynthesisVoice | null, ai: null as SpeechSynthesisVoice | null };
   const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("en"));
@@ -321,7 +321,7 @@ function CallingLive() {
         </div>
         <span className="flex items-center gap-1 text-xs font-bold text-lime"><PhoneIncoming size={14} /> {playing && !done ? "On the call" : done ? "Call ended" : paused ? "Call paused" : "Incoming call"}</span>
         <div className="flex flex-1 items-center justify-end gap-2">
-          <span className="text-right"><span className="block text-sm font-bold">AI Agent</span><span className="block text-[11px] text-mutedDark">Voice receptionist</span></span>
+          <span className="text-right"><span className="block text-sm font-bold">Calling AI Agent</span><span className="block text-[11px] text-mutedDark">AI Receptionist</span></span>
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lime/15 text-lime"><PhoneCall size={18} /></span>
         </div>
       </div>
@@ -332,7 +332,7 @@ function CallingLive() {
             style={{ opacity: i < shown ? 1 : 0, transition: "opacity 0.5s ease" }}
             className={`max-w-[92%] rounded-xl px-3 py-1.5 text-xs leading-relaxed ${m.who === "ai" ? "bg-lime/15 text-lime" : "ml-auto bg-white/10 text-white"}`}
           >
-            <strong>{m.who === "ai" ? "AI Agent: " : "Sarah: "}</strong>{m.text}
+            <strong>{m.who === "ai" ? "AI Receptionist: " : "Sarah: "}</strong>{m.text}
           </p>
         ))}
         {shown === 0 && <p className="py-2 text-center text-xs text-mutedDark">Press play to hear a live call — spoken aloud, line by line, with a typed transcript.</p>}

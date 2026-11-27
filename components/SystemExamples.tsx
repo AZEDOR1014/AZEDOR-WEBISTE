@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const EXAMPLES = [
   { key: "HVAC CRM pipeline", title: "HVAC CRM pipeline", body: "New Inquiry → Qualified → Visit Scheduled → Estimate Sent → Approved → Job Completed → Follow-Up. Every lead, every estimate, in one place." },
-  { key: "AI receptionist", title: "AI receptionist conversation", body: "A customer calls, or messages on WhatsApp, Instagram, Facebook, Threads, SMS, email or your website chat. The AI agent answers in your business name, qualifies and books. Caller: My AC stopped working. AI: I'm sorry to hear that. Is anyone at home now, and is this an emergency? … Appointment booked for tomorrow, 9–11am. A human can take over at any time." },
-  { key: "Salon booking", title: "Salon booking workflow", body: "Instagram inquiry → AI replies with services and prices → client picks a time → booking confirmed → reminder sent the day before → rebooking invite after the visit." },
-  { key: "Real estate", title: "Real estate lead qualification", body: "Buyer asks about a listing → AI asks budget, timeline and area → qualified lead routed to the right agent → viewing booked." },
+  { key: "AI agents", title: "Conversation and Calling AI Agent conversation", body: "A customer calls, or messages on WhatsApp, Instagram, Facebook, Threads, SMS, email or your website chat. The Calling AI Agent answers calls and the Conversation AI Agent answers messages, in your business name, qualifies and books. Caller: My AC stopped working. AI Receptionist: I'm sorry to hear that. Is anyone at home now, and is this an emergency? … Appointment booked for tomorrow, 9–11am. A human can take over at any time." },
+  { key: "Salon booking", title: "Salon booking workflow", body: "Instagram inquiry → the Conversation AI Agent replies with services and prices → client picks a time → booking confirmed → reminder sent the day before → rebooking invite after the visit." },
+  { key: "Real estate", title: "Real estate lead qualification", body: "Buyer asks about a listing → the Conversation AI Agent asks budget, timeline and area → qualified lead routed to the right agent → viewing booked." },
   { key: "Follow-up", title: "Automated follow-up workflow", body: "Lead in → instant reply → day-2 check-in → day-5 reminder → no-show rescue → long-term nurture. It stops the moment the lead replies." },
 ];
 

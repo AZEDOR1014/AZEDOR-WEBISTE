@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AI_CHANNELS } from "@/lib/data";
 
-/** One AI agent, every channel — icon + name + one plain line per channel. */
+/** One Conversation AI Agent, every channel — icon + name + one plain line per channel. */
 export function AiChannels() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

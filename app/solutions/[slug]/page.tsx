@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SOLUTIONS, JOURNEY } from "@/lib/data";
 import { SectionHead, CtaBanner, AiChannels } from "@/components/Shared";
 import SolutionLive from "@/components/SolutionLive";
+import ConversationDiagram from "@/components/ConversationDiagram";
 import Faq from "@/components/Faq";
 import AuditForm from "@/components/AuditForm";
 
@@ -32,8 +33,14 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
     </div></section>
     {s.slug === "conversation-ai-agent" && (
       <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
-        <SectionHead label="Every channel" title="One AI Agent. Every Channel." sub="Your customers message wherever they are. The AI agent answers on all of them — in your business name, with one log in your CRM." />
+        <SectionHead label="Every channel" title="One Conversation AI Agent. Every Channel." sub="Your customers message wherever they are. The Conversation AI Agent answers on all of them — in your business name, with one log in your CRM." />
         <AiChannels />
+      </div></section>
+    )}
+    {s.slug === "conversation-ai-agent" && (
+      <section className="bg-paper py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+        <SectionHead label="How it connects" title="Every Message Lands With One Conversation AI Agent." sub="A customer messages on any channel. The Conversation AI Agent answers, qualifies them and books the appointment — straight into your calendar." />
+        <ConversationDiagram />
       </div></section>
     )}
     {s.slug === "calling-ai-agent" && (

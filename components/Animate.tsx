@@ -56,7 +56,27 @@ export type FunnelStep = { stage: string; purpose: string; solution: string; det
 /** String icon keys (from server components) map to components here, inside the client component — component functions cannot cross the server/client boundary as props. */
 const FUNNEL_ICONS: Record<string, LucideIcon> = { Magnet, MousePointerClick, PhoneCall, ClipboardCheck, Workflow, HeartHandshake };
 
-const FUNNEL_WIDTHS = [100, 88, 76, 64, 52, 40];
+/** Band widths: gentle taper on mobile (so headlines fit), steeper on desktop. */
+const FUNNEL_WIDTHS = [
+  "w-full",
+  "w-[97%] sm:w-[90%]",
+  "w-[94%] sm:w-[80%]",
+  "w-[91%] sm:w-[70%]",
+  "w-[88%] sm:w-[62%]",
+  "w-[85%] sm:w-[54%]",
+];
+
+/** Short headline labels so every stage headline fits on ONE line, even on
+    the narrow bottom bands. The full solution names still appear on the
+    solution pages and in the content below the divider. */
+const SHORT_SOLUTION: Record<string, string> = {
+  "Paid Advertising": "Paid Ads",
+  "Websites & Sales Funnels": "Website & Funnels",
+  "Conversation & Calling AI Agents": "Conversation & Calling AI",
+  "CRM & Sales Automation": "CRM Automation",
+  "Business Process Automation": "Process Automation",
+  "Reputation Management": "Reviews",
+};
 
 /** Real funnel: trapezoid bands, wide at the top and narrower at the bottom,
     with slanted edges, so the whole shape reads as a funnel. Headline and
@@ -74,18 +94,16 @@ export function FunnelDiagram({ steps, dark = true }: { steps: FunnelStep[]; dar
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: i * 0.15 }}
-          className="mx-auto mb-[3px] flex min-h-[104px] min-w-[240px] flex-col justify-center px-6 py-3 sm:min-w-0"
+          className={`mx-auto mb-[3px] flex min-h-[104px] min-w-0 flex-col justify-center px-3 py-3 [clip-path:polygon(0_0,100%_0,calc(100%-12px)_100%,12px_100%)] sm:px-6 sm:[clip-path:polygon(0_0,100%_0,calc(100%-20px)_100%,20px_100%)] ${FUNNEL_WIDTHS[Math.min(i, FUNNEL_WIDTHS.length - 1)]}`}
           style={{
-            width: `${FUNNEL_WIDTHS[Math.min(i, FUNNEL_WIDTHS.length - 1)]}%`,
             backgroundColor: st.color,
             color: st.text,
-            clipPath: "polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%)",
           }}
         >
-          <p className="flex items-center gap-2 text-base font-extrabold sm:text-lg">
-            {(() => { const I = typeof st.icon === "string" ? FUNNEL_ICONS[st.icon] : st.icon; return I ? <I size={20} strokeWidth={2.5} /> : null; })()}
-            <span>{i + 1}. {st.stage}</span>
-            <span className="font-semibold opacity-80">· {st.solution}</span>
+          <p className={`flex flex-nowrap items-center gap-1.5 whitespace-nowrap font-extrabold sm:gap-2 ${i === 2 ? "text-[11px] sm:text-base" : i >= 3 ? "text-xs sm:text-base" : "text-xs sm:text-lg"}`}>
+            {(() => { const I = typeof st.icon === "string" ? FUNNEL_ICONS[st.icon] : st.icon; return I ? <I size={16} strokeWidth={2.5} className="shrink-0 sm:h-5 sm:w-5" /> : null; })()}
+            <span className="shrink-0">{i + 1}. {st.stage}</span>
+            <span className="shrink-0 font-semibold opacity-80">· {SHORT_SOLUTION[st.solution] ?? st.solution}</span>
           </p>
           <hr className="my-2 border-t" style={{ borderColor: st.text, opacity: 0.3 }} />
           <p className="text-xs leading-relaxed opacity-90 sm:text-sm">{st.purpose}</p>

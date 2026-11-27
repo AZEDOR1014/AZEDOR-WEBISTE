@@ -19,12 +19,12 @@ export const INDUSTRIES: Industry[] = [
       { title: "Unanswered quotations", example: "You send an estimate for a new system. No one follows up for a week.", consequence: "The customer forgets you and signs with a competitor." },
       { title: "Forgotten maintenance customers", example: "Last year's tune-up customers never hear from you again.", consequence: "Seasonal work dries up and the diary swings from full to empty." },
     ],
-    solutions: ["AI voice receptionist that answers every call in your business name", "Missed-call text-back with a booking link", "Emergency inquiry routing to the right technician", "Automated estimate follow-up", "Seasonal maintenance reminders", "Review requests after every completed job"],
+    solutions: ["Calling AI Agent — your AI Receptionist — that answers every call in your business name", "Missed-call text-back with a booking link", "Emergency inquiry routing to the right technician", "Automated estimate follow-up", "Seasonal maintenance reminders", "Review requests after every completed job"],
     pipeline: ["New Inquiry", "Qualified", "Visit Scheduled", "Estimate Sent", "Approved", "Job Completed", "Follow-Up"],
     before: "Calls go to voicemail after hours. Estimates sit unanswered. Maintenance customers drift away.",
     after: "Every call is answered. Estimates are followed up automatically. Maintenance customers get a reminder before the season starts.",
     faqs: [
-      { q: "Can the AI agent handle emergency calls?", a: "Yes. It answers in your business name, takes the details, and routes urgent calls by the rules you set. A human on your team can take over at any time." },
+      { q: "Can the Calling AI Agent handle emergency calls?", a: "Yes. The Calling AI Agent answers in your business name, takes the details, and routes urgent calls by the rules you set. A human on your team can take over at any time." },
       { q: "Do I need to replace my current booking system?", a: "No. We connect to the tools you already use, or build the booking flow inside your AZEDOR system — whichever fits your business." },
       { q: "What happens during the free audit?", a: "We check your ads, your reply speed, your booking page and your reviews, then show you in writing where leads are leaking." },
     ],
@@ -43,7 +43,7 @@ export const INDUSTRIES: Industry[] = [
     after: "Every inquiry gets a fast reply and a booking link. Reminders go out automatically. Past clients are invited back before they drift away.",
     faqs: [
       { q: "Will it work with my booking system?", a: "Yes. We work with the booking tools salons already use, or build booking into your AZEDOR system." },
-      { q: "Can it reply on Instagram?", a: "Yes. The AI agent handles common Instagram and Facebook inquiries, qualifies them and sends a booking link." },
+      { q: "Can the Conversation AI Agent reply on Instagram?", a: "Yes. The Conversation AI Agent handles common Instagram and Facebook inquiries, qualifies them and sends a booking link." },
       { q: "How do rebooking campaigns work?", a: "After a visit, clients get a reminder to rebook at the right interval for their service — and a nudge if they do not." },
     ],
   },
@@ -55,12 +55,12 @@ export const INDUSTRIES: Industry[] = [
       { title: "Price shoppers, no qualification", example: "Your team spends hours answering people who were never a fit.", consequence: "Your diary fills with the wrong consultations." },
       { title: "No follow-up after consultation", example: "A client leaves undecided. No one checks in.", consequence: "A high-value treatment is lost to silence." },
     ],
-    solutions: ["AI qualification before the consultation is booked", "Consultation booking with reminders", "Treatment follow-up and aftercare messages", "Review requests after treatment", "Rebooking for maintenance treatments"],
+    solutions: ["Conversation AI Agent qualification before the consultation is booked", "Consultation booking with reminders", "Treatment follow-up and aftercare messages", "Review requests after treatment", "Rebooking for maintenance treatments"],
     pipeline: ["New Inquiry", "Qualified", "Consultation Booked", "Consultation Done", "Treatment Booked", "Treatment Done", "Review & Rebook"],
     before: "Inquiries wait days for a reply. Consultations are booked with unqualified leads. Clients leave undecided and unheard from.",
     after: "Inquiries are answered fast and qualified first. Consultations are booked with the right people, and follow-up happens after every visit.",
     faqs: [
-      { q: "Does the AI agent give medical advice?", a: "No. It answers general questions, books consultations and hands over to your team for anything clinical." },
+      { q: "Do the Conversation and Calling AI Agents give medical advice?", a: "No. They answer general questions, book consultations and hand over to your team for anything clinical." },
       { q: "Can you help with high-value treatments?", a: "Yes. The system is built around consultation quality, not volume — fewer, better consultations." },
       { q: "What happens during the free audit?", a: "We check your ads, reply speed, booking page and reviews, and show you where consultations are leaking." },
     ],
@@ -78,7 +78,7 @@ export const INDUSTRIES: Industry[] = [
     before: "Calls are missed while the desk is busy. No-shows leave empty chairs. Admin eats the day.",
     after: "Inquiries are answered and appointments confirmed automatically. The front desk handles patients, not phone tag.",
     faqs: [
-      { q: "Does the AI agent give medical advice?", a: "No. It never provides diagnosis or medical advice, and it never collects sensitive medical information through unsecured systems. It handles admin, booking and handover to your team." },
+      { q: "Do the Conversation and Calling AI Agents give medical advice?", a: "No. They never provide diagnosis or medical advice, and they never collect sensitive medical information through unsecured systems. They handle admin, booking and handover to your team." },
       { q: "Can it hand over to a human?", a: "Yes. At any point the conversation can be handed to a member of your team." },
       { q: "Do you claim healthcare compliance?", a: "No. We make no compliance claims without verification, and we build in privacy and human-review safeguards." },
     ],
@@ -91,12 +91,12 @@ export const INDUSTRIES: Industry[] = [
       { title: "Delayed agent response", example: "A buyer asks about a listing at 8pm. The reply comes Monday.", consequence: "They have already viewed with another agent." },
       { title: "Missed viewings", example: "A viewing is booked, then forgotten.", consequence: "An empty property and an unhappy seller." },
     ],
-    solutions: ["Buyer and seller AI qualification", "Agent assignment by area and availability", "Viewing appointment requests and reminders", "Property inquiry automation", "Long-term lead nurturing for not-yet-ready buyers"],
+    solutions: ["Buyer and seller qualification by the Conversation AI Agent", "Agent assignment by area and availability", "Viewing appointment requests and reminders", "Property inquiry automation", "Long-term lead nurturing for not-yet-ready buyers"],
     pipeline: ["New Lead", "Qualified", "Agent Assigned", "Viewing", "Negotiation", "Closed"],
     before: "Agents chase unqualified inquiries. Viewings are missed. Follow-up stops after the first call.",
     after: "Leads are qualified before an agent's time is spent. Viewings are booked and reminded. Long-term buyers are nurtured until they are ready.",
     faqs: [
-      { q: "Can it qualify buyers before an agent calls?", a: "Yes. The AI agent asks budget, timeline, location and financing questions, then routes qualified leads to the right agent." },
+      { q: "Can the Conversation AI Agent qualify buyers before an agent calls?", a: "Yes. The Conversation AI Agent asks budget, timeline, location and financing questions, then routes qualified leads to the right agent." },
       { q: "Does it work for lettings too?", a: "Yes. The same qualification and viewing flow works for rentals." },
       { q: "What happens during the free audit?", a: "We check your ads, listings, reply speed and follow-up, and show you where inquiries are leaking." },
     ],
@@ -222,7 +222,7 @@ export const INDUSTRIES: Industry[] = [
     before: "Inquiries are unqualified and slow. Intake is scattered. Follow-up depends on memory.",
     after: "Inquiries are qualified first, consultations are booked with reminders, and intake lives in one place — with a human in control.",
     faqs: [
-      { q: "Does the AI agent give legal advice?", a: "No. It handles general inquiries, books consultations and hands over to your team. It never gives legal advice." },
+      { q: "Does the Conversation AI Agent give legal advice?", a: "No. It handles general inquiries, books consultations and hands over to your team. It never gives legal advice." },
       { q: "Is client information kept private?", a: "Yes. We build in privacy safeguards and human review before any sensitive information is handled." },
       { q: "What happens during the free audit?", a: "We check your ads, reply speed, intake flow and follow-up, and show you the leaks in writing." },
     ],
@@ -253,7 +253,7 @@ export const INDUSTRIES: Industry[] = [
       { title: "Booking takes too long", example: "A customer has to call, wait, and call again to book.", consequence: "They book with the business that made it easy." },
       { title: "No repeat business system", example: "Happy customers leave and are never invited back.", consequence: "You keep paying to find new customers." },
     ],
-    solutions: ["Lead capture from every channel into one CRM", "AI answering and qualification", "Booking with reminders", "Automated follow-up and rebooking", "Review requests after every job"],
+    solutions: ["Lead capture from every channel into one CRM", "Conversation and Calling AI Agents answering and qualifying", "Booking with reminders", "Automated follow-up and rebooking", "Review requests after every job"],
     pipeline: ["New Inquiry", "Qualified", "Booked", "Delivered", "Follow-Up", "Review", "Repeat"],
     before: "Leads are scattered. Booking is slow. Repeat business is left to chance.",
     after: "Every lead lands in one place, is answered fast, is booked with reminders, and is invited back.",
@@ -282,7 +282,7 @@ export const SOLUTIONS: Solution[] = [
     uses: ["Emergency HVAC calls in a heatwave", "Salon bookings before a holiday weekend", "Dental check-up campaigns in a new area"],
     integrations: ["Meta Ads", "Google Ads", "Landing pages", "CRM", "Call tracking"],
     faqs: [
-      { q: "Do you run ads without follow-up?", a: "No. We never run ads alone. Every campaign is connected to a landing page, an AI answer and follow-up." },
+      { q: "Do you run ads without follow-up?", a: "No. We never run ads alone. Every campaign is connected to a landing page, a Conversation AI Agent answer and follow-up." },
       { q: "How do I know what the ads brought in?", a: "Every lead is tagged by source in your CRM, so you see which campaign booked the job." },
       { q: "What happens during the free audit?", a: "We review your current ads, if any, and show you where the spend is leaking." },
     ],
@@ -302,29 +302,29 @@ export const SOLUTIONS: Solution[] = [
     ],
   },
   {
-    slug: "conversation-ai-agent", icon: MessageCircle, name: "Conversation AI Agent", headline: "An AI Agent That Answers Every Message. 24/7.", sub: "A chat agent that answers messages, qualifies leads and books appointments — on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads — and hands over to your team whenever it should.",
+    slug: "conversation-ai-agent", icon: MessageCircle, name: "Conversation AI Agent", headline: "A Conversation AI Agent That Answers Every Message. 24/7.", sub: "The Conversation AI Agent answers messages, qualifies leads and books appointments — on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads — and hands over to your team whenever it should.",
     problem: "A lead messages at 9pm. No one is there. The lead books with someone else.",
-    what: "One AI agent on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads that answers, qualifies and books — in your business name, with a full log of every conversation.",
+    what: "One Conversation AI Agent on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads that answers, qualifies and books — in your business name, with a full log of every conversation.",
     how: ["We train it on your services, prices and FAQs", "It answers, qualifies and books the appointment", "It hands over to a human when the question needs one", "Every chat and message is logged in your CRM"],
     industries: ["HVAC", "Dental & Healthcare", "Salons & Spas", "Real Estate", "Home Services", "Legal"],
     uses: ["Booking a salon appointment from Instagram DMs", "Qualifying a property buyer over WhatsApp", "Answering service questions on your website chat"],
     integrations: ["Website chat", "WhatsApp", "SMS", "Email", "Facebook", "Instagram", "Threads", "CRM", "Calendar"],
     faqs: [
-      { q: "Will customers know it is AI?", a: "Yes. It introduces itself as your business's AI assistant. It never pretends to be a person." },
+      { q: "Will customers know it is AI?", a: "Yes. It introduces itself as your business's Conversation AI Agent. It never pretends to be a person." },
       { q: "Can it hand over to my team?", a: "Yes. At any point it can hand the conversation to a human, with the full history attached." },
       { q: "Do you guarantee response times?", a: "No. We do not guarantee performance that has not been tested. We measure it after launch and show you the real numbers." },
     ],
   },
   {
-    slug: "calling-ai-agent", icon: PhoneCall, name: "Calling AI Agent", headline: "An AI Voice Receptionist That Answers Every Call. 24/7.", sub: "A voice agent that answers phone calls in your business name, talks to the caller, asks the right questions, qualifies them and books the appointment — day or night, and hands over to your team whenever it should.",
+    slug: "calling-ai-agent", icon: PhoneCall, name: "Calling AI Agent", headline: "A Calling AI Agent That Answers Every Call. 24/7.", sub: "The Calling AI Agent — your AI Receptionist — answers phone calls in your business name, talks to the caller, asks the right questions, qualifies them and books the appointment — day or night, and hands over to your team whenever it should.",
     problem: "The phone rings while your team is busy, after hours, or on a job. No one answers. The caller tries the next business.",
-    what: "An AI voice receptionist on your business phone line that answers every call, takes the details, checks if it is urgent, qualifies the caller and books the appointment — with a full log of every call.",
+    what: "The Calling AI Agent — your AI Receptionist — on your business phone line answers every call, takes the details, checks if it is urgent, qualifies the caller and books the appointment — with a full log of every call.",
     how: ["We train it on your services, prices and FAQs", "It answers in your business name and takes the caller's details", "It asks if it is urgent and qualifies the caller", "It books the appointment and logs the call in your CRM"],
     industries: ["HVAC", "Dental & Healthcare", "Salons & Spas", "Real Estate", "Home Services", "Legal"],
     uses: ["Answering an emergency HVAC call at night", "Taking a booking call while the team is on a job", "Qualifying a new patient before the front desk calls back"],
     integrations: ["Phone", "Calendar", "CRM", "SMS reminders"],
     faqs: [
-      { q: "Will callers know it is AI?", a: "Yes. It introduces itself as your business's AI assistant. It never pretends to be a person." },
+      { q: "Will callers know it is AI?", a: "Yes. It introduces itself as your business's Calling AI Agent. It never pretends to be a person." },
       { q: "What if it is a real emergency?", a: "It asks if the call is urgent and follows the rules you set — including handing over or routing urgent calls to your team." },
       { q: "Can it hand over to my team?", a: "Yes. At any point it can hand the call to a human, with the details it has already taken." },
     ],
@@ -379,13 +379,13 @@ export type JourneyStep = { stage: string; purpose: string; solution: string; de
 export const JOURNEY: JourneyStep[] = [
   { stage: "Attract", icon: "Magnet", purpose: "Get found by people who need you", solution: "Paid Advertising", detail: "Meta and Google Ads aimed at your city and your service.", color: "#F59E0B", text: "#101211", leak: "Without it: nobody finds you." },
   { stage: "Capture", icon: "MousePointerClick", purpose: "Turn a click into a lead", solution: "Websites & Sales Funnels", detail: "A fast page with one clear form — no friction, no confusion.", color: "#0EA5E9", text: "#101211", leak: "Without it: the click leaves." },
-  { stage: "Engage", icon: "PhoneCall", purpose: "Answer fast, qualify, build trust", solution: "Conversation & Calling AI Agents", detail: "AI agents answer calls and messages on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads, 24/7, and hand over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
+  { stage: "Engage", icon: "PhoneCall", purpose: "Answer fast, qualify, build trust", solution: "Conversation & Calling AI Agents", detail: "The Calling AI Agent answers calls and the Conversation AI Agent answers messages on your website, WhatsApp, SMS, email, Facebook, Instagram and Threads, 24/7, and they hand over when needed.", color: "#14B8A6", text: "#101211", leak: "Without it: missed calls, slow replies." },
   { stage: "Convert", icon: "ClipboardCheck", purpose: "Book the appointment", solution: "CRM & Sales Automation", detail: "The lead is qualified, assigned and booked — in one pipeline.", color: "#C3F75D", text: "#101211", leak: "Without it: quotes sent, never followed up." },
   { stage: "Deliver", icon: "Workflow", purpose: "Do the job, on time", solution: "Business Process Automation", detail: "Reminders, scheduling and admin run in the background.", color: "#8B7CF6", text: "#FFFFFF", leak: "Without it: no reminder, no repeat job." },
   { stage: "Retain", icon: "HeartHandshake", purpose: "Bring them back, get the review", solution: "Reputation Management", detail: "A review request after the job, and a rebooking invite at the right time.", color: "#FB7185", text: "#101211", leak: "Without it: customers drift away, no reviews." },
 ];
 
-/** Every channel the AZEDOR AI agent answers on — one agent, one log, every message. */
+/** Every channel the Conversation AI Agent answers on — one agent, one log, every message. */
 export type AiChannel = { name: string; icon: LucideIcon; line: string };
 export const AI_CHANNELS: AiChannel[] = [
   { name: "Website chat", icon: Globe, line: "Answers visitors on your website, qualifies them and books the appointment." },

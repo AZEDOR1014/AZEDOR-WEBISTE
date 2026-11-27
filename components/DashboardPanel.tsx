@@ -5,7 +5,7 @@ import { PhoneCall, MessageSquareText, KanbanSquare, CalendarCheck, Mail, Star }
 
 // Status colours: teal = engaged, sky = new, lime = booked/good, violet = scheduled, amber = waiting, rose = at risk.
 const ROWS = [
-  { icon: PhoneCall, label: "AI receptionist", detail: "Answered 3 calls · booked 2 appointments", time: "2 min ago", dot: "#14B8A6" },
+  { icon: PhoneCall, label: "Calling AI Agent", detail: "Your AI Receptionist — answered 3 calls · booked 2 appointments", time: "2 min ago", dot: "#14B8A6" },
   { icon: MessageSquareText, label: "New inquiry — Meta Ads", detail: "AC repair · qualified · in pipeline", time: "9 min ago", dot: "#0EA5E9" },
   { icon: KanbanSquare, label: "CRM pipeline", detail: "New Lead → Qualified → Visit Scheduled", time: "Live", dot: "#C3F75D" },
   { icon: CalendarCheck, label: "Appointments today", detail: "4 confirmed · 1 rescheduled", time: "Today", dot: "#8B7CF6" },
@@ -47,10 +47,10 @@ export default function DashboardPanel() {
           Live
         </span>
       </div>
-      {/* AI chat — all 4 messages always shown, fixed height. Only the
+      {/* Calling AI Agent chat — all 4 messages always shown, fixed height. Only the
           newest message is highlighted (opacity / colour), nothing is
           added, removed or resized, so the card height never changes. */}
-      <div className="mt-4 h-[248px] overflow-hidden rounded-xl border border-lineDark bg-ink/60 p-3" aria-label="AI receptionist chat">
+      <div className="mt-4 h-[248px] overflow-hidden rounded-xl border border-lineDark bg-ink/60 p-3" aria-label="Calling AI Agent chat">
         <div className="flex h-full flex-col justify-between gap-2">
           {CHAT.map((m, i) => (
             <p

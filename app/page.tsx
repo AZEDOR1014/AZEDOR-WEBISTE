@@ -30,7 +30,7 @@ const COMPARE: { label: string; agency: string; tools: string; azedor: string }[
   { label: "Lead generation", agency: "Yes", tools: "No", azedor: "Yes — connected to follow-up" },
   { label: "Industry-specific strategy", agency: "Sometimes", tools: "No", azedor: "Yes — built around your business" },
   { label: "Website and funnel development", agency: "Yes", tools: "No", azedor: "Yes" },
-  { label: "AI lead engagement", agency: "Rarely", tools: "Sometimes", azedor: "Yes — 24/7, with human handover" },
+  { label: "Conversation & Calling AI Agent engagement", agency: "Rarely", tools: "Sometimes", azedor: "Yes — 24/7, with human handover" },
   { label: "CRM integration", agency: "Sometimes", tools: "Partial", azedor: "Yes — one connected system" },
   { label: "Automated follow-up", agency: "Sometimes", tools: "No", azedor: "Yes" },
   { label: "Customer retention", agency: "Rarely", tools: "No", azedor: "Yes — rebooking and reviews" },
@@ -199,7 +199,7 @@ export default function Home() {
           <ProcessSteps steps={[
             { n: "01", title: "Discover", text: "Your business, customer journey and problems." },
             { n: "02", title: "Design", text: "A customized strategy — in writing, before you commit." },
-            { n: "03", title: "Implement", text: "Ads, website, AI agent, CRM and follow-up, built and tested." },
+            { n: "03", title: "Implement", text: "Ads, website, Conversation and Calling AI Agents, CRM and follow-up, built and tested." },
             { n: "04", title: "Optimize", text: "Monitored, improved and supported after launch." },
           ]} />
         </div>
@@ -234,7 +234,7 @@ export default function Home() {
             { q: "What happens during the free audit?", a: "We review your website and funnel, lead handling, sales follow-up, CRM and automation opportunities — then give you customized recommendations in writing." },
             { q: "Can you integrate my existing software?", a: "Yes. Integrations are part of the design. We connect the tools you already pay for." },
             { q: "How long does implementation take?", a: "It depends on scope. You get a written plan and timeline before any build starts." },
-            { q: "Can AI hand conversations over to my team?", a: "Yes. At any point the AI agent can hand a conversation to a human, with the full history attached." },
+            { q: "Can the Conversation AI Agent hand conversations over to my team?", a: "Yes. At any point the Conversation AI Agent can hand a conversation to a human, with the full history attached." },
             { q: "Do you provide ongoing support?", a: "Yes. We monitor performance, improve workflows and provide support after launch." },
             { q: "How much does it cost?", a: "Implementation scope and pricing depend on your business requirements. The free audit gives you a written plan before you commit to anything." },
           ]} />

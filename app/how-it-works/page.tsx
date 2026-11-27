@@ -16,7 +16,7 @@ export default function Page() {
       <ProcessSteps steps={[
         { n: "1", title: "Discover", text: "Your business, customer journey and problems — starting with your free audit." },
         { n: "2", title: "Design", text: "A customized strategy in writing, with scope and timeline before you commit." },
-        { n: "3", title: "Implement", text: "Ads, website, AI agent, CRM and follow-up — built, integrated and tested with you." },
+        { n: "3", title: "Implement", text: "Ads, website, Conversation and Calling AI Agents, CRM and follow-up — built, integrated and tested with you." },
         { n: "4", title: "Optimize", text: "Performance monitored, workflows improved, support after launch." },
       ]} />
       <p className="mt-12"><Link href="/free-audit" className="rounded-btn bg-lime px-6 py-3 font-bold text-ink">Get Your Free Audit →</Link></p>

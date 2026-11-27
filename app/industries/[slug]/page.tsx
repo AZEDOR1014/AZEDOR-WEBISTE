@@ -44,7 +44,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         const indWords = [
           { purpose: `${ind.name} ads & search`, leak: "They find a competitor first." },
           { purpose: "Call, form or message", leak: "Missed call = lost customer." },
-          { purpose: "AI answers fast & qualifies", leak: "Slow reply loses the booking." },
+          { purpose: "Conversation & Calling AI Agents answer fast & qualify", leak: "Slow reply loses the booking." },
           { purpose: `Booked: ${ind.pipeline[2] ?? "appointment"}`, leak: "Quote sent, never followed up." },
           { purpose: "Job done, reminders sent", leak: "No reminder, no repeat visit." },
           { purpose: "Review + rebooking invite", leak: "Customer never comes back." },
