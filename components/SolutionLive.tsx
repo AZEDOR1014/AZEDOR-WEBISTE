@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState, type ReactNode } from "react";
-import { Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Check, Send, Clock, MessageCircle, Camera, Play, RotateCcw, User, PhoneIncoming } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Check, Send, Clock, MessageCircle, Camera, Play, Pause, RotateCcw, User, PhoneIncoming, Volume2, VolumeX } from "lucide-react";
 
 /**
  * Live, working panels for the 7 solution pages — examples only.
@@ -177,25 +177,141 @@ const CALL_LINES = [
   { who: "ai", text: "Booked — tomorrow, 9–11am. A technician will call to confirm." },
 ];
 const CALL_STATUSES = ["Ringing", "Answered", "Answered", "Booking", "Booking", "Booked"];
+
+/** Pick the best available English voices: a female voice for Sarah, a
+    clear neutral voice for the AI Agent. Falls back to the default voice. */
+function pickVoices() {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return { sarah: null as SpeechSynthesisVoice | null, ai: null as SpeechSynthesisVoice | null };
+  const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("en"));
+  const pool = voices.length ? voices : window.speechSynthesis.getVoices();
+  const female = pool.find((v) => /samantha|zira|karen|moira|tessa|susan|aria|jenny|female|google us english/i.test(v.name));
+  const male = pool.find((v) => v !== female && /daniel|david|guy|ryan|male|google uk english male/i.test(v.name));
+  return {
+    sarah: female || pool[0] || null,
+    ai: male || pool.find((v) => v !== female) || pool[0] || null,
+  };
+}
+
 function CallingLive() {
   const [playing, setPlaying] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(1);
   const [shown, setShown] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [voiceSupported, setVoiceSupported] = useState(true);
+  const [voiceError, setVoiceError] = useState("");
+  const voicesRef = useRef<{ sarah: SpeechSynthesisVoice | null; ai: SpeechSynthesisVoice | null }>({ sarah: null, ai: null });
+  const lineRef = useRef(0);
+  const cancelledRef = useRef(false);
+  const mutedRef = useRef(false);
+  const volumeRef = useRef(1);
   const done = shown >= CALL_LINES.length;
+
+  // Load voices (browsers, including iOS Safari, fill the list after a delay).
   useEffect(() => {
-    if (!playing || done) return;
-    const t = setInterval(() => setShown((c) => Math.min(c + 1, CALL_LINES.length)), 2200);
-    return () => clearInterval(t);
-  }, [playing, done]);
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) { setVoiceSupported(false); return; }
+    const load = () => { voicesRef.current = pickVoices(); };
+    load();
+    window.speechSynthesis.addEventListener("voiceschanged", load);
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", load);
+  }, []);
+
+  // Stop speaking when the user leaves the page / panel unmounts.
   useEffect(() => {
-    if (!playing || done) return;
+    return () => { if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel(); };
+  }, []);
+
+  // Speak one line, then move to the next when it finishes.
+  const speakLine = (idx: number) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    if (idx >= CALL_LINES.length) { setPlaying(false); setPaused(false); return; }
+    lineRef.current = idx;
+    setShown(idx + 1);
+    const line = CALL_LINES[idx];
+    const utter = new SpeechSynthesisUtterance(line.text);
+    const voice = line.who === "ai" ? voicesRef.current.ai : voicesRef.current.sarah;
+    if (voice) utter.voice = voice;
+    utter.lang = "en-US";
+    utter.rate = 1.0;
+    utter.pitch = line.who === "ai" ? 0.9 : 1.2;
+    utter.volume = mutedRef.current ? 0 : volumeRef.current;
+    utter.onend = () => {
+      if (cancelledRef.current) return;
+      speakLine(idx + 1);
+    };
+    utter.onerror = () => {
+      if (cancelledRef.current) return;
+      // If a line fails to speak, keep the call moving after a short pause.
+      window.setTimeout(() => { if (!cancelledRef.current) speakLine(idx + 1); }, 800);
+    };
+    window.speechSynthesis.speak(utter);
+  };
+
+  const start = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      setVoiceSupported(false);
+      setVoiceError("Voice is not available on this device.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    cancelledRef.current = false;
+    setVoiceError("");
+    setShown(0);
+    setSeconds(0);
+    setPaused(false);
+    setPlaying(true);
+    // Voices may still be loading on first tap (iOS); give them a moment.
+    window.setTimeout(() => { if (!cancelledRef.current) speakLine(0); }, 150);
+  };
+
+  const togglePause = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    if (paused) {
+      window.speechSynthesis.resume();
+      setPaused(false);
+      setPlaying(true);
+    } else {
+      window.speechSynthesis.pause();
+      setPaused(true);
+      setPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const next = !muted;
+    setMuted(next);
+    mutedRef.current = next;
+    // Re-speak the current line at the new volume so mute takes effect now.
+    if (playing && !paused && typeof window !== "undefined" && "speechSynthesis" in window) {
+      cancelledRef.current = true;
+      window.speechSynthesis.cancel();
+      cancelledRef.current = false;
+      window.setTimeout(() => speakLine(lineRef.current), 100);
+    }
+  };
+
+  const changeVolume = (v: number) => {
+    setVolume(v);
+    volumeRef.current = v;
+    if (v > 0 && muted) { setMuted(false); mutedRef.current = false; }
+  };
+
+  const stopCall = () => {
+    cancelledRef.current = true;
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    setPlaying(false);
+    setPaused(false);
+  };
+
+  useEffect(() => {
+    if (!playing || paused || done) return;
     const t = setInterval(() => setSeconds((s) => s + 1), 1000);
     return () => clearInterval(t);
-  }, [playing, done]);
-  const status = !playing && shown === 0 ? "Ringing" : CALL_STATUSES[Math.max(shown - 1, 0)];
+  }, [playing, paused, done]);
+  const status = !playing && !paused && shown === 0 ? "Ringing" : CALL_STATUSES[Math.max(shown - 1, 0)];
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
-  const start = () => { setShown(0); setSeconds(0); setPlaying(true); };
   return (
     <LiveShell title="Calling AI Agent — live phone call">
       <div className="flex h-[56px] items-center justify-between gap-2">
@@ -203,7 +319,7 @@ function CallingLive() {
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white"><User size={18} /></span>
           <span><span className="block text-sm font-bold">Sarah — Caller</span><span className="block text-[11px] text-mutedDark">Customer, calling from home</span></span>
         </div>
-        <span className="flex items-center gap-1 text-xs font-bold text-lime"><PhoneIncoming size={14} /> {playing && !done ? "On the call" : done ? "Call ended" : "Incoming call"}</span>
+        <span className="flex items-center gap-1 text-xs font-bold text-lime"><PhoneIncoming size={14} /> {playing && !done ? "On the call" : done ? "Call ended" : paused ? "Call paused" : "Incoming call"}</span>
         <div className="flex flex-1 items-center justify-end gap-2">
           <span className="text-right"><span className="block text-sm font-bold">AI Agent</span><span className="block text-[11px] text-mutedDark">Voice receptionist</span></span>
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lime/15 text-lime"><PhoneCall size={18} /></span>
@@ -219,17 +335,30 @@ function CallingLive() {
             <strong>{m.who === "ai" ? "AI Agent: " : "Sarah: "}</strong>{m.text}
           </p>
         ))}
-        {shown === 0 && <p className="py-2 text-center text-xs text-mutedDark">Press play to hear a live call — a typed transcript, played in real time.</p>}
+        {shown === 0 && <p className="py-2 text-center text-xs text-mutedDark">Press play to hear a live call — spoken aloud, line by line, with a typed transcript.</p>}
+        {voiceError && <p className="py-2 text-center text-xs font-bold text-amber-400">{voiceError}</p>}
       </div>
       <div className="mt-3 flex h-[40px] items-center justify-between gap-2">
         <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold">Status: <span className="text-lime">{status}</span></span>
         <span className="flex items-center gap-1.5 text-sm font-bold tabular-nums"><Clock size={14} className="text-lime" /> {mm}:{ss}</span>
         {done ? (
-          <button onClick={start} className="flex h-10 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink"><RotateCcw size={15} /> Replay the call</button>
+          <button onClick={start} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink"><RotateCcw size={15} /> Replay the call</button>
+        ) : playing ? (
+          <span className="flex items-center gap-1.5">
+            <button onClick={togglePause} aria-label="Pause the call" className="flex h-10 items-center gap-1.5 rounded-lg bg-lime px-3 text-sm font-bold text-ink"><Pause size={15} /> Pause</button>
+            <button onClick={toggleMute} aria-label={muted ? "Unmute the call" : "Mute the call"} className="flex h-10 w-10 items-center justify-center rounded-lg border border-lineDark bg-ink/60 text-white" title={muted ? "Unmute" : "Mute"}>{muted ? <VolumeX size={16} /> : <Volume2 size={16} />}</button>
+            <input type="range" min="0" max="100" value={Math.round(volume * 100)} onChange={(e) => changeVolume(Number(e.target.value) / 100)} aria-label="Call volume" className="w-16 accent-[#C3F75D]" />
+          </span>
+        ) : paused ? (
+          <span className="flex items-center gap-1.5">
+            <button onClick={togglePause} aria-label="Resume the call" className="flex h-10 items-center gap-1.5 rounded-lg bg-lime px-3 text-sm font-bold text-ink"><Play size={15} /> Resume</button>
+            <button onClick={stopCall} className="flex h-10 items-center rounded-lg border border-lineDark bg-ink/60 px-3 text-sm font-bold text-white">Stop</button>
+          </span>
         ) : (
-          <button onClick={start} disabled={playing} className="flex h-10 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink disabled:opacity-60"><Play size={15} /> {playing ? "Call playing…" : "Hear a live call"}</button>
+          <button onClick={start} disabled={!voiceSupported} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink disabled:opacity-60"><Play size={15} /> Hear a live call</button>
         )}
       </div>
+      {!voiceSupported && <p className="mt-1 text-center text-[11px] font-bold text-amber-400">Voice is not available on this device.</p>}
     </LiveShell>
   );
 }
