@@ -12,7 +12,21 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const p = BLOG_POSTS.find((x) => x.slug === params.slug);
   if (!p) return {};
-  return { title: `${p.title} | AZEDOR`, description: p.description };
+  return {
+    title: `${p.title} | AZEDOR`,
+    description: p.description,
+    openGraph: {
+      title: `${p.title} | AZEDOR`,
+      description: p.description,
+      images: [{ url: `/images/blog/social-${p.slug}.jpg`, width: 1200, height: 630, alt: p.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.title} | AZEDOR`,
+      description: p.description,
+      images: [`/images/blog/social-${p.slug}.jpg`],
+    },
+  };
 }
 
 function Block({ b }: { b: BlogBlock }) {
@@ -94,7 +108,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </section>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: p.title, description: p.description, datePublished: p.date, author: { "@type": "Organization", name: "AZEDOR", url: "https://azedor.com" }, publisher: { "@type": "Organization", name: "AZEDOR", url: "https://azedor.com" } }) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "BlogPosting", headline: p.title, description: p.description, datePublished: p.date, image: `https://azedor.com/images/blog/social-${p.slug}.jpg`, author: { "@type": "Organization", name: "AZEDOR", url: "https://azedor.com" }, publisher: { "@type": "Organization", name: "AZEDOR", url: "https://azedor.com" } }) }} />
     <CtaBanner />
   </>);
 }
