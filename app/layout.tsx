@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://azedor.com"),
   title: { default: "AZEDOR — Your Marketing, Sales and Automation. Connected.", template: "%s | AZEDOR" },
   description: "AZEDOR builds customized marketing, CRM and AI automation systems for service-based businesses in the USA. More leads, more customers, less manual work.",
-  icons: { icon: "/images/azedor-favicon.png", apple: "/images/azedor-logo-square.png" },
+  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
   openGraph: { type: "website", siteName: "AZEDOR", locale: "en_US", images: [{ url: "/images/azedor-og.png", width: 1942, height: 809, alt: "AZEDOR — Automate. Grow. Scale." }] },
   twitter: { card: "summary_large_image", images: ["/images/azedor-og.png"] },
 };
