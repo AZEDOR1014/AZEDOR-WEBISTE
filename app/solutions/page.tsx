@@ -14,7 +14,7 @@ export default function Solutions() {
         <span className="mt-4 inline-block text-sm font-bold">Learn more →</span></Link>))}
     </div></section>
     <section className="bg-paper py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
-      <SectionHead label="Live" title="Try Each Solution — Live." sub="Pick a solution and watch it work, in real time. An example of how the system works — not a real client's results." />
+      <SectionHead label="Live" title="Try Each Solution — Live." sub="Pick a solution and watch it work, in real time." />
       <AllSolutionLives />
     </div></section>
     <CtaBanner />

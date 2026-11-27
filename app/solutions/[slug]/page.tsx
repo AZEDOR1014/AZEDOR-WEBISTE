@@ -28,7 +28,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
       </div>
     </section>
     <section className="bg-paper py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
-      <SectionHead label="Live" title="See It Working — Live." sub="Watch it work, in real time. An example of how the system works — not a real client's results." />
+      <SectionHead label="Live" title="See It Working — Live." sub="Watch it work, in real time." />
       <div className="mx-auto max-w-3xl"><SolutionLive slug={s.slug} /></div>
     </div></section>
     {s.slug === "conversation-ai-agent" && (

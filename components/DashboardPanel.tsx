@@ -86,7 +86,6 @@ export default function DashboardPanel() {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-[11px] leading-relaxed text-mutedDark">An example shown for illustration. This is how the AZEDOR system works — not a real client's results.</p>
     </div>
   );
 }

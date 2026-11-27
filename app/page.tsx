@@ -173,7 +173,7 @@ export default function Home() {
       {/* 7. System in action */}
       <section className="bg-deep py-24 text-white">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
-          <SectionHead dark label="See the system in action" title="Real Examples. Clearly Labelled." sub="How the system works — examples, not client results." />
+          <SectionHead dark label="See the system in action" title="Real Examples. Clearly Labelled." sub="How the system works." />
           <SystemExamples />
         </div>
       </section>

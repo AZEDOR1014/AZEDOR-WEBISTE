@@ -18,7 +18,6 @@ function LiveShell({ title, children, height = "h-[360px]" }: { title: string; c
           <span className="h-2 w-2 animate-pulse rounded-full bg-ink" /> Live
         </span>
       </div>
-      <p className="mt-2 text-[11px] text-mutedDark">Live — an example of how the system works. Not a real client&apos;s results.</p>
       <div className="mt-3">{children}</div>
     </div>
   );

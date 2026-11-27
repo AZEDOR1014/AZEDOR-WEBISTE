@@ -60,8 +60,6 @@ function MiniCalendar() {
 export default function ConversationDiagram() {
   return (
     <div className="rounded-card border border-line bg-paper p-4 sm:p-8">
-      <p className="text-center text-xs font-bold uppercase tracking-[0.18em] text-muted">Live — an example of how the system works</p>
-
       {/* Desktop: channels left/right of the centre box. Mobile: centre first, then channels. */}
       <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-0">
         {/* Left channels */}

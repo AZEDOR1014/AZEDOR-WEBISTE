@@ -42,7 +42,6 @@ export default function SystemExamples() {
           >
             <h3 className="font-bold text-lime">{example.title}</h3>
             <p className="mt-3 leading-relaxed text-mutedDark">{example.body}</p>
-            <p className="mt-3 text-[11px] text-mutedDark">An example — an illustration, not a client result.</p>
           </motion.div>
         </AnimatePresence>
         <Link href="/our-work" className="mt-6 inline-block rounded-btn bg-lime px-6 py-3 font-bold text-ink hover:bg-limeDark">View Our Work →</Link>

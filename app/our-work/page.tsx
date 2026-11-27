@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHead, CtaBanner } from "@/components/Shared";
 
-export const metadata: Metadata = { title: "Our Work — Examples | AZEDOR", description: "Example projects: websites, CRM systems, Calling and Conversation AI Agents, automation workflows and industry systems. Clearly labelled examples." };
+export const metadata: Metadata = { title: "Our Work — Examples | AZEDOR", description: "Websites, CRM systems, Calling and Conversation AI Agents, automation workflows and industry systems." };
 
 const PROJECTS = [
   { title: "HVAC lead-to-job system (example)", industry: "HVAC", category: "CRM systems", image: "/images/industries/hvac.jpg", challenge: "Emergency calls missed after hours; estimates never followed up.", system: "Calling AI Agent — your AI Receptionist — missed-call text-back, estimate follow-up, maintenance reminders and review requests — all in one CRM pipeline.", tech: "Next.js, n8n, CRM, Calling AI Agent" },
@@ -21,7 +21,6 @@ export default function OurWork() {
         <div className="mx-auto max-w-shell px-4 sm:px-6">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">Our Work</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">Examples of What AZEDOR Builds.</h1>
-          <p className="mt-4 max-w-2xl text-lg text-mutedDark">These are example projects, clearly labelled. They show how the system works. They are not presented as paying client engagements, and no outcomes are claimed for real clients.</p>
         </div>
       </section>
       <section className="py-20">
@@ -35,7 +34,6 @@ export default function OurWork() {
                 <p className="mt-3 text-sm leading-relaxed text-muted"><strong className="text-ink">Challenge:</strong> {p.challenge}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted"><strong className="text-ink">System:</strong> {p.system}</p>
                 <p className="mt-3 border-t border-line pt-3 text-xs text-muted"><strong>Technical implementation:</strong> {p.tech}</p>
-                <p className="mt-2 text-[11px] text-muted">Example project — an illustration, not a client result.</p>
               </div>
             </article>
           ))}
