@@ -42,7 +42,7 @@ export default function Home() {
     <>
       {/* 1. Hero */}
       <section className="bg-ink bg-grid-dark py-16 text-white lg:py-24">
-        <div className="mx-auto grid max-w-shell items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-shell items-start gap-12 px-4 sm:px-6 lg:grid-cols-2">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">AI Marketing &amp; Business Automation</p>
             <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-6xl lg:text-[72px]">More Leads. More Customers. <span className="text-lime">Less Manual Work.</span></h1>
@@ -120,7 +120,7 @@ export default function Home() {
               </Tilt>
             ))}
           </div>
-          <div className="mt-8 text-center"><Link href="/industries" className="inline-block rounded-btn border border-ink px-6 py-3 font-bold hover:bg-ink hover:text-white">See all industries →</Link></div>
+          <div className="mt-8 text-center"><Link href="/industries" className="inline-block rounded-btn bg-lime px-8 py-3.5 font-bold text-ink shadow-md hover:bg-limeDark">View all industries →</Link></div>
         </div>
       </section>
 

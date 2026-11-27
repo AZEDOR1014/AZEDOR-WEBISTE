@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SOLUTIONS, JOURNEY } from "@/lib/data";
 import { SectionHead, CtaBanner } from "@/components/Shared";
+import SolutionDemo from "@/components/SolutionDemo";
 import Faq from "@/components/Faq";
 import AuditForm from "@/components/AuditForm";
 
@@ -25,6 +26,10 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
         <Link href="/free-audit" className="mt-7 inline-block rounded-btn bg-lime px-6 py-3.5 font-bold text-ink hover:bg-limeDark">Get Your Free Audit</Link>
       </div>
     </section>
+    <section className="bg-paper py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+      <SectionHead label="Live demo" title="See It Working — Live." sub="A working demonstration, running in real time. Demonstration data only — not a real client's results." />
+      <div className="mx-auto max-w-3xl"><SolutionDemo slug={s.slug} /></div>
+    </div></section>
     <section className="py-20"><div className="mx-auto grid max-w-shell gap-10 px-4 sm:px-6 lg:grid-cols-2">
       <div><SectionHead label="The problem" title="The Problem" /><p className="text-lg leading-relaxed text-muted">{s.problem}</p>
         <h3 className="mt-8 text-2xl font-bold">What it does</h3><p className="mt-2 leading-relaxed text-muted">{s.what}</p></div>
