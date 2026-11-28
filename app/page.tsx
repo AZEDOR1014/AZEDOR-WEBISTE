@@ -48,8 +48,8 @@ export default function Home() {
             <h1 className="mt-4 text-4xl font-extrabold leading-[1.12] sm:text-6xl lg:text-[72px]">More Leads. More Customers. <span className="text-lime">Less Manual Work.</span></h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-mutedDark">Custom marketing, CRM and AI automation for service businesses. More customers. Less manual work.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/free-audit" className="rounded-btn bg-lime px-6 py-3.5 font-bold text-ink hover:bg-limeDark">Get Your Free Audit</Link>
-              <Link href="/how-it-works" className="rounded-btn border border-lineDark px-6 py-3.5 font-bold text-white hover:border-lime">See How It Works</Link>
+              <Link href="/free-audit" className="btn btn-primary">Get Your Free Audit</Link>
+              <Link href="/how-it-works" className="btn btn-secondary-light">See How It Works</Link>
             </div>
             <p className="mt-4 text-sm text-mutedDark">Customized solutions. No obligation. Built around your business.</p>
             {/* What the system does — fills the left column so it balances
@@ -59,7 +59,7 @@ export default function Home() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">What the system does for you</p>
               <ul className="mt-4 space-y-3">
                 {[
-                  { icon: PhoneCall, text: "Answers every call and message — Conversation AI Agent and Calling AI Agent, 24/7." },
+                  { icon: PhoneCall, text: "Built to answer calls and messages — Conversation AI Agent and Calling AI Agent, around the clock, with human handover." },
                   { icon: CalendarCheck, text: "Books appointments straight into your calendar." },
                   { icon: Mail, text: "Follows up automatically — estimates, reminders and rebooking." },
                   { icon: Star, text: "Asks for reviews after every completed job and brings customers back." },
@@ -79,7 +79,10 @@ export default function Home() {
               <Link href="/free-audit" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-lime hover:underline">Get Your Free Audit <ArrowRight size={15} /></Link>
             </div>
           </div>
-          <DashboardPanel />
+          <div>
+            <DashboardPanel />
+            <p className="mt-3 text-center text-xs leading-relaxed text-mutedDark">Interactive demonstration — an illustrative workflow, not a real client&apos;s live data.</p>
+          </div>
         </div>
       </section>
 
@@ -111,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* 4. Industries */}
-      <section className="bg-warm py-24">
+      <section className="bg-paper py-24">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
           <SectionHead label="Industries" title="Different Industries. Different Challenges. Customized Solutions." sub="One system, shaped to how your business actually works." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -120,7 +123,7 @@ export default function Home() {
               <Link href={`/industries/${ind.slug}`} className="group block overflow-hidden rounded-card border border-line bg-white shadow-sm hover:border-ink hover:shadow-xl">
                 <div className="h-1.5" style={{ backgroundColor: GROUP_ACCENT[ind.group].main }} />
                 <div className="relative h-44 overflow-hidden bg-deep">
-                  <Image src={ind.image} alt={`${ind.name} business`} fill className="object-cover transition-transform group-hover:scale-105" loading="lazy" />
+                  <Image src={ind.image} alt={`${ind.name} business`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform group-hover:scale-105" loading="lazy" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2">
@@ -136,7 +139,7 @@ export default function Home() {
               </Tilt>
             ))}
           </div>
-          <div className="mt-8 text-center"><Link href="/industries" className="inline-block rounded-btn bg-lime px-8 py-3.5 font-bold text-ink shadow-md hover:bg-limeDark">View all industries →</Link></div>
+          <div className="mt-8 text-center"><Link href="/industries" className="btn btn-primary btn-lg">View all industries →</Link></div>
         </div>
       </section>
 
@@ -162,7 +165,7 @@ export default function Home() {
                 <h3 className="mt-3 text-2xl font-bold">{s.name}</h3>
                 <p className={`mt-2 leading-relaxed ${i === 0 ? "text-mutedDark" : "text-muted"}`}>{s.sub}</p>
                 {s.slug === "conversation-ai-agent" && (<div className="mt-3 flex flex-wrap gap-1.5">{AI_CHANNELS.map((c) => (<span key={c.name} className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${i === 0 ? "border-white/20 bg-white/10 text-white" : "border-line bg-paper"}`}>{c.name}</span>))}</div>)}
-                {s.slug === "calling-ai-agent" && (<p className={`mt-3 text-sm font-semibold ${i === 0 ? "text-mutedDark" : "text-ink"}`}>Phone calls — answered in your business name, 24/7.</p>)}
+                {s.slug === "calling-ai-agent" && (<p className={`mt-3 text-sm font-semibold ${i === 0 ? "text-mutedDark" : "text-ink"}`}>Phone calls — answered in your business name, around the clock, with human handover.</p>)}
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold">Learn more <ArrowRight size={15} /></span>
               </Link>
             ))}
@@ -173,7 +176,7 @@ export default function Home() {
       {/* 7. System in action */}
       <section className="bg-deep py-24 text-white">
         <div className="mx-auto max-w-shell px-4 sm:px-6">
-          <SectionHead dark label="See the system in action" title="Real Examples. Clearly Labelled." sub="How the system works." />
+          <SectionHead dark label="See the system in action" title="Real Examples. Clearly Labelled." sub="Illustrative examples of how the system works — not real client results." />
           <SystemExamples />
         </div>
       </section>
