@@ -59,9 +59,9 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
       <div><SectionHead label="How it works" title="How It Works" /><ol className="space-y-3">{s.how.map((h, i) => (<li key={h} className="rounded-card border border-line bg-white px-5 py-4"><span className="font-extrabold text-lime">0{i + 1} · </span>{h}</li>))}</ol></div>
     </div></section>
     <section className="bg-paper py-20"><div className="mx-auto grid max-w-shell gap-10 px-4 sm:px-6 lg:grid-cols-3">
-      <div><h3 className="text-xl font-bold">Industries that benefit</h3><ul className="mt-3 space-y-2 text-muted">{s.industries.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
-      <div><h3 className="text-xl font-bold">Realistic use cases</h3><ul className="mt-3 space-y-2 text-muted">{s.uses.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
-      <div><h3 className="text-xl font-bold">Compatible integrations</h3><ul className="mt-3 space-y-2 text-muted">{s.integrations.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
+      <div><h2 className="text-xl font-bold">Industries that benefit</h2><ul className="mt-3 space-y-2 text-muted">{s.industries.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
+      <div><h2 className="text-xl font-bold">Realistic use cases</h2><ul className="mt-3 space-y-2 text-muted">{s.uses.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
+      <div><h2 className="text-xl font-bold">Compatible integrations</h2><ul className="mt-3 space-y-2 text-muted">{s.integrations.map((x) => (<li key={x}>✓ {x}</li>))}</ul></div>
     </div></section>
     <section className="py-20"><div className="mx-auto grid max-w-shell items-start gap-10 px-4 sm:px-6 lg:grid-cols-2">
       <div><SectionHead label="FAQs" title={`Questions about ${s.name}`} /><Faq items={s.faqs} /></div>

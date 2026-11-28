@@ -20,6 +20,8 @@ export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const now = Date.now();
+    // Prune entries older than the 60s window so the map cannot grow without bound.
+    RATE.forEach((val, key) => { if (now - val.at >= 60_000) RATE.delete(key); });
     const hit = RATE.get(ip);
     if (hit && now - hit.at < 60_000 && hit.count >= 5) {
       return NextResponse.json({ ok: false, error: "Too many submissions. Please wait a minute and try again." }, { status: 429 });
@@ -48,7 +50,7 @@ export async function POST(req: Request) {
       console.warn("[audit] DEVELOPMENT MODE — no N8N_WEBHOOK_URL set. Lead received, not forwarded:", JSON.stringify({ ...lead, email: "[redacted]" }));
       return NextResponse.json({ ok: false, devMode: true, error: "Thank you — your details were received, but our lead system is not connected yet. Please email azedor.marketing@gmail.com and we will prepare your audit." }, { status: 503 });
     }
-    const res = await fetch(webhook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) });
+    const res = await fetch(webhook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead), signal: AbortSignal.timeout(10_000) });
     if (!res.ok) {
       console.error("[audit] n8n webhook failed:", res.status);
       return NextResponse.json({ ok: false, error: "We could not send your audit request just now. Please try again or email azedor.marketing@gmail.com." }, { status: 502 });

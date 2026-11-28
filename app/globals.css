@@ -6,6 +6,7 @@ html { scroll-behavior: smooth; }
 a, button { transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 body { @apply bg-white text-ink antialiased; }
 ::selection { background: #C3F75D; color: #101211; }
+:focus-visible { outline: 3px solid #C3F75D; outline-offset: 2px; }
 
 .bg-grid-light {
   background-image: linear-gradient(to right, rgba(16,18,17,0.05) 1px, transparent 1px),

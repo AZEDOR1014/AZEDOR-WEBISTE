@@ -4,7 +4,7 @@ import Image from "next/image";
 import { INDUSTRIES, GROUP_ACCENT } from "@/lib/data";
 import { SectionHead, CtaBanner } from "@/components/Shared";
 import AuditForm from "@/components/AuditForm";
-export const metadata: Metadata = { title: "AI Marketing Agency for Service Businesses in the USA | AZEDOR", description: "One system, for every service business. AZEDOR builds customized marketing, CRM and AI automation for HVAC, salons, spas, dental, real estate and more." };
+export const metadata: Metadata = { title: "Industries We Serve — HVAC, Salons, Spas & More | AZEDOR", description: "One system, for every service business. AZEDOR builds customized marketing, CRM and AI automation for HVAC, salons, spas, dental, real estate and more." };
 export default function Industries() {
   return (<>
     <section className="bg-ink bg-grid-dark py-16 text-white lg:py-20"><div className="mx-auto max-w-shell px-4 sm:px-6"><p className="text-xs font-bold uppercase tracking-[0.2em] text-lime">Industries</p><h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">One System. For Every Service Business.</h1><p className="mt-4 max-w-2xl text-lg text-mutedDark">AZEDOR starts with HVAC, salons and spas in the USA — and the same system works for every service business below.</p></div></section>

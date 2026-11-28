@@ -475,31 +475,33 @@ function WorkflowLive() {
   );
 }
 
-/* --- 6. Reputation Management: live review panel --- */
-const REVIEW_POOL = [
-  { name: "Sarah M.", text: "Fast, friendly and fixed the same day." },
-  { name: "James R.", text: "Great service from start to finish." },
-  { name: "Amina K.", text: "Booked online, technician arrived on time." },
-  { name: "Tom W.", text: "Clear price, no surprises. Very happy." },
-  { name: "Priya S.", text: "Best salon visit I have had in years." },
+/* --- 6. Reputation Management: live review panel ---
+   Shows the review workflow (request → review received → thank-you reply)
+   with no invented reviewer names, quotes or client results. */
+const REVIEW_EVENTS = [
+  { label: "New 5-star review received", detail: "Google review — reply sent" },
+  { label: "New 5-star review received", detail: "Google review — reply sent" },
+  { label: "New 4-star review received", detail: "Google review — reply sent" },
+  { label: "New 5-star review received", detail: "Google review — reply sent" },
+  { label: "New 5-star review received", detail: "Google review — reply sent" },
 ];
 function ReviewsLive() {
   const [idx, setIdx] = useState(0);
   const [replied, setReplied] = useState(1);
   useEffect(() => {
-    const t = setInterval(() => { setIdx((i) => (i + 1) % REVIEW_POOL.length); setReplied((n) => n + 1); }, 3500);
+    const t = setInterval(() => { setIdx((i) => (i + 1) % REVIEW_EVENTS.length); setReplied((n) => n + 1); }, 3500);
     return () => clearInterval(t);
   }, []);
-  const shown = [REVIEW_POOL[idx], REVIEW_POOL[(idx + 1) % REVIEW_POOL.length], REVIEW_POOL[(idx + 2) % REVIEW_POOL.length]];
+  const shown = [REVIEW_EVENTS[idx], REVIEW_EVENTS[(idx + 1) % REVIEW_EVENTS.length], REVIEW_EVENTS[(idx + 2) % REVIEW_EVENTS.length]];
   return (
     <LiveShell title="Reputation Management — live review">
       <div className="flex h-[232px] flex-col justify-between gap-2">
-        {shown.map((r) => (
-          <div key={r.name + r.text} className="flex h-[70px] items-center gap-3 rounded-xl border border-lineDark bg-ink/60 px-3">
+        {shown.map((r, i) => (
+          <div key={`${r.label}-${i}`} className="flex h-[70px] items-center gap-3 rounded-xl border border-lineDark bg-ink/60 px-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-lime/15 text-lime"><Star size={16} /></span>
             <div className="min-w-0">
-              <p className="text-sm font-semibold">{r.name} <span className="text-amber-400">★★★★★</span></p>
-              <p className="truncate text-xs text-mutedDark">&ldquo;{r.text}&rdquo;</p>
+              <p className="text-sm font-semibold">{r.label}</p>
+              <p className="truncate text-xs text-mutedDark">{r.detail}</p>
             </div>
           </div>
         ))}

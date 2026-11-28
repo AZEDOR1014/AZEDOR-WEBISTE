@@ -17,7 +17,7 @@ export default function Footer() {
         </div>
         <div>
           <p className="mb-3 text-xs font-bold uppercase tracking-wider text-lime">Industries</p>
-          {NAV_INDUSTRIES.flatMap((g) => g.items).slice(0, 10).map((i) => (<Link key={i.slug} href={`/industries/${i.slug}`} className="block py-1 text-sm text-mutedDark hover:text-white">{i.name}</Link>))}
+          {NAV_INDUSTRIES.flatMap((g) => g.items).map((i) => (<Link key={i.slug} href={`/industries/${i.slug}`} className="block py-1 text-sm text-mutedDark hover:text-white">{i.name}</Link>))}
           <Link href="/industries" className="block py-1 text-sm text-lime">All industries →</Link>
         </div>
         <div>

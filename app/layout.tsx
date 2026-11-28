@@ -19,8 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${manrope.variable} font-sans`}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-btn focus:bg-lime focus:px-4 focus:py-2 focus:font-bold focus:text-ink">Skip to content</a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "AZEDOR", url: "https://azedor.com", description: "AI marketing, CRM and business automation agency for service-based businesses.", email: "azedor.marketing@gmail.com" }) }} />
       </body>

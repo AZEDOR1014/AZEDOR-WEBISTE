@@ -259,7 +259,7 @@ export const INDUSTRIES: Industry[] = [
     after: "Every lead lands in one place, is answered fast, is booked with reminders, and is invited back.",
     faqs: [
       { q: "My business is not listed. Can you still help?", a: "Yes. Tell us how your business works on the free audit, and we design the system around it." },
-      { q: "Do I need all six services?", a: "No. We build the combination your business needs — nothing more." },
+      { q: "Do I need all seven services?", a: "No. We build the combination your business needs — nothing more." },
       { q: "What happens during the free audit?", a: "We check your ads, reply speed, booking and follow-up, and show you where leads leak." },
     ],
   },

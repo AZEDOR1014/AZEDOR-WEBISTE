@@ -232,9 +232,9 @@ export default function Home() {
               <span className="rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold">✓ Long-term value</span>
             </div>
           </div>
-          <div className="rounded-card border border-dashed border-line bg-white p-8 text-center text-muted">
-            <p className="font-bold text-ink">Founder photograph &amp; biography</p>
-            <p className="mt-2 text-sm leading-relaxed">A genuine founder photograph and approved biography will be added here. No team members, offices or awards are claimed on this site until verified.</p>
+          <div className="rounded-card border border-line bg-white p-8">
+            <p className="font-bold text-ink">Run by its founder</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">AZEDOR is owned and run by Prof. Ali Zahoor Mehdi — the person you meet, and the person who works with you from first call to launch.</p>
           </div>
         </div>
       </section>
@@ -246,7 +246,7 @@ export default function Home() {
           <Faq items={[
             { q: "What types of businesses do you work with?", a: "All service-based businesses — HVAC, home services, salons and spas, beauty, dental and healthcare, real estate, automotive, gyms, coaches, education, legal, accounting and more." },
             { q: "Can I use my existing website and CRM?", a: "Yes. We can work with what you have, or rebuild the parts that lose leads. The free audit shows which is better for you." },
-            { q: "Do I need all six services?", a: "No. We build the combination your business needs — nothing more." },
+            { q: "Do I need all seven services?", a: "No. We build the combination your business needs — nothing more." },
             { q: "What happens during the free audit?", a: "We review your website and funnel, lead handling, sales follow-up, CRM and automation opportunities — then give you customized recommendations in writing." },
             { q: "Can you integrate my existing software?", a: "Yes. Integrations are part of the design. We connect the tools you already pay for." },
             { q: "How long does implementation take?", a: "It depends on scope. You get a written plan and timeline before any build starts." },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-export const metadata = { title: "Thank You | AZEDOR", description: "Thank you for requesting your Free Lead-Leak & Automation Audit." };
+export const metadata = { title: "Thank You | AZEDOR", description: "Thank you for requesting your Free Lead-Leak & Automation Audit.", robots: { index: false, follow: false } };
 export default function ThankYou() {
   return (
     <section className="bg-paper py-24">

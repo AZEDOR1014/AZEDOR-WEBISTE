@@ -10,7 +10,7 @@ export default function Page() {
 <p>We do not stop at leads. We follow the job from first enquiry to booking to review.</p>
 <p>What we believe: slow follow-up loses the job. Fast, honest follow-up wins it.</p>
 <p>Business problems first. Technology second. Customized implementation. Transparent communication. Long-term customer value.</p>
-<div className="mt-8 rounded-card border border-dashed border-line bg-paper p-6 text-muted"><p className="font-bold text-ink">Founder photograph &amp; biography</p><p>A genuine founder photograph and approved biography will be added here. No team members, offices or awards are claimed on this site until verified.</p></div></div></section>
+<div className="mt-8 rounded-card border border-line bg-paper p-6"><p className="font-bold text-ink">Run by its founder</p><p className="mt-2">AZEDOR is owned and run by Prof. Ali Zahoor Mehdi — the person you meet, and the person who works with you from first call to launch.</p></div></div></section>
     <CtaBanner />
   </>);
 }
