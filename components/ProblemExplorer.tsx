@@ -18,14 +18,29 @@ export default function ProblemExplorer() {
   const keys = Object.keys(PROBLEMS);
   const [sel, setSel] = useState(keys[0]);
   const p = PROBLEMS[sel];
+  const selIndex = keys.indexOf(sel);
+  // Roving tabindex + arrow-key navigation (WCAG tab pattern): Left/Right
+  // move between tabs, Home/End jump to the first/last tab.
+  const onTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let next: number | null = null;
+    if (e.key === "ArrowRight") next = (index + 1) % keys.length;
+    else if (e.key === "ArrowLeft") next = (index - 1 + keys.length) % keys.length;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = keys.length - 1;
+    if (next !== null) {
+      e.preventDefault();
+      setSel(keys[next]);
+      document.getElementById(`problem-tab-${next}`)?.focus();
+    }
+  };
   return (
     <div>
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Business problems">
-        {keys.map((k) => (
-          <button key={k} role="tab" aria-selected={sel === k} onClick={() => setSel(k)} className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold ${sel === k ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"}`}>{(() => { const I = PROBLEMS[k].icon; return <I size={15} />; })()}{k}</button>
+        {keys.map((k, i) => (
+          <button key={k} id={`problem-tab-${i}`} role="tab" aria-selected={sel === k} aria-controls={`problem-panel-${i}`} tabIndex={sel === k ? 0 : -1} onClick={() => setSel(k)} onKeyDown={(e) => onTabKeyDown(e, i)} className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold ${sel === k ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"}`}>{(() => { const I = PROBLEMS[k].icon; return <I size={15} aria-hidden />; })()}{k}</button>
         ))}
       </div>
-      <AnimatePresence mode="wait"><motion.div key={sel} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="mt-6 grid gap-6 rounded-card border border-line bg-white p-6 md:grid-cols-2">
+      <AnimatePresence mode="wait"><motion.div key={sel} role="tabpanel" id={`problem-panel-${selIndex}`} aria-labelledby={`problem-tab-${selIndex}`} tabIndex={0} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="mt-6 grid gap-6 rounded-card border border-line bg-white p-6 md:grid-cols-2">
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-muted">What typically causes it</p>
           <p className="mt-2 leading-relaxed">{p.cause}</p>
@@ -37,7 +52,7 @@ export default function ProblemExplorer() {
           <p className="mt-2 font-semibold">{p.services}</p>
           <p className="mt-5 text-xs font-bold uppercase tracking-wider text-muted">Expected improvement</p>
           <p className="mt-2 leading-relaxed">{p.result}</p>
-          <Link href="/free-audit" className="mt-5 inline-block rounded-btn bg-lime px-5 py-3 text-sm font-bold text-ink hover:bg-limeDark">Find Your Revenue Leaks →</Link>
+          <Link href="/free-audit" className="btn btn-primary btn-sm mt-5">Find Your Revenue Leaks →</Link>
         </div>
       </motion.div></AnimatePresence>
     </div>

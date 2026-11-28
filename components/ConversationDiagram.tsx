@@ -21,7 +21,7 @@ function ChannelBox({ name, align }: { name: string; align: "left" | "right" }) 
   const a = ACCENTS[name] ?? { main: "#101211", soft: "#F5F7F4" };
   const I = c.icon;
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-ink/10 bg-white px-4 py-3 shadow-sm">
+    <div className="flex items-center gap-3 rounded-card border border-line bg-white px-4 py-3 shadow-sm">
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: a.soft, color: a.main }}>
         <I size={20} strokeWidth={2.5} />
       </span>
@@ -38,7 +38,7 @@ function MiniCalendar() {
   const cells: (number | null)[] = [null, null, null, null, null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
   return (
     <div>
-      <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-lime"><Calendar size={15} /> Appointment</p>
+      <p className="flex items-center gap-2 eyebrow text-lime"><Calendar size={15} /> Appointment</p>
       <div className="mt-3 grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-mutedDark">
         {days.map((d, i) => (<span key={i}>{d}</span>))}
         {cells.map((n, i) => (
@@ -78,7 +78,7 @@ export default function ConversationDiagram() {
             <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/80"><Bot size={36} className="text-white" /></span>
             <p className="mt-4 text-xl font-extrabold leading-tight text-lime">Conversation AI</p>
             <p className="text-2xl font-extrabold leading-tight">Assistant</p>
-            <p className="mt-3 text-xs leading-relaxed text-mutedDark">Answers, qualifies<br />and books — 24/7</p>
+            <p className="mt-3 text-xs leading-relaxed text-mutedDark">Answers, qualifies<br />and books — around the clock, with human handover</p>
           </div>
           <span className="mx-auto mt-4 hidden h-3 w-3 rounded-full border-2 border-ink bg-lime lg:block" aria-hidden />
         </div>
@@ -95,12 +95,12 @@ export default function ConversationDiagram() {
       </div>
 
       {/* Appointment panels */}
-      <div className="mx-auto mt-8 grid max-w-2xl gap-0 overflow-hidden rounded-2xl bg-ink text-white shadow-lg sm:grid-cols-2">
+      <div className="mx-auto mt-8 grid max-w-2xl gap-0 overflow-hidden rounded-card bg-ink text-white shadow-lg sm:grid-cols-2">
         <div className="border-b border-white/10 p-5 sm:border-b-0 sm:border-r">
           <MiniCalendar />
         </div>
         <div className="p-5">
-          <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-lime"><CheckCircle2 size={16} /> Appointment confirmed</p>
+          <p className="flex items-center gap-2 eyebrow text-lime"><CheckCircle2 size={16} /> Appointment confirmed</p>
           <ul className="mt-4 space-y-2 text-sm text-white/90">
             <li className="flex items-center gap-2"><CalendarCheck size={16} className="text-lime" /> Fri, 15 Nov</li>
             <li className="flex items-center gap-2"><Clock size={16} className="text-lime" /> 10:30 AM</li>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Sitemap: https://azedor.com/sitemap.xml
+Sitemap: https://azedor-website.vercel.app/sitemap.xml

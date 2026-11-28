@@ -8,11 +8,23 @@ import { FunnelDiagram, BeforeAfter, Reveal } from "@/components/Animate";
 import Faq from "@/components/Faq";
 import AuditForm from "@/components/AuditForm";
 
+// Same rule as app/layout.tsx: azedor.com is NOT attached yet, so the live
+// site is the Vercel URL. Set NEXT_PUBLIC_SITE_URL to https://azedor.com in
+// Vercel when the domain is attached — no code change needed.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://azedor-website.vercel.app";
+
 export function generateStaticParams() { return INDUSTRIES.map((i) => ({ slug: i.slug })); }
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const ind = INDUSTRIES.find((i) => i.slug === params.slug);
   if (!ind) return {};
-  return { title: `${ind.name} Marketing Agency USA — ${ind.headline}`, description: ind.sub };
+  const url = `${SITE_URL}/industries/${ind.slug}`;
+  return {
+    title: `${ind.name} Marketing Agency USA — ${ind.headline}`,
+    description: ind.sub,
+    alternates: { canonical: url },
+    openGraph: { type: "website", url, title: `${ind.name} Marketing Agency USA — ${ind.headline}`, description: ind.sub, images: [{ url: `${SITE_URL}${ind.image}`, alt: `${ind.name} business` }] },
+    twitter: { card: "summary_large_image", title: `${ind.name} Marketing Agency USA — ${ind.headline}`, description: ind.sub, images: [`${SITE_URL}${ind.image}`] },
+  };
 }
 
 export default function IndustryPage({ params }: { params: { slug: string } }) {
@@ -26,9 +38,9 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
           <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">{ind.headline}</h1>
           <div className="mt-5 h-1.5 w-20 rounded-full" style={{ backgroundColor: GROUP_ACCENT[ind.group].main }} />
           <p className="mt-4 text-lg text-mutedDark">{ind.sub}</p>
-          <Link href="/free-audit" className="mt-7 inline-block rounded-btn bg-lime px-6 py-3.5 font-bold text-ink hover:bg-limeDark">Get Your Free Audit</Link>
+          <Link href="/free-audit" className="btn btn-primary mt-7">Get Your Free Audit</Link>
         </div>
-        <div className="relative h-72 overflow-hidden rounded-card sm:h-96"><Image src={ind.image} alt={`${ind.name} business`} fill className="object-cover" priority /></div>
+        <div className="relative h-72 overflow-hidden rounded-card sm:h-96"><Image src={ind.image} alt={`${ind.name} business`} fill sizes="(max-width: 1280px) 100vw, 1280px" className="object-cover" priority /></div>
       </div>
     </section>
     <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
@@ -51,6 +63,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         ][i];
         return { ...j, purpose: indWords.purpose, leak: indWords.leak };
       })} />
+      <p className="mt-6 text-center text-sm text-mutedDark">The six-stage AZEDOR Growth System — Attract → Capture → Engage → Convert → Deliver → Retain — shaped for {ind.name}. <Link href="/how-it-works" className="font-bold text-lime underline">See how it works →</Link></p>
     </div></section>
     <section style={{ backgroundColor: GROUP_ACCENT[ind.group].soft }} className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
       <SectionHead label="Solutions" title={`Solutions for ${ind.name}`} sub={`Every solution, shaped for how a ${ind.name.toLowerCase()} business actually works — from the first ad click to the review after the job.`} />
@@ -74,7 +87,16 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
       <SectionHead label="Customized solutions" title={`What AZEDOR Builds for ${ind.name}`} />
       <ul className="grid gap-3 sm:grid-cols-2">{ind.solutions.map((s) => (<li key={s} className="rounded-card border border-line bg-white px-5 py-4 font-semibold">✓ {s}</li>))}</ul>
       <h3 className="mt-12 text-2xl font-bold">Your CRM pipeline</h3>
-      <ol className="mt-4 flex flex-wrap items-center gap-2">{ind.pipeline.map((s, i) => (<Reveal key={s} delay={i * 0.08} className="flex items-center gap-2"><li className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-semibold">{i + 1}. {s}</li>{i < ind.pipeline.length - 1 && <span aria-hidden className="font-bold text-lime">→</span>}</Reveal>))}</ol>
+      <ol className="mt-4 flex flex-wrap items-center gap-2">{ind.pipeline.map((s, i) => (<Reveal key={s} delay={i * 0.08} className="flex items-center gap-2"><li className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-semibold">{i + 1}. {s}</li>{i < ind.pipeline.length - 1 && <span aria-hidden className="font-bold text-limeDeep">→</span>}</Reveal>))}</ol>
+    </div></section>
+    <section className="py-20"><div className="mx-auto max-w-shell px-4 sm:px-6">
+      <SectionHead label="What happens next" title={`How a ${ind.name} Business Starts With AZEDOR`} sub="Three short steps. No obligation at any of them." />
+      <ol className="grid gap-4 md:grid-cols-3">
+        {[["1", "Free audit", "We check your ads, reply speed, booking and follow-up — and show you the leaks in writing."], ["2", "Written plan", "A system designed around your services, prices and booking flow, with scope and timeline."], ["3", "Build and test", "Built and tested with you before anything goes live."]].map(([n, t, d]) => (
+          <li key={n} className="rounded-card border border-line bg-white p-5"><span className="font-extrabold text-limeDeep">{n} · </span><strong>{t}</strong><p className="mt-2 text-sm leading-relaxed text-muted">{d}</p></li>
+        ))}
+      </ol>
+      <p className="mt-8"><Link href="/free-audit" className="btn btn-primary">Get Your Free Audit →</Link></p>
     </div></section>
     <section className="bg-paper py-20"><div className="mx-auto grid max-w-shell items-start gap-10 px-4 sm:px-6 lg:grid-cols-2">
       <div><SectionHead label="FAQs" title={`Questions from ${ind.name} Businesses`} /><Faq items={ind.faqs} /></div>

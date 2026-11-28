@@ -6,7 +6,47 @@ html { scroll-behavior: smooth; }
 a, button { transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 body { @apply bg-white text-ink antialiased; }
 ::selection { background: #C3F75D; color: #101211; }
-:focus-visible { outline: 3px solid #C3F75D; outline-offset: 2px; }
+
+/*
+ * Focus must be visible on every background the site uses — white, ink
+ * and lime. A lime-only outline (the Phase 1 fix) disappears on a lime
+ * button, so the ring is ink with a lime halo: the ink line reads on
+ * white and lime, the halo reads on ink. No element may set
+ * focus:outline-none — the global rule below is the focus style.
+ */
+:focus-visible { outline: 3px solid #101211; outline-offset: 2px; box-shadow: 0 0 0 5px #C3F75D; }
+
+@layer components {
+  /* ---- Buttons: one primary, one secondary, one on-dark secondary.
+     Sizes: base px-6 py-3, .btn-sm px-4 py-2.5 text-sm, .btn-lg px-8 py-4.
+     Primary is always lime fill + ink text (15.03:1); hover is limeDark. */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-btn px-6 py-3 font-bold transition-colors; }
+  .btn-primary { @apply bg-lime text-ink hover:bg-limeDark disabled:opacity-60; }
+  .btn-dark { @apply bg-ink text-white hover:bg-deep; }
+  .btn-secondary { @apply border border-ink bg-white text-ink hover:bg-ink hover:text-white; }
+  .btn-secondary-light { @apply border border-lineDark text-white hover:border-lime; }
+  .btn-sm { @apply px-4 py-2.5 text-sm; }
+  .btn-lg { @apply px-8 py-4; }
+
+  /* ---- Cards: white, 16px radius, hairline border, small shadow.
+     Hover lift (border-ink + shadow-lg + -translate-y-1) is opt-in
+     via .card-hover, not on every card. */
+  .card { @apply rounded-card border border-line bg-white p-5 shadow-sm; }
+  .card-hover { @apply transition-transform hover:-translate-y-1 hover:border-ink hover:shadow-lg; }
+
+  /* ---- Eyebrow label above headings: 12px bold caps, 0.2em tracking.
+     Colour comes from a utility alongside it (text-lime on dark,
+     text-ink on light, or an accent dark). */
+  .eyebrow { @apply text-xs font-bold uppercase tracking-eyebrow; }
+
+  /* ---- Sections: standard vertical rhythm. Heroes use .section-hero. */
+  .section { @apply py-20; }
+  .section-hero { @apply py-16 lg:py-20; }
+
+  /* ---- Form fields: 10px radius, hairline border, ink border on focus.
+     Focus ring comes from the global :focus-visible rule above. */
+  .input { @apply w-full rounded-btn border border-line bg-white px-4 py-3 text-base text-ink placeholder:text-muted focus:border-ink; }
+}
 
 .bg-grid-light {
   background-image: linear-gradient(to right, rgba(16,18,17,0.05) 1px, transparent 1px),

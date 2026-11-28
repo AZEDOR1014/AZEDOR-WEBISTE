@@ -15,16 +15,36 @@ const EXAMPLES = [
 export default function SystemExamples() {
   const [sel, setSel] = useState(EXAMPLES[0].key);
   const example = EXAMPLES.find((d) => d.key === sel)!;
+  const selIndex = EXAMPLES.findIndex((d) => d.key === sel);
+  // Roving tabindex + arrow-key navigation (WCAG tab pattern, same as
+  // ProblemExplorer): Left/Right move between tabs, Home/End jump to the
+  // first/last tab.
+  const onTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let next: number | null = null;
+    if (e.key === "ArrowRight") next = (index + 1) % EXAMPLES.length;
+    else if (e.key === "ArrowLeft") next = (index - 1 + EXAMPLES.length) % EXAMPLES.length;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = EXAMPLES.length - 1;
+    if (next !== null) {
+      e.preventDefault();
+      setSel(EXAMPLES[next].key);
+      document.getElementById(`example-tab-${next}`)?.focus();
+    }
+  };
   return (
     <div className="grid gap-4 lg:grid-cols-5">
       <div className="flex flex-row flex-wrap gap-2 lg:col-span-2 lg:flex-col" role="tablist" aria-label="System examples">
-        {EXAMPLES.map((d) => (
+        {EXAMPLES.map((d, i) => (
           <button
             key={d.key}
+            id={`example-tab-${i}`}
             role="tab"
             aria-selected={sel === d.key}
+            aria-controls={`example-panel-${i}`}
+            tabIndex={sel === d.key ? 0 : -1}
             onClick={() => setSel(d.key)}
-            className={`rounded-btn border px-4 py-2.5 text-left text-sm font-semibold transition-colors ${sel === d.key ? "border-lime bg-lime/10 text-lime" : "border-lineDark hover:border-lime hover:text-lime"}`}
+            onKeyDown={(e) => onTabKeyDown(e, i)}
+            className={`min-h-[44px] rounded-btn border px-4 py-2.5 text-left text-sm font-semibold transition-colors ${sel === d.key ? "border-lime bg-lime/10 text-lime" : "border-lineDark hover:border-lime hover:text-lime"}`}
           >
             {d.title}
           </button>
@@ -34,6 +54,10 @@ export default function SystemExamples() {
         <AnimatePresence mode="wait">
           <motion.div
             key={example.key}
+            role="tabpanel"
+            id={`example-panel-${selIndex}`}
+            aria-labelledby={`example-tab-${selIndex}`}
+            tabIndex={0}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
@@ -44,7 +68,7 @@ export default function SystemExamples() {
             <p className="mt-3 leading-relaxed text-mutedDark">{example.body}</p>
           </motion.div>
         </AnimatePresence>
-        <Link href="/our-work" className="mt-6 inline-block rounded-btn bg-lime px-6 py-3 font-bold text-ink hover:bg-limeDark">View Our Work →</Link>
+        <Link href="/our-work" className="btn btn-primary mt-6">View Our Work →</Link>
       </div>
     </div>
   );

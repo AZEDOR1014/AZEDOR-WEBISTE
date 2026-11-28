@@ -3,7 +3,10 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Megaphone, Globe, PhoneCall, KanbanSquare, Workflow, Star, Check, Send, Clock, MessageCircle, Camera, Play, Pause, RotateCcw, User, PhoneIncoming, Volume2, VolumeX } from "lucide-react";
 
 /**
- * Live, working panels for the 7 solution pages — examples only.
+ * Interactive demonstration panels for the 7 solution pages — examples only.
+ * Every panel is labelled as an interactive demonstration and shows
+ * illustrative figures only: nothing here is a real client's live data
+ * or a real client's results.
  * Every panel runs in a FIXED-HEIGHT panel: numbers, colours and opacity
  * change, but no element is added, removed or resized, so nothing on the
  * page jumps up or down (same stability rule as the hero fix).
@@ -15,7 +18,7 @@ function LiveShell({ title, children, height = "h-[360px]" }: { title: string; c
       <div className="flex h-8 items-center justify-between border-b border-lineDark pb-3">
         <p className="font-bold">{title}</p>
         <span className="flex items-center gap-1.5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-ink" /> Live
+          <span className="h-2 w-2 animate-pulse rounded-full bg-ink" /> Live — interactive demonstration
         </span>
       </div>
       <div className="mt-3">{children}</div>
@@ -39,7 +42,7 @@ function AdsLive() {
   const cpl = (spend / Math.max(leads, 1)).toFixed(2);
   const bars = [42, 68, 55, 80, 64, 92, 74];
   return (
-    <LiveShell title="Paid Advertising — live ads dashboard">
+    <LiveShell title="Paid Advertising — interactive ads demonstration">
       <div className="grid grid-cols-3 gap-3">
         {[["Ad spend today", `$${spend.toFixed(1)}`], ["Leads today", `${leads}`], ["Cost per lead", `$${cpl}`]].map(([l, v]) => (
           <div key={l} className="h-[64px] rounded-xl border border-lineDark bg-ink/60 px-3 py-2">
@@ -53,7 +56,7 @@ function AdsLive() {
           <div key={i} className="flex-1 rounded-t bg-lime/80 transition-all duration-500" style={{ height: `${h}%`, opacity: 0.5 + (i % 3) * 0.2 }} />
         ))}
       </div>
-      <p className="mt-3 truncate text-xs text-mutedDark">An ad: &ldquo;AC not cooling? Same-day repair in your city — book a free check.&rdquo; · Meta Ads · updating every few seconds</p>
+      <p className="mt-3 truncate text-xs text-mutedDark">Illustrative figures — interactive demonstration, not a real client's results. · Meta Ads · updating every few seconds</p>
     </LiveShell>
   );
 }
@@ -65,7 +68,8 @@ function FunnelLive() {
   useTicker(3000, () => setCounts(([a, b, c]) => [a + 3, b + 1, c + (Math.random() > 0.6 ? 1 : 0)]));
   const stages = [["Attract — ad clicks", counts[0], "#F59E0B"], ["Capture — form visits", counts[1], "#0EA5E9"], ["Convert — bookings", counts[2], "#C3F75D"]] as const;
   return (
-    <LiveShell title="Websites & Funnels — live funnel">
+    <LiveShell title="Websites & Funnels — first three stages in detail" height="h-[430px]">
+      <p className="mb-3 text-xs leading-relaxed text-mutedDark">A closer look at three stages of the six-stage Growth System — Attract → Capture → Convert (booking). The full system then adds Engage (fast answering), Deliver and Retain. Figures are illustrative.</p>
       <div className="space-y-2">
         {stages.map(([label, n, color], i) => (
           <div key={label} className="flex h-[40px] items-center justify-between rounded-xl border border-lineDark bg-ink/60 px-3">
@@ -87,7 +91,7 @@ function FunnelLive() {
             <button type="submit" className="h-11 rounded-lg bg-lime px-4 text-sm font-bold text-ink">Try the form</button>
           </form>
         )}
-        <p className="mt-2 text-[11px] text-mutedDark">Try-out form — nothing is sent anywhere.</p>
+        <p className="mt-2 text-[11px] text-mutedDark">Try-out form — nothing is sent anywhere. Figures above are illustrative.</p>
       </div>
     </LiveShell>
   );
@@ -143,7 +147,7 @@ function ConversationLive() {
   }, [chatIdx]);
   const ChannelIcon = chat.icon;
   return (
-    <LiveShell title="Conversation AI Agent — live chat">
+    <LiveShell title="Conversation AI Agent — interactive chat demonstration">
       <p className="flex h-[24px] items-center gap-2 text-xs font-bold text-white">
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-lime/15 text-lime"><ChannelIcon size={13} /></span>
         Channel: {chat.channel} <span className="font-normal text-mutedDark">· the same Conversation AI Agent answers here too</span>
@@ -177,7 +181,7 @@ const CALL_LINES = [
 ];
 const CALL_STATUSES = ["Ringing", "Answered", "Answered", "Booking", "Booking", "Booked"];
 
-/** Pick the best available English voices: a female voice for Sarah, a
+/** Pick the best available English voices: a female voice for the caller, a
     clear neutral voice for the Calling AI Agent. Falls back to the default voice. */
 function pickVoices() {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return { sarah: null as SpeechSynthesisVoice | null, ai: null as SpeechSynthesisVoice | null };
@@ -360,11 +364,11 @@ function CallingLive() {
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
   return (
-    <LiveShell title="Calling AI Agent — live phone call" height="h-[560px] sm:h-[540px]">
+    <LiveShell title="Calling AI Agent — interactive phone-call demonstration" height="h-[560px] sm:h-[540px]">
       <div className="flex h-[56px] items-center justify-between gap-2">
         <div className="flex flex-1 items-center gap-2">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white"><User size={18} /></span>
-          <span><span className="block text-sm font-bold">Sarah — Caller</span><span className="block text-[11px] text-mutedDark">Customer, calling from home</span></span>
+          <span><span className="block text-sm font-bold">Caller</span><span className="block text-[11px] text-mutedDark">Customer, calling from home</span></span>
         </div>
         <span className="flex items-center gap-1 text-xs font-bold text-lime"><PhoneIncoming size={14} /> {playing && !done ? "On the call" : done ? "Call ended" : paused ? "Call paused" : "Incoming call"}</span>
         <div className="flex flex-1 items-center justify-end gap-2">
@@ -378,10 +382,10 @@ function CallingLive() {
             key={m.text}
             className={`max-w-[92%] shrink-0 rounded-xl px-3 py-1.5 text-xs leading-relaxed ${m.who === "ai" ? "bg-lime/15 text-lime" : "ml-auto bg-white/10 text-white"}`}
           >
-            <strong>{m.who === "ai" ? "AI Receptionist: " : "Sarah: "}</strong>{m.text}
+            <strong>{m.who === "ai" ? "AI Receptionist: " : "Caller: "}</strong>{m.text}
           </p>
         ))}
-        {shown === 0 && <p className="py-2 text-center text-xs text-mutedDark">Press play to hear a live call — spoken aloud, line by line, with a typed transcript.</p>}
+        {shown === 0 && <p className="py-2 text-center text-xs text-mutedDark">Press play to hear an example call — spoken aloud, line by line, with a typed transcript.</p>}
         {voiceError && <p className="py-2 text-center text-xs font-bold text-amber-400">{voiceError}</p>}
       </div>
       <div className="mt-3 flex h-[40px] items-center justify-between gap-2">
@@ -393,7 +397,7 @@ function CallingLive() {
           <span className="flex items-center gap-1.5">
             <button onClick={togglePause} aria-label="Pause the call" className="flex h-10 items-center gap-1.5 rounded-lg bg-lime px-3 text-sm font-bold text-ink"><Pause size={15} /> Pause</button>
             <button onClick={toggleMute} aria-label={muted ? "Unmute the call" : "Mute the call"} className="flex h-10 w-10 items-center justify-center rounded-lg border border-lineDark bg-ink/60 text-white" title={muted ? "Unmute" : "Mute"}>{muted ? <VolumeX size={16} /> : <Volume2 size={16} />}</button>
-            <input type="range" min="0" max="100" value={Math.round(volume * 100)} onChange={(e) => changeVolume(Number(e.target.value) / 100)} aria-label="Call volume" className="w-16 accent-[#C3F75D]" />
+            <input type="range" min="0" max="100" value={Math.round(volume * 100)} onChange={(e) => changeVolume(Number(e.target.value) / 100)} aria-label="Call volume" className="w-16 accent-lime" />
           </span>
         ) : paused ? (
           <span className="flex items-center gap-1.5">
@@ -401,7 +405,7 @@ function CallingLive() {
             <button onClick={stopCall} className="flex h-10 items-center rounded-lg border border-lineDark bg-ink/60 px-3 text-sm font-bold text-white">Stop</button>
           </span>
         ) : (
-          <button onClick={start} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink"><Play size={15} /> Hear a live call</button>
+          <button onClick={start} className="flex h-10 shrink-0 items-center gap-1.5 rounded-lg bg-lime px-4 text-sm font-bold text-ink"><Play size={15} /> Hear an example call</button>
         )}
       </div>
       {!voiceSupported && <p className="mt-1 text-center text-[11px] font-bold text-amber-400">Voice is not available on this device.</p>}
@@ -411,7 +415,7 @@ function CallingLive() {
 
 /* --- 4. CRM & Sales Automation: live pipeline panel --- */
 const STAGES = ["New", "Contacted", "Qualified", "Booked", "Won"];
-const LEADS = ["A. Smith — AC repair", "B. Jones — Boiler service", "C. Lee — Salon booking", "D. Patel — Dental checkup"];
+const LEADS = ["AC repair inquiry", "Boiler service inquiry", "Salon booking inquiry", "Dental checkup inquiry"];
 function CrmLive() {
   const [pos, setPos] = useState([0, 1, 2, 3]);
   const [sentCount, setSentCount] = useState(2);
@@ -423,7 +427,7 @@ function CrmLive() {
     return () => clearInterval(t);
   }, []);
   return (
-    <LiveShell title="CRM & Sales Automation — live pipeline">
+    <LiveShell title="CRM & Sales Automation — interactive pipeline demonstration">
       <div className="grid h-[190px] grid-cols-5 gap-2">
         {STAGES.map((s, si) => (
           <div key={s} className="rounded-xl border border-lineDark bg-ink/60 p-2">
@@ -456,7 +460,7 @@ function WorkflowLive() {
     return () => clearInterval(t);
   }, []);
   return (
-    <LiveShell title="Business Process Automation — live workflow">
+    <LiveShell title="Business Process Automation — interactive workflow demonstration">
       <div className="flex h-[232px] flex-col justify-between gap-2">
         {WF_STEPS.map((s, i) => (
           <div key={s} className="flex h-[52px] items-center gap-3 rounded-xl border border-lineDark bg-ink/60 px-3">
@@ -479,11 +483,11 @@ function WorkflowLive() {
    Shows the review workflow (request → review received → thank-you reply)
    with no invented reviewer names, quotes or client results. */
 const REVIEW_EVENTS = [
-  { label: "New 5-star review received", detail: "Google review — reply sent" },
-  { label: "New 5-star review received", detail: "Google review — reply sent" },
-  { label: "New 4-star review received", detail: "Google review — reply sent" },
-  { label: "New 5-star review received", detail: "Google review — reply sent" },
-  { label: "New 5-star review received", detail: "Google review — reply sent" },
+  { label: "Example 5-star review received", detail: "Google review — reply sent" },
+  { label: "Example 5-star review received", detail: "Google review — reply sent" },
+  { label: "Example 4-star review received", detail: "Google review — reply sent" },
+  { label: "Example 5-star review received", detail: "Google review — reply sent" },
+  { label: "Example 5-star review received", detail: "Google review — reply sent" },
 ];
 function ReviewsLive() {
   const [idx, setIdx] = useState(0);
@@ -494,7 +498,7 @@ function ReviewsLive() {
   }, []);
   const shown = [REVIEW_EVENTS[idx], REVIEW_EVENTS[(idx + 1) % REVIEW_EVENTS.length], REVIEW_EVENTS[(idx + 2) % REVIEW_EVENTS.length]];
   return (
-    <LiveShell title="Reputation Management — live review">
+    <LiveShell title="Reputation Management — interactive review demonstration">
       <div className="flex h-[232px] flex-col justify-between gap-2">
         {shown.map((r, i) => (
           <div key={`${r.label}-${i}`} className="flex h-[70px] items-center gap-3 rounded-xl border border-lineDark bg-ink/60 px-3">
@@ -507,7 +511,7 @@ function ReviewsLive() {
         ))}
       </div>
       <p className="mt-3 flex h-[24px] items-center gap-2 text-xs text-mutedDark">
-        <Check size={14} className="text-lime" /> Automatic thank-you replies sent here: <strong className="text-white">{replied}</strong>
+        <Check size={14} className="text-lime" /> Thank-you replies sent in this example: <strong className="text-white">{replied}</strong>
       </p>
     </LiveShell>
   );

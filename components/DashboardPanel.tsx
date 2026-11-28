@@ -7,7 +7,7 @@ import { PhoneCall, MessageSquareText, KanbanSquare, CalendarCheck, Mail, Star }
 const ROWS = [
   { icon: PhoneCall, label: "Calling AI Agent", detail: "Your AI Receptionist — answered 3 calls · booked 2 appointments", time: "2 min ago", dot: "#14B8A6" },
   { icon: MessageSquareText, label: "New inquiry — Meta Ads", detail: "AC repair · qualified · in pipeline", time: "9 min ago", dot: "#0EA5E9" },
-  { icon: KanbanSquare, label: "CRM pipeline", detail: "New Lead → Qualified → Visit Scheduled", time: "Live", dot: "#C3F75D" },
+  { icon: KanbanSquare, label: "CRM pipeline", detail: "New Lead → Qualified → Visit Scheduled", time: "Example", dot: "#C3F75D" },
   { icon: CalendarCheck, label: "Appointments today", detail: "4 confirmed · 1 rescheduled", time: "Today", dot: "#8B7CF6" },
   { icon: Mail, label: "Automated follow-up", detail: "Estimate reminder sent · opened", time: "1 h ago", dot: "#F59E0B" },
   { icon: Star, label: "Review requests", detail: "2 requests sent after completed jobs", time: "Today", dot: "#FB7185" },
@@ -44,13 +44,13 @@ export default function DashboardPanel() {
         <p className="font-bold text-white">AZEDOR Growth System</p>
         <span className="flex items-center gap-1.5 rounded-full bg-lime px-3 py-1 text-xs font-bold text-ink">
           <motion.span className="h-2 w-2 rounded-full bg-ink" animate={{ opacity: [1, 0.2, 1] }} transition={{ duration: 1.4, repeat: Infinity }} />
-          Live
+          Live — interactive demonstration
         </span>
       </div>
       {/* Calling AI Agent chat — all 4 messages always shown, fixed height. Only the
           newest message is highlighted (opacity / colour), nothing is
           added, removed or resized, so the card height never changes. */}
-      <div className="mt-4 h-[248px] overflow-hidden rounded-xl border border-lineDark bg-ink/60 p-3" aria-label="Calling AI Agent chat">
+      <div className="mt-4 h-[248px] overflow-hidden rounded-xl border border-lineDark bg-ink/60 p-3" aria-label="Example Calling AI Agent chat — interactive demonstration">
         <div className="flex h-full flex-col justify-between gap-2">
           {CHAT.map((m, i) => (
             <p
@@ -86,6 +86,9 @@ export default function DashboardPanel() {
           </div>
         ))}
       </div>
+      {/* The figures above are illustrative — an example workflow, not a
+          real client's results. */}
+      <p className="mt-3 text-center text-[11px] leading-relaxed text-mutedDark">Illustrative example — figures shown are not a real client&apos;s results.</p>
     </div>
   );
 }
